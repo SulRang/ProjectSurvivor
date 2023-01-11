@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
+
 
 public class Monster : MonoBehaviour
 {
@@ -10,6 +12,8 @@ public class Monster : MonoBehaviour
     [SerializeField]
     Transform playerPos;
 
+    IObjectPool<Monster> objectPool;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -24,12 +28,20 @@ public class Monster : MonoBehaviour
 
     public void MonsterInfo()
     {
-        Debug.Log("------------------------------");
-        Debug.Log("이름 :: " + monsterData.monsterName);
-        Debug.Log("체력 :: " + monsterData.hp);
-        Debug.Log("공격력 :: " + monsterData.damage);
-        Debug.Log("이동속도 :: " + monsterData.moveSpeed);
-        Debug.Log("사이즈 :: " + monsterData.size);
+        Debug.Log("생성완료");
+        Invoke("DestroyMonster", 5f);
     }
+
+    // 오브젝트 풀을 전달받음
+    public void SetManagedPool(IObjectPool<Monster> _objectPool)
+    {
+        objectPool = _objectPool;
+    }
+
+    public void DestroyMonster()
+    {
+        objectPool.Release(this);
+    }
+
 
 }
