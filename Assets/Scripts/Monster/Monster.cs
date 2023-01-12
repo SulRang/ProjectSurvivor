@@ -28,8 +28,8 @@ public class Monster : MonoBehaviour
 
     public void MonsterInfo()
     {
-        Debug.Log("생성완료");
-        Invoke("DestroyMonster", 5f);
+        //Debug.Log("생성완료");
+        //Invoke("DestroyMonster", 5f);
     }
 
     // 오브젝트 풀을 전달받음
@@ -38,6 +38,7 @@ public class Monster : MonoBehaviour
         objectPool = _objectPool;
     }
 
+    //오브젝트 비활성화
     public void DestroyMonster()
     {
         objectPool.Release(this);
