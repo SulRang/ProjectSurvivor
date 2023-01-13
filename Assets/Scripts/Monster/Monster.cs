@@ -18,6 +18,8 @@ public class Monster : MonoBehaviour
     void Start()
     {
         playerPos = FindObjectOfType<PlayerController>().transform;
+        int a = Random.Range(0, 11);
+        Invoke("DestroyMonster", a);
     }
 
     // Update is called once per frame
@@ -26,10 +28,9 @@ public class Monster : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, playerPos.position, monsterData.moveSpeed*Time.deltaTime);
     }
 
-    public void MonsterInfo()
+    public void ReadyDestroy()
     {
-        //Debug.Log("생성완료");
-        //Invoke("DestroyMonster", 5f);
+        Invoke("DestroyMonster", 5f);
     }
 
     // 오브젝트 풀을 전달받음
@@ -44,5 +45,32 @@ public class Monster : MonoBehaviour
         objectPool.Release(this);
     }
 
+    public void RePositinon(int _index)
+    {
+        switch (_index)
+        {
+            //위
+            case 0:
+                this.gameObject.transform.position = new Vector2(transform.position.x, playerPos.position.y - 10f);
+                break;
+
+            //아래
+            case 1:
+                this.gameObject.transform.position = new Vector2(transform.position.x, playerPos.position.y + 10f);
+                break;
+            //오른쪽
+            case 2:
+                this.gameObject.transform.position = new Vector2(playerPos.position.x + 15f, transform.position.y);
+                break;
+
+            //왼쪽
+            case 3:
+                this.gameObject.transform.position = new Vector2(playerPos.position.x - 15f, transform.position.y);
+                break;
+
+            default:
+                break;
+        }
+    }
 
 }

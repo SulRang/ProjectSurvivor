@@ -44,48 +44,35 @@ public class SampleSpawner : MonoBehaviour
         StartCoroutine(SpawnCoroutine());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void Spawn()
     {
-        //index = Random.Range(0, monsterDataList.Count);
-        //Debug.Log("index : " + index);
-        monsterPrefab = monsterDataList[index].prefab;
-        // var monster = Instantiate(monsterPrefab, new Vector3(Random.Range(-1, 1), 2.5f, 1.5f), Quaternion.identity);
+        //monsterPrefab = monsterDataList[index].prefab;
         var monster = pool.Get();
         monster.GetComponent<Monster>().monsterData = monsterDataList[index];
-        monster.GetComponent<Monster>().MonsterInfo();
-        //player.GetComponent<PlayerController>().PlayerMove();
+        //monster.GetComponent<Monster>().ReadyDestroy();
         ++monster_Num;
     }
 
+    // 몹 생성 코루틴
     IEnumerator SpawnCoroutine()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         if (monster_Num < maximum)
         {
             Spawn();
-            StartCoroutine(SpawnCoroutine());
         }
-        else
-        {
-            //Debug.Log("최대 생성" + monster_Num);
-            StopCoroutine(SpawnCoroutine());
-        }
+
+        StartCoroutine(SpawnCoroutine()); // 정해진 시간마다 생성
     }
 
     // 오브젝트 생성
     Monster CreateMonster()
-    {
-        float screenPoint = ScreenPosition(player_Camera);
+    {        
+        Monster monster;
+        Vector3 position = Positioning();
 
-        Monster monster = Instantiate(monsterPrefab, new Vector3(Random.Range(-40, 40), screenPoint, 0f),
-                            Quaternion.identity).GetComponent<Monster>();
+        monster = Instantiate(monsterPrefab, position, Quaternion.identity).GetComponent<Monster>();
         monster.SetManagedPool(pool);
         return monster;
     }
@@ -93,6 +80,7 @@ public class SampleSpawner : MonoBehaviour
     // 풀로부터 오브젝트를 가져옴
     void GetMonster(Monster monster)
     {
+        InitMonster(monster);
         monster.gameObject.SetActive(true);
     }
 
@@ -100,6 +88,8 @@ public class SampleSpawner : MonoBehaviour
     void ReleaseMonster(Monster monster)
     {
         monster.gameObject.SetActive(false);
+        --monster_Num;
+        Debug.Log("반환. " + monster_Num);
     }
 
     //풀에서 오브젝트를 파괴
@@ -109,14 +99,41 @@ public class SampleSpawner : MonoBehaviour
     }
 
     // 카메라 화면 높이 좌표를 계산
-    float ScreenPosition(Camera _camera)
+    float ScreenPosition()
     {
-        float distance = Vector3.Distance(player.transform.position, player_Camera.transform.position); // 카메라에서 플레이어까지의 거리
-        
-        float frustumHeight = distance * Mathf.Tan(player_Camera.fieldOfView * 0.5f * Mathf.Deg2Rad); // 카메라 화면 높이의 절반
+        float distance = Vector3.Distance(player.transform.position, player_Camera.transform.position); // 카메라에서 플레이어까지의 거
+        float frustumHeight = distance * Mathf.Tan(player_Camera.fieldOfView * 0.5f * Mathf.Deg2Rad) * 1.2f + 
+            (player.transform.position.y > 0 ? player.transform.position.y : player.transform.position.y * -1f) * 1.5f; // 카메라 화면 높이의 절반
 
         return frustumHeight;
+        
     }
 
+    Vector3 Positioning()
+    {
+        // 위, 왼쪽 : 0, 아래, 오른쪽 : 1
+        int posIndex = Random.Range(0, 2);
 
+        int insIndex = Random.Range(0, 2);
+
+        Vector3 calPos;
+        float screenPoint = ScreenPosition();
+
+        if (posIndex == 0) // 위, 왼쪽
+        {
+            calPos = (insIndex == 0) ? new Vector3(Random.Range(-15f, 15f), screenPoint, 0f) : new Vector3(screenPoint * 1.5f, Random.Range(-10f, 10f), 0f);
+
+        }
+        else // 아래, 오른쪽
+        {
+            calPos = (insIndex == 0) ? new Vector3(Random.Range(-15f, 15f), -screenPoint, 0f) : new Vector3(-screenPoint * 1.5f, Random.Range(-10f, 10f), 0f);
+        }
+
+        return calPos;
+    }
+
+    void InitMonster(Monster _monster)
+    {
+        _monster.gameObject.transform.position = Positioning();
+    }
 }
