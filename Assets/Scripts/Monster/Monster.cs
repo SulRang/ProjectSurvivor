@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
+
 
 public class Monster : MonoBehaviour
 {
@@ -10,10 +12,14 @@ public class Monster : MonoBehaviour
     [SerializeField]
     Transform playerPos;
 
+    IObjectPool<Monster> objectPool;
+    
     // Start is called before the first frame update
     void Start()
     {
         playerPos = FindObjectOfType<PlayerController>().transform;
+        int a = Random.Range(0, 11);
+        Invoke("DestroyMonster", a);
     }
 
     // Update is called once per frame
@@ -22,14 +28,49 @@ public class Monster : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, playerPos.position, monsterData.moveSpeed*Time.deltaTime);
     }
 
-    public void MonsterInfo()
+    public void ReadyDestroy()
     {
-        Debug.Log("------------------------------");
-        Debug.Log("이름 :: " + monsterData.monsterName);
-        Debug.Log("체력 :: " + monsterData.hp);
-        Debug.Log("공격력 :: " + monsterData.damage);
-        Debug.Log("이동속도 :: " + monsterData.moveSpeed);
-        Debug.Log("사이즈 :: " + monsterData.size);
+        Invoke("DestroyMonster", 5f);
+    }
+
+    // 오브젝트 풀을 전달받음
+    public void SetManagedPool(IObjectPool<Monster> _objectPool)
+    {
+        objectPool = _objectPool;
+    }
+
+    //오브젝트 비활성화
+    public void DestroyMonster()
+    {
+        objectPool.Release(this);
+    }
+
+    public void RePositinon(int _index)
+    {
+        switch (_index)
+        {
+            //위
+            case 0:
+                this.gameObject.transform.position = new Vector2(transform.position.x, playerPos.position.y - 10f);
+                break;
+
+            //아래
+            case 1:
+                this.gameObject.transform.position = new Vector2(transform.position.x, playerPos.position.y + 10f);
+                break;
+            //오른쪽
+            case 2:
+                this.gameObject.transform.position = new Vector2(playerPos.position.x + 15f, transform.position.y);
+                break;
+
+            //왼쪽
+            case 3:
+                this.gameObject.transform.position = new Vector2(playerPos.position.x - 15f, transform.position.y);
+                break;
+
+            default:
+                break;
+        }
     }
 
 }
