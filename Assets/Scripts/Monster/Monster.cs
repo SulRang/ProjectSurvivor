@@ -13,13 +13,16 @@ public class Monster : MonoBehaviour
     Transform playerPos;
 
     IObjectPool<Monster> objectPool;
-    
+
+    int curHp;
+
     // Start is called before the first frame update
     void Start()
     {
-        playerPos = FindObjectOfType<PlayerController>().transform;
-        int a = Random.Range(0, 11);
-        Invoke("DestroyMonster", a);
+        playerPos = GameObject.Find("Player").transform;
+        curHp = monsterData.hp;
+        //int a = Random.Range(0, 11);
+        //Invoke("DestroyMonster", a);
     }
 
     // Update is called once per frame
@@ -31,6 +34,14 @@ public class Monster : MonoBehaviour
     public void ReadyDestroy()
     {
         Invoke("DestroyMonster", 5f);
+    }
+
+    public void GetDamage(int damage)
+    {
+        Debug.Log(curHp);
+        curHp -= damage;
+        if (curHp <= 0)
+            DestroyMonster();
     }
 
     // 오브젝트 풀을 전달받음
@@ -51,21 +62,21 @@ public class Monster : MonoBehaviour
         {
             //위
             case 0:
-                this.gameObject.transform.position = new Vector2(transform.position.x, playerPos.position.y - 10f);
+                this.gameObject.transform.position = new Vector2(transform.position.x, playerPos.position.y - 7f);
                 break;
 
             //아래
             case 1:
-                this.gameObject.transform.position = new Vector2(transform.position.x, playerPos.position.y + 10f);
+                this.gameObject.transform.position = new Vector2(transform.position.x, playerPos.position.y + 7f);
                 break;
             //오른쪽
             case 2:
-                this.gameObject.transform.position = new Vector2(playerPos.position.x + 15f, transform.position.y);
+                this.gameObject.transform.position = new Vector2(playerPos.position.x + 12f, transform.position.y);
                 break;
 
             //왼쪽
             case 3:
-                this.gameObject.transform.position = new Vector2(playerPos.position.x - 15f, transform.position.y);
+                this.gameObject.transform.position = new Vector2(playerPos.position.x - 12f, transform.position.y);
                 break;
 
             default:
