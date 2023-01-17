@@ -10,7 +10,8 @@ public class RepositionScanner : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.GetComponent<Monster>().RePositinon(_index);
+        if(collision.tag == "Monster")
+            collision.GetComponent<Monster>().RePositinon(_index);
     }
 
 

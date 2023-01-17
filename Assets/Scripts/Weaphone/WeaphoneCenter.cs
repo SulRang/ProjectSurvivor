@@ -12,6 +12,9 @@ public class WeaphoneCenter : MonoBehaviour
 
     [SerializeField]
     Transform closeTarget;
+    [SerializeField]
+    float height;
+
     float distanceA = 0;
     float distanceB = 0;
 
@@ -19,7 +22,7 @@ public class WeaphoneCenter : MonoBehaviour
     Transform randomTarget;
     void FixedUpdate()
     {
-        transform.position = player.transform.position + new Vector3(0, 1.5f, 0);
+        transform.position = player.transform.position + new Vector3(0, height, 0);
     }
 
     /// <summary>
@@ -55,13 +58,11 @@ public class WeaphoneCenter : MonoBehaviour
             return;
         }
         int randomIdx = Random.Range(0, targetList.Count);
-        Debug.Log(targetList.Count);
         randomTarget = (Transform)targetList[randomIdx];
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("trigger");
         if (collision.tag == "Monster")
         {
             targetList.Add(collision.transform);

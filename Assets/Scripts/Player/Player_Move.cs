@@ -16,7 +16,7 @@ public class Player_Move : MonoBehaviour
     static private int animationNumber = 0;
     static private int playingAnimationNumber = 0;
 
-    static int moveSpeed = 3;
+    static float moveSpeed = 3;
     string lastState;                               // 플레이어의 상태
     Player player;                                  // 상태패턴 -> 플레이어
     static Vector3 Position;                               // 플레이어의 좌표
@@ -57,6 +57,7 @@ public class Player_Move : MonoBehaviour
         }
         public override void Moving(Player player)
         {
+            moveSpeed = Player_Status.instance.SPEED;
             animationNumber = 1;
             
             if (Horizontal > 0)
