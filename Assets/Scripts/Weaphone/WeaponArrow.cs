@@ -10,7 +10,6 @@ public class WeaponArrow : Weaphone
     [SerializeField]
     Player_Move_JS player_Move;
 
-    // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
@@ -41,7 +40,6 @@ public class WeaponArrow : Weaphone
         float vertical = Input.GetAxis("Vertical");
 
         Vector2 playerToward = new Vector2(horizontal, vertical).normalized;
-
         Vector2 forceVector;
 
         //오브젝트 회전
@@ -66,8 +64,5 @@ public class WeaponArrow : Weaphone
         {
             arrows[i].GetComponent<Rigidbody2D>().AddForce(forceVector * speed);
         }
-
-
-
     }
 }
