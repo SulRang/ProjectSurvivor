@@ -16,7 +16,7 @@ public class ACC_OldBook : MonoBehaviour
 
     // 증가되는 공격력
     [SerializeField]
-    float inc_Dmg = 50f;
+    float inc_Dmg = 5f;
 
     // 감소되는 체력
     float dec_Hp = 0f;

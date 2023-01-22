@@ -17,7 +17,6 @@ public class WeaponBomb : Weaphone
         base.Start();
         SetSpeed(0f);
         SetCoolDown(7f - level);
-        Debug.Log("ÄðÅ¸ÀÓ : " + (7f - level));
     }
     public override void Attack()
     {
