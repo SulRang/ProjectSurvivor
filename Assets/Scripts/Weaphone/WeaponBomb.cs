@@ -10,9 +10,6 @@ public class WeaponBomb : Weaphone
     [SerializeField]
     GameObject explosionPrefab;
 
-    [SerializeField]
-    Vector3 addScale;
-
     GameObject explosionObject;
 
     protected override void Start()
@@ -20,6 +17,7 @@ public class WeaponBomb : Weaphone
         base.Start();
         SetSpeed(0f);
         SetCoolDown(7f - level);
+        Debug.Log("ÄðÅ¸ÀÓ : " + (7f - level));
     }
     public override void Attack()
     {
@@ -29,6 +27,7 @@ public class WeaponBomb : Weaphone
 
         projectileObject.transform.parent = null;
         projectileObject.SetActive(true);
+        projectileObject.GetComponent<BoxCollider2D>().enabled = false;
         explosionObject = Instantiate(explosionPrefab, projectileObject.transform);
         explosionObject.transform.SetParent(projectileObject.transform);
         explosionObject.SetActive(false);
@@ -42,6 +41,7 @@ public class WeaponBomb : Weaphone
     void explosion()
     {
         explosionObject.SetActive(true);
+        explosionObject.GetComponentInParent<BoxCollider2D>().enabled = true;
     }
 
 }

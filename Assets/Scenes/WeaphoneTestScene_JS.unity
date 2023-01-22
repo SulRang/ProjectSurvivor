@@ -269,9 +269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 8828854823757993139, guid: 726c63bc64f3b8b41a3264f96577ec22, type: 3}
   level: 1
-  speed: 10
   explosionPrefab: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
-  addScale: {x: 0.01, y: 0.01, z: 0}
 --- !u!1 &289321496
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,7 +421,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &466728076
 Transform:
   m_ObjectHideFlags: 0
@@ -782,7 +780,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1223964312
 Transform:
   m_ObjectHideFlags: 0
