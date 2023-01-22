@@ -19,11 +19,6 @@ public class WeaponAura : MonoBehaviour
         this.gameObject.transform.SetParent(player.transform);
     }
 
-    void Attack()
-    {
-
-    }
-
     //테스트용. 실제로는 LevelUp을 사용해야함
     private void Update()
     {
