@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * 장신구 - 고서
+ * 데미지가 (inc_Dmg * acc_OldBook_level) 만큼 증가하는 대신
+ * 쿨타임 (5초) 마다 현재 체력의 (0.5% * acc_OldBook_level) 만큼 감소
+ * 
+ */
 public class ACC_OldBook : MonoBehaviour
 {
     // 장신구 레벨
@@ -22,11 +28,11 @@ public class ACC_OldBook : MonoBehaviour
     IEnumerator BeforeHpDecrease = null;
     void Start()
     {
-        Player_Status.instance.Dmg += inc_Dmg;
-        // Player_Status.instance.Hp = 500;
+        Player_Status.instance.UpgradeStatus("Dmg", inc_Dmg);
+        //Player_Status.instance.UpgradeStatus("Hp", 500);
 
-        dec_Hp = Player_Status.instance.Hp * 0.005f * acc_OldBook_level;
-        Player_Status.instance.Hp -= dec_Hp;
+        dec_Hp = -Player_Status.instance.Hp * 0.005f * acc_OldBook_level;
+        Player_Status.instance.UpgradeStatus("Hp", dec_Hp);
 
         if (BeforeHpDecrease == null)
         {
@@ -42,7 +48,7 @@ public class ACC_OldBook : MonoBehaviour
     void LevelUp()
     {
         ++acc_OldBook_level;
-        Player_Status.instance.Dmg += inc_Dmg;
+        Player_Status.instance.UpgradeStatus("Dmg", inc_Dmg);
         // Debug.Log("레벨 증가 : " + acc_OldBook_level);
         // Debug.Log("공격력 증가" + Player_Status.instance.Dmg);
     }
@@ -56,8 +62,8 @@ public class ACC_OldBook : MonoBehaviour
             if (cooltime >= cooldown)
             {
                 cooltime -= cooldown;
-                dec_Hp = Player_Status.instance.Hp * 0.005f * acc_OldBook_level;
-                Player_Status.instance.Hp -= dec_Hp;
+                dec_Hp = -Player_Status.instance.Hp * 0.005f * acc_OldBook_level;
+                Player_Status.instance.UpgradeStatus("Hp", dec_Hp);
                 // Debug.Log("체력 감소 : " + dec_Hp);
                 // LevelUp();
             }
