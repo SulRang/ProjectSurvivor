@@ -7,22 +7,23 @@ public class Player_Move : MonoBehaviour
 {
     [SerializeField]
     GameObject cameraObject;
-    static string[] animationNames = new string[6]  // 애니메이션 저장
+    public string[] animationNames = new string[6]  // 애니메이션 저장
     { "Idle", "Walk", "Run", "Dead", "Skill", "Attack" };                    
-    static Animator anim;
+    Animator anim;
 
-    static public bool Right = false;
+    public static bool Right = false;
 
-    static private int animationNumber = 0;
-    static private int playingAnimationNumber = 0;
+    static public Player_Move playerMove;
+    int animationNumber = 0;
+    int playingAnimationNumber = 0;
 
-    static float moveSpeed = 3;
-    string lastState;                               // 플레이어의 상태
-    Player player;                                  // 상태패턴 -> 플레이어
-    static Vector3 Position;                               // 플레이어의 좌표
+    public float moveSpeed;
+    string lastState;                                       // 플레이어의 상태
+    Player player;                                          // 상태패턴 -> 플레이어
+    Vector3 Position;                                       // 플레이어의 좌표
 
-    static float Horizontal;
-    static float Vertical;
+    public float Horizontal;
+    public float Vertical;
 
     abstract class PlayerState
     {
@@ -30,7 +31,7 @@ public class Player_Move : MonoBehaviour
 
         public void SetPlayer(Player player)
         {
-            this._player = player;
+            _player = player;
         }
 
         public abstract void Idle(Player player);
@@ -41,11 +42,11 @@ public class Player_Move : MonoBehaviour
     {
         public override void Idle(Player player)
         {
-            animationNumber = 0;
+            playerMove.animationNumber = 0;
         }
         public override void Moving(Player player)
         {
-            this._player._Move();
+            _player._Move();
         }
     }
 
@@ -53,23 +54,22 @@ public class Player_Move : MonoBehaviour
     {
         public override void Idle(Player player)
         {
-            this._player._Stop();
+            _player._Stop();
         }
         public override void Moving(Player player)
         {
-            moveSpeed = Player_Status.instance.SPEED;
-            animationNumber = 1;
-            
-            if (Horizontal > 0)
-            {
-                Right = true;
-            }
-            else if (Horizontal < 0)
+            playerMove.animationNumber = 2;
+
+            if (playerMove.Horizontal > 0)
             {
                 Right = false;
             }
-            Position.x += Horizontal * Time.deltaTime * moveSpeed;
-            Position.y += Vertical   * Time.deltaTime * moveSpeed;
+            else if (playerMove.Horizontal < 0)
+            {
+                Right = true;
+            }
+            playerMove.Position.x += playerMove.Horizontal * Time.deltaTime * playerMove.moveSpeed;
+            playerMove.Position.y += playerMove.Vertical * Time.deltaTime * playerMove.moveSpeed;
         }
     }
 
@@ -84,13 +84,13 @@ public class Player_Move : MonoBehaviour
 
         public void _Stop()
         {
-            this.playerState = new PlayerIdle();
+            playerState = new PlayerIdle();
             Debug.Log("움직임 정지");
         }
 
         public void _Move()
         {
-            this.playerState = new PlayerMoving();
+            playerState = new PlayerMoving();
             Debug.Log("움직임 시작");
         }
 
@@ -126,17 +126,35 @@ public class Player_Move : MonoBehaviour
         playingAnimationNumber = animationNumber;
     }
 
+    void CurrentCharacter()
+    {
+        if (Right)
+        {
+            transform.localScale = new Vector3(1, 1, -1);
+            transform.localEulerAngles = new Vector3(0, 0, 0);
+        }
+        else
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+            transform.localEulerAngles = new Vector3(0, 180, 0);
+        }
+        cameraObject.transform.position = new Vector3(Position.x, Position.y, Position.z - 10);
+        transform.position = Vector3.Lerp(transform.position, Position, 0.5f);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         player = new Player(new PlayerIdle());
+        playerMove = gameObject.GetComponent<Player_Move>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Horizontal = Input.GetAxis("Horizontal"); // x축
-        Vertical = Input.GetAxis("Vertical");     // y축
+        Horizontal = Input.GetAxis("Horizontal");       // x축
+        Vertical = Input.GetAxis("Vertical");           // y축
+        //Debug.Log(Vertical + "," + Horizontal);
 
         Position = transform.position;                  // 플레이어 현재 좌표값을 받는다.
         lastState = player.State.GetType().Name;        // 플레이어 현재 상태
@@ -158,19 +176,7 @@ public class Player_Move : MonoBehaviour
             player.Idle();      // 아무것도 안할 때
         }
         PlayAnimation();
-
-        if (Right)
-        {
-            transform.localScale = new Vector3(1, 1, 1);
-            transform.localEulerAngles = new Vector3(0, 180, 0);
-        }
-        else
-        {
-            transform.localScale = new Vector3(1, 1, -1);
-            transform.localEulerAngles = new Vector3(0, 0, 0);
-        }
-        cameraObject.transform.position = new Vector3(Position.x, Position.y, Position.z - 10);
-        transform.position = Vector3.Lerp(transform.position, Position, 0.5f);
+        CurrentCharacter();
     }
 
     public string GetState()

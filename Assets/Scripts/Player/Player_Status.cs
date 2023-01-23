@@ -108,6 +108,16 @@ public class Player_Status : MonoBehaviour
         FULL_EXP = _Full_Exp[0] + (_Full_Exp[1] * 100);
     }
 
+    public void ExpCheck()
+    {
+        if (FULL_EXP < Current_Exp)
+        {
+            _Full_Exp[1]++;
+            Current_Exp = Current_Exp - FULL_EXP;
+            StatusUpdate();
+        }
+    }
+
     /// UpgradeStatus("스탯 이름", 값)
     /// ex) UpgradeStatus("Hp", 1);
     /// 스탯 이름은 Getter Setter 참고
