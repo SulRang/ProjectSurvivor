@@ -1199,6 +1199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f89145059d9bdf41b00ecabf4bb66c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EXP: {fileID: 2263970235502346487, guid: 55f4c8533e6f0644b9155e8b017dcadd, type: 3}
   monsterData: {fileID: 0}
   playerPos: {fileID: 0}
 --- !u!61 &-873260553892269561

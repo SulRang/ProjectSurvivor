@@ -7,6 +7,9 @@ using UnityEngine.Pool;
 public class Monster : MonoBehaviour
 {
     [SerializeField]
+    public GameObject EXP;
+
+    [SerializeField]
     public MonsterData monsterData;
 
     [SerializeField]
@@ -38,10 +41,13 @@ public class Monster : MonoBehaviour
 
     public void GetDamage(int damage)
     {
-        Debug.Log(curHp);
+        //Debug.Log(curHp);
         curHp -= damage;
         if (curHp <= 0)
+        {
+            ExpDrop();
             DestroyMonster();
+        }
     }
 
     // 오브젝트 풀을 전달받음
@@ -54,6 +60,11 @@ public class Monster : MonoBehaviour
     public void DestroyMonster()
     {
         objectPool.Release(this);
+    }
+
+    public void ExpDrop()
+    {
+        Instantiate(EXP, gameObject.transform.position, gameObject.transform.rotation);
     }
 
     public void RePositinon(int _index)
