@@ -59,7 +59,7 @@ public class WeaponDart : Weaphone
         {
             dartParent.transform.Rotate(0, (Player_Move.Right) ? 0 : 180, 0);
 
-            forceVector = (Player_Move.Right) ? Vector2.right : Vector3.left;
+            forceVector = (Player_Move.Right) ? Vector3.right : Vector3.left;
         }
         else
         {
