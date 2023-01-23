@@ -172,4 +172,9 @@ public class Player_Move : MonoBehaviour
         cameraObject.transform.position = new Vector3(Position.x, Position.y, Position.z - 10);
         transform.position = Vector3.Lerp(transform.position, Position, 0.5f);
     }
+
+    public string GetState()
+    {
+        return lastState;
+    }
 }
