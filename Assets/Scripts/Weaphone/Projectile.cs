@@ -11,10 +11,11 @@ public class Projectile : MonoBehaviour
     float size = 2.0f;
     [SerializeField]
     float duration = 5.0f;
-
+    [SerializeField]
+    float power = 2.0f;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         transform.localScale = new Vector3(size, size, 1);
         damage *= Player_Status.instance.DMG;         //임시 데미지 수치
@@ -33,6 +34,7 @@ public class Projectile : MonoBehaviour
         if(collision.gameObject.tag == "Monster")
         {
             collision.GetComponent<Monster>().GetDamage((int)damage);
+            collision.GetComponent<Rigidbody2D>().AddForce((collision.transform.position - transform.position).normalized * power, ForceMode2D.Impulse);
         }
     }
     public void SetDuration(float _duration)
