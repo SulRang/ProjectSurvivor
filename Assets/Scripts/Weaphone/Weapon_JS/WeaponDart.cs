@@ -7,14 +7,16 @@ public class WeaponDart : Weaphone
     [SerializeField]
     int level = 1;
 
-    [SerializeField]
-    Player_Move_JS player_Move;
-
     protected override void Start()
     {
         base.Start();
         SetCoolDown(1.0f);
         SetSpeed(300.0f);
+    }
+
+    void LevelUp()
+    {
+        ++level;
     }
 
     public override void Attack()
@@ -55,9 +57,9 @@ public class WeaponDart : Weaphone
         }
         else if (playerToward == Vector2.zero)
         {
-            dartParent.transform.Rotate(0, (Player_Move_JS.Right) ? 0 : 180, 0);
+            dartParent.transform.Rotate(0, (Player_Move.Right) ? 0 : 180, 0);
 
-            forceVector = (Player_Move_JS.Right) ? Vector2.right : Vector3.left;
+            forceVector = (Player_Move.Right) ? Vector2.right : Vector3.left;
         }
         else
         {
@@ -66,6 +68,7 @@ public class WeaponDart : Weaphone
         }
 
         int cal_Angle = half;
+
         //방사형 각도 
         if (level <= 2)
         {
@@ -84,8 +87,5 @@ public class WeaponDart : Weaphone
                 darts[i].GetComponent<Rigidbody2D>().AddForce(Quaternion.AngleAxis(cal_Angle, Vector3.forward) * forceVector * speed);
             }
         }
-
-
-
     }
 }

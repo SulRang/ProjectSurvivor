@@ -18,6 +18,12 @@ public class WeaponBomb : Weaphone
         SetSpeed(0f);
         SetCoolDown(7f - level);
     }
+
+    void LevelUp()
+    {
+        ++level;
+    }
+
     public override void Attack()
     {
         SetCoolDown(7f - level);

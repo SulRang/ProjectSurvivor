@@ -11,7 +11,7 @@ public class Player_Move : MonoBehaviour
     { "Idle", "Walk", "Run", "Dead", "Skill", "Attack" };                    
     static Animator anim;
 
-    static bool Right = false;
+    static public bool Right = false;
 
     static private int animationNumber = 0;
     static private int playingAnimationNumber = 0;

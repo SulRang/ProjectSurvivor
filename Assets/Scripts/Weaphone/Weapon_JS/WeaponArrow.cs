@@ -7,14 +7,16 @@ public class WeaponArrow : Weaphone
     [SerializeField]
     int level = 1;
 
-    [SerializeField]
-    Player_Move_JS player_Move;
-
     protected override void Start()
     {
         base.Start();
         SetCoolDown(1.0f);
         SetSpeed(300.0f);
+    }
+
+    void LevelUp()
+    {
+        ++level;
     }
 
     public override void Attack()
@@ -50,9 +52,9 @@ public class WeaponArrow : Weaphone
         }
         else if (playerToward == Vector2.zero)
         {
-            arrowParent.transform.Rotate(0, (Player_Move_JS.Right) ? 0 : 180, 0);
+            arrowParent.transform.Rotate(0, (Player_Move.Right) ? 0 : 180, 0);
             
-            forceVector = (Player_Move_JS.Right) ? Vector2.right : Vector3.left;
+            forceVector = (Player_Move.Right) ? Vector2.right : Vector3.left;
         }
         else
         {

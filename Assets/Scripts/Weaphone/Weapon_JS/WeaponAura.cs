@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WeaponAura : MonoBehaviour
 {
+    //Monster쪽이 (int)damage 여서 데미지를 1 이하로 설정할 수 없음. 수정 필요.
     [SerializeField]
     float damage = 1f;
 
@@ -11,7 +12,7 @@ public class WeaponAura : MonoBehaviour
     int level = 1;
 
     [SerializeField]
-    Player_Move_JS player;
+    Player_Move player;
 
     void Start()
     {
@@ -19,6 +20,7 @@ public class WeaponAura : MonoBehaviour
         this.gameObject.transform.SetParent(player.transform);
     }
 
+    /*
     //테스트용. 실제로는 LevelUp을 사용해야함
     private void Update()
     {
@@ -27,6 +29,7 @@ public class WeaponAura : MonoBehaviour
             transform.localScale = new Vector2(level * 2f, level * 2f);
         }
     }
+    */
 
     void LevelUp()
     {
