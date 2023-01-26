@@ -12,7 +12,7 @@ public class ACC_OldBook : MonoBehaviour
 {
     // 장신구 레벨
     [SerializeField]
-    static float acc_OldBook_level = 1f;
+    static float acc_OldBook_level = 5f;
 
     // 증가되는 공격력
     [SerializeField]
@@ -69,5 +69,10 @@ public class ACC_OldBook : MonoBehaviour
             }
             yield return new WaitForSeconds(0);
         }
+    }
+
+    public float GetLevel()
+    {
+        return acc_OldBook_level;
     }
 }
