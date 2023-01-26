@@ -14,6 +14,9 @@ public class SampleSpawner : MonoBehaviour
     List<MonsterData> monsterDataList;
 
     [SerializeField]
+    MonsterData curMonster;
+
+    [SerializeField]
     GameObject monsterPrefab;
 
     [SerializeField]
@@ -21,9 +24,6 @@ public class SampleSpawner : MonoBehaviour
 
     [SerializeField]
     Camera player_Camera;
-
-    [SerializeField]
-    int index = 0;
 
     [SerializeField]
     IObjectPool<Monster> pool;
@@ -40,7 +40,7 @@ public class SampleSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        monsterPrefab = monsterDataList[index].prefab;
+        monsterPrefab = curMonster.prefab;
         StartCoroutine(SpawnCoroutine());
     }
 
@@ -48,7 +48,7 @@ public class SampleSpawner : MonoBehaviour
     {
         //monsterPrefab = monsterDataList[index].prefab;
         var monster = pool.Get();
-        monster.GetComponent<Monster>().monsterData = monsterDataList[index];
+        monster.GetComponent<Monster>().monsterData = curMonster;
         //monster.GetComponent<Monster>().ReadyDestroy();
         ++monster_Num;
     }
@@ -57,6 +57,7 @@ public class SampleSpawner : MonoBehaviour
     IEnumerator SpawnCoroutine()
     {
         yield return new WaitForSeconds(0.5f);
+
 
         if (monster_Num < maximum)
         {
@@ -135,5 +136,25 @@ public class SampleSpawner : MonoBehaviour
     void InitMonster(Monster _monster)
     {
         _monster.gameObject.transform.position = Positioning();
+    }
+
+    public void SetPlayer(GameObject _player)
+    {
+        player = _player;
+    }
+
+    public void SetPlayerCamera(Camera _playercamera)
+    {
+        player_Camera = _playercamera;
+    }
+
+    public void SetMonsterData(MonsterData _monsterData)
+    {
+        curMonster = _monsterData;
+    }
+
+    public void SetMaximum(int _maximum)
+    {
+        maximum = _maximum;
     }
 }

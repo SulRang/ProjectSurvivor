@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90f8769b858b39843a660e2f0672b59a, type: 3}
-  m_Name: Golem Data
+  m_Name: Goblin_k Data
   m_EditorClassIdentifier: 
-  monsterName: Golem
-  hp: 60
-  moveSpeed: 0.5
-  damage: 6
+  monsterName: Goblin_k
+  hp: 20
+  moveSpeed: 1
+  damage: 2
   size: 1
-  prefab: {fileID: 141166, guid: e9599a6b71c73374c9c065a65bdafd75, type: 3}
+  prefab: {fileID: 142092, guid: 12349d0ffafba3d46b55375ab08f88c0, type: 3}
