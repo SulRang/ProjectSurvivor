@@ -24,8 +24,6 @@ public class Monster : MonoBehaviour
     {
         playerPos = GameObject.Find("Player").transform;
         curHp = monsterData.hp;
-        //int a = Random.Range(0, 11);
-        //Invoke("DestroyMonster", a);
     }
 
     // Update is called once per frame
@@ -36,7 +34,7 @@ public class Monster : MonoBehaviour
 
     public void ReadyDestroy()
     {
-        Invoke("DestroyMonster", 5f);
+        Invoke("DestroyMonster", 10f);
     }
 
     public void GetDamage(int damage)

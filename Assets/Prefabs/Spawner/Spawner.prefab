@@ -50,9 +50,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 823182cfe6c8e0e4e9840bb462a691fb, type: 2}
   - {fileID: 11400000, guid: 0aeacc775ef2e5c408e59deb0f18cfc8, type: 2}
   - {fileID: 11400000, guid: 44b85574369eb204e8fa636ebcc40226, type: 2}
+  curMonster: {fileID: 11400000, guid: 44b85574369eb204e8fa636ebcc40226, type: 2}
   monsterPrefab: {fileID: 0}
   player: {fileID: 0}
   player_Camera: {fileID: 0}
   index: 0
   monster_Num: 0
-  maximum: 0
+  maximum: 15
