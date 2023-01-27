@@ -21,9 +21,13 @@ public class ACC_Scroll : MonoBehaviour
     [SerializeField]
     float inc_Size = 0.1f;
 
+    [SerializeField]
+    WeaponAura weaponAura;
+
     void Start()
     {
         Player_Status.instance.UpgradeStatus("Duration", inc_Size);
+        weaponAura.ScaleUpdate();
     }
 
     // 레벨 업 함수. 레벨업과 함께 능력치 조정
@@ -31,6 +35,7 @@ public class ACC_Scroll : MonoBehaviour
     {
         ++acc_Scroll_level;
         Player_Status.instance.UpgradeStatus("Duration", inc_Size);
+        weaponAura.ScaleUpdate();
     }
 
     public float GetLevel()

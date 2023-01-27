@@ -14,27 +14,78 @@ public class WeaponAura : MonoBehaviour
     [SerializeField]
     Player_Move player;
 
+    [SerializeField]
+    GameObject laurel;
+
+    [SerializeField]
+    GameObject upgradeObj;
+
+    bool isUpgrade = false;
+    bool isUpgradeWithACC = false;
+
+    float cooltime = 0f;
+
+
     void Start()
     {
-        //damage *= Player_Status.instance.DMG;
+        damage += Player_Status.instance.DMG;
+        ScaleUpdate();
         this.gameObject.transform.SetParent(player.transform);
     }
 
-    /*
-    //테스트용. 실제로는 LevelUp을 사용해야함
-    private void Update()
-    {
-        if (level != 1)
-        {
-            transform.localScale = new Vector2(level * 2f, level * 2f);
-        }
-    }
-    */
-
-    void LevelUp()
+    public void LevelUp()
     {
         ++level;
-        transform.localScale = new Vector2(level * 1.5f, level * 1.5f);
+        ScaleUpdate();
+    }
+
+    // Scroll 활성화 및 업그레이드, 크기 관련 장신구 활성화 및 업그레이드 시 실행해줘야함
+    public void ScaleUpdate()
+    {
+        transform.localScale = new Vector2((level * 1.5f) + 3 * Player_Status.instance.Duration, (level * 1.5f) +  3 * Player_Status.instance.Duration);
+    }
+
+    // 오라 업그레이드. 조건은 월계관과 오라 모두 5레벨 이상. 범위가 더 넓은 오라로 업그레이드
+    public void UpgradeWithACC()
+    {
+        if (laurel.GetComponent<ACC_Laurel>().GetLevel() >= 5 && level >= 5)
+        {
+            // 사전에 전직이 되어있으면 해당 기능 취소.
+            if (isUpgrade)
+            {
+                StopCoroutine(UpgradeAttackCoroutine());
+                isUpgrade = false;
+            } 
+            upgradeObj.SetActive(true);
+            this.gameObject.SetActive(false);
+        }
+    }
+
+    // 오라 전직. 조건은 오라 5레벨 이상. 범위가 더 넓은 오라 일정 시간 간격마다 추가 활성화
+    public void Upgrade()
+    {
+        if (level >= 5)
+        {
+            isUpgrade = true;
+            StartCoroutine(UpgradeAttackCoroutine());
+        }
+    }
+
+    // 오라 전직 시 사용 코루틴. 3초 간격으로 3초동안 오라 활성화
+    IEnumerator UpgradeAttackCoroutine()
+    {
+        while (isUpgrade)
+        {
+            cooltime += Time.deltaTime;
+            if (cooltime >= 3f)
+            {
+                cooltime -= 3f;
+                upgradeObj.SetActive(true);
+                yield return new WaitForSeconds(3f);
+                upgradeObj.SetActive(false);
+            }
+            yield return null;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
