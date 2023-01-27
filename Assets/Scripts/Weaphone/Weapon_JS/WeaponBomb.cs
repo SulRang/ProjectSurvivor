@@ -5,21 +5,29 @@ using UnityEngine;
 public class WeaponBomb : Weaphone
 {
     [SerializeField]
-    int level = 1;
+    float level = 1f;
 
     [SerializeField]
     GameObject explosionPrefab;
 
     GameObject explosionObject;
 
+    GameObject projectileObject;
+
+    [SerializeField]
+    GameObject scroll;
+
+    [SerializeField]
+    bool isUpgrade = false;
+
     protected override void Start()
     {
         base.Start();
         SetSpeed(0f);
-        SetCoolDown(7f - level);
+        SetCoolDown(7f - level - Player_Status.instance.Cooldown);
     }
 
-    void LevelUp()
+    public void LevelUp()
     {
         ++level;
     }
@@ -28,25 +36,38 @@ public class WeaponBomb : Weaphone
     {
         SetCoolDown(7f - level);
 
-        GameObject projectileObject = Instantiate(projectile, transform);
+        projectileObject = Instantiate(projectile, transform);
+
+        // 업그레이드 되었을 경우 폭탄 크기 증가.
+        if (isUpgrade)
+        {
+            projectileObject.GetComponent<BombProjectile>().SetSize(1.0f);
+        }
 
         projectileObject.transform.parent = null;
         projectileObject.SetActive(true);
         projectileObject.GetComponent<BoxCollider2D>().enabled = false;
-        explosionObject = Instantiate(explosionPrefab, projectileObject.transform);
+        explosionObject = Instantiate(explosionPrefab, transform);
         explosionObject.transform.SetParent(projectileObject.transform);
         explosionObject.SetActive(false);
 
-        float _setDuration = 2.0f;
-        projectileObject.GetComponent<Projectile>().SetDuration(2.0f);
-
-        Invoke("explosion", _setDuration - 0.5f);
+        float _setDuration = projectileObject.GetComponent<BombProjectile>()._setDuration;
+        Invoke("explosion", _setDuration - 0.4f);
     }
 
     void explosion()
     {
         explosionObject.SetActive(true);
         explosionObject.GetComponentInParent<BoxCollider2D>().enabled = true;
+    }
+
+    // 폭탄 업그레이드. 조건은 주문서와 폭탄 모두 5레벨 이상. 폭탄 크기 크게 증가.
+    public void UpgradeWithACC()
+    {
+        if (scroll.GetComponent<ACC_Scroll>().GetLevel() >= 5 && level >= 5)
+        {
+            isUpgrade = true;
+        }
     }
 
 }

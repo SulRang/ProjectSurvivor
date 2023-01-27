@@ -12,7 +12,7 @@ public class ACC_OldBook : MonoBehaviour
 {
     // 장신구 레벨
     [SerializeField]
-    static float acc_OldBook_level = 5f;
+    static float acc_OldBook_level = 1f;
 
     // 증가되는 공격력
     [SerializeField]
