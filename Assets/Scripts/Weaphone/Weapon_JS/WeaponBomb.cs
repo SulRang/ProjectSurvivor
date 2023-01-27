@@ -18,7 +18,15 @@ public class WeaponBomb : Weaphone
     GameObject scroll;
 
     [SerializeField]
+    WeaphoneCenter weaponCenter;
+
+    [SerializeField]
     bool isUpgrade = false;
+
+    [SerializeField]
+    bool isUpgradeWithACC = false;
+
+    float upCooltime = 0f;
 
     protected override void Start()
     {
@@ -39,7 +47,7 @@ public class WeaponBomb : Weaphone
         projectileObject = Instantiate(projectile, transform);
 
         // 업그레이드 되었을 경우 폭탄 크기 증가.
-        if (isUpgrade)
+        if (isUpgradeWithACC)
         {
             projectileObject.GetComponent<BombProjectile>().SetSize(1.0f);
         }
@@ -52,7 +60,7 @@ public class WeaponBomb : Weaphone
         explosionObject.SetActive(false);
 
         float _setDuration = projectileObject.GetComponent<BombProjectile>()._setDuration;
-        Invoke("explosion", _setDuration - 0.4f);
+        //Invoke("explosion", _setDuration - 0.4f);
     }
 
     void explosion()
@@ -66,8 +74,69 @@ public class WeaponBomb : Weaphone
     {
         if (scroll.GetComponent<ACC_Scroll>().GetLevel() >= 5 && level >= 5)
         {
-            isUpgrade = true;
+            isUpgradeWithACC = true;
+            if (isUpgrade)
+            {
+                StopCoroutine(BeforeUpgradeAttackCoroutine());
+                isUpgrade = false;
+            }
         }
+    }
+
+    // 폭탄 전직. 조건은 폭탄 5레벨 이상. 일정 시간 간격으로 무작위 폭탄 투척
+    public void Upgrade()
+    {
+        if (level >= 5)
+        {
+            isUpgrade = true;
+            StartCoroutine(BeforeUpgradeAttackCoroutine());
+        }
+    }
+
+    // 무작위 폭탄 투척 시 사용 코루틴. 4초 간격으로 수행
+    IEnumerator BeforeUpgradeAttackCoroutine()
+    {
+        while (isUpgrade)
+        {
+            upCooltime += Time.deltaTime;
+            if (upCooltime >= 3f)
+            {
+                upCooltime -= 3f;
+                UpgradeAttack();
+                yield return new WaitForSeconds(1f);
+            }
+            yield return null;
+        }
+    }
+
+    // 무작위 폭탄 생성 함수.
+    void UpgradeAttack()
+    {
+        int targetNum = Random.Range(1, 6);
+
+        for (int i = 0; i < level; i++)
+        {
+            Transform target = weaponCenter.GetRandomTarget();
+            if (projectile == null)
+                return;
+            if (target == null)
+                return;
+
+            Vector3 targetPos = target.position + new Vector3(0, 1, 0);
+            GameObject upProjectileObject = Instantiate(projectile, transform);
+            upProjectileObject.transform.parent = null;
+            upProjectileObject.SetActive(true);
+            upProjectileObject.GetComponent<BoxCollider2D>().enabled = false;
+            GameObject upExplosionObject = Instantiate(explosionPrefab, transform);
+            upExplosionObject.transform.SetParent(upProjectileObject.transform);
+            upExplosionObject.SetActive(false);
+
+            float _setDuration = upProjectileObject.GetComponent<BombProjectile>()._setDuration;
+            //Invoke("explosion", _setDuration - 0.5f);
+
+            upProjectileObject.GetComponent<Rigidbody2D>().AddForce((targetPos - transform.position).normalized * 75f);
+        }
+
     }
 
 }
