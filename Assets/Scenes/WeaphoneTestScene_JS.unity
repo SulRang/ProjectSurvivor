@@ -656,7 +656,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &466728076
 Transform:
   m_ObjectHideFlags: 0
@@ -686,6 +686,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 3605334599477010581, guid: dee74a99414298a47bac68a5615cc40d, type: 3}
   level: 3
+  isUpgrade: 0
+  upgradeProjNum: 30
 --- !u!1 &504989033
 GameObject:
   m_ObjectHideFlags: 0
@@ -1169,9 +1171,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1678367812}
-        m_TargetAssemblyTypeName: WeaponAura, Assembly-CSharp
-        m_MethodName: UpgradeWithACC
+      - m_Target: {fileID: 466728077}
+        m_TargetAssemblyTypeName: WeaponDart, Assembly-CSharp
+        m_MethodName: LevelUp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6959,9 +6961,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1678367812}
-        m_TargetAssemblyTypeName: WeaponAura, Assembly-CSharp
-        m_MethodName: LevelUp
+      - m_Target: {fileID: 466728077}
+        m_TargetAssemblyTypeName: WeaponDart, Assembly-CSharp
+        m_MethodName: Upgrade
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7407,7 +7409,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1678367811
 Transform:
   m_ObjectHideFlags: 0
