@@ -20,10 +20,8 @@ public class WeaponBomb : Weaphone
     [SerializeField]
     WeaphoneCenter weaponCenter;
 
-    [SerializeField]
     bool isUpgrade = false;
 
-    [SerializeField]
     bool isUpgradeWithACC = false;
 
     float upCooltime = 0f;

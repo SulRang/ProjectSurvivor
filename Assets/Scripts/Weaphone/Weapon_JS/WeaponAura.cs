@@ -21,7 +21,6 @@ public class WeaponAura : MonoBehaviour
     GameObject upgradeObj;
 
     bool isUpgrade = false;
-    bool isUpgradeWithACC = false;
 
     float cooltime = 0f;
 

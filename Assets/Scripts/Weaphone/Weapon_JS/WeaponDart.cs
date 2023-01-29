@@ -7,7 +7,6 @@ public class WeaponDart : Weaphone
     [SerializeField]
     int level = 1;
 
-    [SerializeField]
     bool isUpgrade = false;
 
     float upCooltime = 0f;

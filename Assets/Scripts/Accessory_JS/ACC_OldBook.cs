@@ -40,8 +40,6 @@ public class ACC_OldBook : MonoBehaviour
             StartCoroutine(BeforeHpDecrease);
         }
 
-        // Debug.Log("1단계 공격력 증가 : " + Player_Status.instance.Dmg);
-        // Debug.Log("1단계 체력 감소 : " + Player_Status.instance.Hp);
     }
 
     // 레벨 업 함수. 레벨업과 함께 능력치 조정
@@ -49,8 +47,6 @@ public class ACC_OldBook : MonoBehaviour
     {
         ++acc_OldBook_level;
         Player_Status.instance.UpgradeStatus("Dmg", inc_Dmg);
-        // Debug.Log("레벨 증가 : " + acc_OldBook_level);
-        // Debug.Log("공격력 증가" + Player_Status.instance.Dmg);
     }
 
     // 체력 감소 코루틴. 5초마다 체력의 0.5% * level 만큼 감소
@@ -64,8 +60,6 @@ public class ACC_OldBook : MonoBehaviour
                 cooltime -= cooldown;
                 dec_Hp = -Player_Status.instance.Hp * 0.005f * acc_OldBook_level;
                 Player_Status.instance.UpgradeStatus("Hp", dec_Hp);
-                // Debug.Log("체력 감소 : " + dec_Hp);
-                // LevelUp();
             }
             yield return new WaitForSeconds(0);
         }
