@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    float curTime = 0.0f;
+    protected float curTime = 0.0f;
     [SerializeField]
-    float damage = 1;
+    protected float damage = 1;
     [SerializeField]
-    float size = 2.0f;
+    protected float size = 2.0f;
     [SerializeField]
-    float duration = 5.0f;
+    protected float duration = 5.0f;
     [SerializeField]
-    float power = 2.0f;
+    protected float power = 2.0f;
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -33,12 +33,16 @@ public class Projectile : MonoBehaviour
     {
         if(collision.gameObject.tag == "Monster")
         {
-            collision.GetComponent<Monster>().GetDamage((int)damage);
+    
             collision.GetComponent<Rigidbody2D>().AddForce((collision.transform.position - transform.position).normalized * power, ForceMode2D.Impulse);
         }
     }
     public void SetDuration(float _duration)
     {
         duration = _duration;
+    }
+    public void SetSize(float _size)
+    {
+        size *= _size;
     }
 }

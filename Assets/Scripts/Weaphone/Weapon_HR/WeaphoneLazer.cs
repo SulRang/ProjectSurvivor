@@ -8,8 +8,14 @@ public class WeaphoneLazer : Weaphone
     public Transform Target;
     static int Range = 60;
     static int Radius = 8;
-
+    [SerializeField]
+    bool isUpgrade = false;
+    [SerializeField]
+    bool isClass = false;
+    [SerializeField]
+    GameObject classProjectile;
     public Collider2D[] Cols;
+    float count = 0;
 
     void Direction_Check()
     {
@@ -110,5 +116,53 @@ public class WeaphoneLazer : Weaphone
                 }
             }
         }
+        if (isUpgrade)
+            UpgradeAttack();
+        if (isClass)
+            ClassAttack();
+    }
+    void UpgradeAttack()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            //투사체 개수에 따른 각도 설정
+            float degree = 45 + 360 / 4 * i;
+            float radian = Mathf.Deg2Rad * degree;
+            //투사체 생성
+            GameObject ProjectileObject = Instantiate(projectile, transform);
+            ProjectileObject.transform.localPosition = Vector3.zero;
+            ProjectileObject.SetActive(true);
+            ProjectileObject.transform.parent = null;
+            //투사체 지속시간 설정
+            ProjectileObject.GetComponent<Projectile>().SetDuration(1.0f);
+            //투사체 각도 및 이동 설정
+            ProjectileObject.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, degree));
+            Vector3 dirVec3 = new Vector3(Mathf.Sin(radian), Mathf.Cos(radian));
+            ProjectileObject.GetComponent<Rigidbody2D>().AddForce(dirVec3.normalized * 500);
+
+        }
+    }
+    void ClassAttack()
+    {
+        count++;
+        if (count % 2 == 0)
+        {
+            count = 0;
+            return;
+        }
+        Transform target = transform.parent.GetComponent<WeaponCenter>().GetRandomTarget();
+        if (projectile == null)
+            return;
+        if (target == null)
+            return;
+        //타겟 vector 계산 (y 1을 더해야 타겟의 가운데)
+        Vector3 targetPos = target.position + new Vector3(0, 1, 0);
+
+        //투사체 생성
+        GameObject ProjectileObject = Instantiate(classProjectile, target);
+        ProjectileObject.SetActive(true);
+
+        //투사체 지속 시간 설정
+        ProjectileObject.GetComponent<Projectile>().SetDuration(8.0f);
     }
 }
