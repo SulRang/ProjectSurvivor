@@ -36,7 +36,7 @@ public class Player_Status : MonoBehaviour
     //테스트용 Start
     private void Start()
     {
-        UpgradeStatus("Speed", 4);
+        UpgradeStatus("Speed", 8);
     }
 
     //표시용 스텟
@@ -105,6 +105,7 @@ public class Player_Status : MonoBehaviour
         CRITICAL = _Critical[0] + (_Critical[1] * 0.2f);
         CRITICAL_DMG = _Critical_Dmg[0] + (_Critical_Dmg[1] * 0.2f);
         EXP_GAIN_RATE = _Exp_Gain_Rate[0] + (_Exp_Gain_Rate[1] * 0.2f);
+        GOLD_GAIN_RATE = _Gold_Gain_Rate[0] + (_Gold_Gain_Rate[1] * 0.2f);
         FULL_EXP = _Full_Exp[0] + (_Full_Exp[1] * 100);
     }
 
@@ -114,6 +115,7 @@ public class Player_Status : MonoBehaviour
         {
             _Full_Exp[1]++;
             Current_Exp = Current_Exp - FULL_EXP;
+            Debug.Log("Level UP!");
             StatusUpdate();
         }
     }
@@ -134,6 +136,4 @@ public class Player_Status : MonoBehaviour
         }
         StatusUpdate();
     }
-
-    
 }
