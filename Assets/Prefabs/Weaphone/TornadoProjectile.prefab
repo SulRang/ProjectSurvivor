@@ -4703,6 +4703,7 @@ GameObject:
   - component: {fileID: 3649532386580612126}
   - component: {fileID: 3286974310576115020}
   - component: {fileID: -8116477510818467735}
+  - component: {fileID: -1590794226051055655}
   m_Layer: 0
   m_Name: TornadoProjectile
   m_TagString: Untagged

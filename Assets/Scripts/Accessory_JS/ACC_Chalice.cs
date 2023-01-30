@@ -21,7 +21,6 @@ public class ACC_Chalice : MonoBehaviour
     void Start()
     {
         Player_Status.instance.UpgradeStatus("Regeneration", inc_Regeneration);
-        // Debug.Log("초기 : " + Player_Status.instance.Regeneration);
     }
 
     // 레벨 업 함수. 레벨업과 함께 능력치 조정
@@ -30,7 +29,5 @@ public class ACC_Chalice : MonoBehaviour
         ++acc_Chalice_level;
 
         Player_Status.instance.UpgradeStatus("Regeneration", inc_Regeneration);
-        // Debug.Log("레벨업 : " + acc_Chalice_level);
-        // Debug.Log("반영 : " + Player_Status.instance.Regeneration);
     }
 }

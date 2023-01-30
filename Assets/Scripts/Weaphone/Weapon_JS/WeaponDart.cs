@@ -7,6 +7,13 @@ public class WeaponDart : Weaphone
     [SerializeField]
     int level = 1;
 
+    bool isUpgrade = false;
+
+    float upCooltime = 0f;
+
+    [SerializeField]
+    float upgradeProjNum = 30;
+
     protected override void Start()
     {
         base.Start();
@@ -14,7 +21,7 @@ public class WeaponDart : Weaphone
         SetSpeed(300.0f);
     }
 
-    void LevelUp()
+    public void LevelUp()
     {
         ++level;
     }
@@ -83,9 +90,50 @@ public class WeaponDart : Weaphone
             for (int i = 0; i < level; i++)
             {
                 cal_Angle -= oneDegree;
-                Debug.Log(cal_Angle);
                 darts[i].GetComponent<Rigidbody2D>().AddForce(Quaternion.AngleAxis(cal_Angle, Vector3.forward) * forceVector * speed);
             }
         }
+    }
+
+    // 표창 전직. 조건은 표창 5레벨 이상. 일정 시간 간격으로 나선형 표창 발사.
+    public void Upgrade()
+    {
+        if (level >= 5)
+        {
+            isUpgrade = true;
+            StartCoroutine(BeforeUpgradeAttackCoroutine());
+        }
+    }
+
+    // 표창 전직 시 사용 코루틴. 4초 간격으로 나선형 패턴 표창 발사
+    IEnumerator BeforeUpgradeAttackCoroutine()
+    {
+        while (isUpgrade)
+        {
+            upCooltime += Time.deltaTime;
+            if (upCooltime >= 3f)
+            {
+                upCooltime -= 3f;
+                StartCoroutine(UpgradeAttackCoroutine());
+                yield return new WaitForSeconds(1f);
+            }
+            yield return null;
+        }
+    }
+
+    // 나선 패턴 표창 생성 코루틴.
+    IEnumerator UpgradeAttackCoroutine()
+    {
+        float angle = 360.0f / upgradeProjNum;
+
+        for (int i = 0; i < upgradeProjNum; i++)
+        {
+            float cal_Angle = angle * i;
+            float radian = Mathf.Deg2Rad * cal_Angle;
+            GameObject upProj = Instantiate(projectile, transform);
+            upProj.GetComponent<Rigidbody2D>().AddForce(new Vector2(300f * Mathf.Sin(radian), 300f * Mathf.Cos(radian)));
+            yield return new WaitForSeconds(0.01f);
+        }
+
     }
 }

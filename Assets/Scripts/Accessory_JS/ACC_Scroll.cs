@@ -21,18 +21,25 @@ public class ACC_Scroll : MonoBehaviour
     [SerializeField]
     float inc_Size = 0.1f;
 
+    [SerializeField]
+    WeaponAura weaponAura;
+
     void Start()
     {
         Player_Status.instance.UpgradeStatus("Duration", inc_Size);
-        // Debug.Log("초기 사이즈 : " + Player_Status.instance.Duration);
+        weaponAura.ScaleUpdate();
     }
 
     // 레벨 업 함수. 레벨업과 함께 능력치 조정
-    void LevelUp()
+    public void LevelUp()
     {
         ++acc_Scroll_level;
         Player_Status.instance.UpgradeStatus("Duration", inc_Size);
-        // Debug.Log("레벨업 : " + acc_Scroll_level);
-        // Debug.Log("반영 사이즈 증가 : " + Player_Status.instance.Duration);
+        weaponAura.ScaleUpdate();
+    }
+
+    public float GetLevel()
+    {
+        return acc_Scroll_level;
     }
 }

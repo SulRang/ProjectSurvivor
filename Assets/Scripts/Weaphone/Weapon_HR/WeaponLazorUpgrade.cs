@@ -5,35 +5,35 @@ using UnityEngine;
 public class WeaponLazorUpgrade : Weaphone
 {
     /// <summary>
-    /// ·£´ýÇÑ Å¸°ÙÀ¸·Î Åõ»çÃ¼¸¦ ³¯¸®´Â ¹«±â
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     protected override void Start()
     {
         base.Start();
-        //Åõ»çÃ¼ °³¼ö
+        //ï¿½ï¿½ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
         SetProjectileNum(1);
-        //Åõ»çÃ¼ ¼Óµµ
+        //ï¿½ï¿½ï¿½ï¿½Ã¼ ï¿½Óµï¿½
         SetSpeed(100.0f);
-        //°ø°Ý Äð´Ù¿î
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ù¿ï¿½
         SetCoolDown(10.0f);
     }
 
     public override void Attack()
     {
-        //·£´ýÇÑ Å¸°Ù Transform °¡Á®¿À±â
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½ Transform ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         Transform target = transform.parent.GetComponent<WeaponCenter>().GetRandomTarget();
         if (projectile == null)
             return;
         if (target == null)
             return;
-        //Å¸°Ù vector °è»ê (y 1À» ´õÇØ¾ß Å¸°ÙÀÇ °¡¿îµ¥)
+        //Å¸ï¿½ï¿½ vector ï¿½ï¿½ï¿½ (y 1ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¾ï¿½ Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½îµ¥)
         Vector3 targetPos = target.position + new Vector3(0, 1, 0);
 
-        //Åõ»çÃ¼ »ý¼º
+        //ï¿½ï¿½ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
         GameObject ProjectileObject = Instantiate(projectile, target);
         ProjectileObject.SetActive(true);
 
-        //Åõ»çÃ¼ Áö¼Ó ½Ã°£ ¼³Á¤
+        //ï¿½ï¿½ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½
         ProjectileObject.GetComponent<Projectile>().SetDuration(8.0f);
         
     }

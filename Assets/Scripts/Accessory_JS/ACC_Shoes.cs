@@ -36,15 +36,12 @@ public class ACC_Shoes : MonoBehaviour
             BeforeSpeedincrease = HpDecreaseCoroutine();
             StartCoroutine(BeforeSpeedincrease);
         }
-
-        // Debug.Log("초기 이동속도 : " + Player_Status.instance.Speed);
     }
 
     // 레벨 업 함수. 레벨업과 함께 능력치 조정
-    void LevelUp()
+    public void LevelUp()
     {
         ++acc_Shoes_level;
-        // Debug.Log("레벨업 : " + acc_Shoes_level);
     }
 
     // 체력 감소 코루틴. 쿨타임 (5초) 마다 지속시간 (3 * (level / 2. level 2부터) 초) 동안 이동속도 증가
@@ -56,15 +53,17 @@ public class ACC_Shoes : MonoBehaviour
             if (cooltime >= cooldown)
             {
                 Player_Status.instance.UpgradeStatus("Speed", inc_Speed);
-                // Debug.Log("이속 증가 : " + Player_Status.instance.Speed);
                 yield return new WaitForSeconds(duration * (acc_Shoes_level / 2));
                 Player_Status.instance.UpgradeStatus("Speed", -inc_Speed);
-                // Debug.Log("이속 복귀 : " + Player_Status.instance.Speed);
 
                 cooltime -= cooldown;
-                // LevelUp();
             }
             yield return new WaitForSeconds(0);
         }
+    }
+
+    public float GetLevel()
+    {
+        return acc_Shoes_level;
     }
 }
