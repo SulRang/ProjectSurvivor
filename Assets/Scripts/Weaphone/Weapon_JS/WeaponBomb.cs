@@ -18,7 +18,7 @@ public class WeaponBomb : Weaphone
     GameObject scroll;
 
     [SerializeField]
-    WeaphoneCenter weaponCenter;
+    WeaponCenter weaponCenter;
 
     bool isUpgrade = false;
 

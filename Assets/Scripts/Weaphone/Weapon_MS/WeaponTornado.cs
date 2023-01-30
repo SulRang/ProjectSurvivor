@@ -35,7 +35,7 @@ public class WeaponTornado : Weaphone
         if (target == null)
             return;
         //타겟 vector 계산 (y 1을 더해야 타겟의 가운데)
-        Vector3 targetPos = target.position + new Vector3(0, 1, 0);
+        Vector3 targetPos = target.position + new Vector3(0, 0.5f, 0);
 
         //투사체 생성
         GameObject ProjectileObject = Instantiate(projectile, target);
@@ -70,7 +70,6 @@ public class WeaponTornado : Weaphone
                 ProjectileObject.GetComponent<Projectile>().SetDuration(2.0f);
                 //투사체 각도 및 이동 설정
                 //ProjectileObject.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 90 - degree));
-                ProjectileObject.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 180));
                 Vector3 dirVec3 = new Vector3(range * Mathf.Sin(radian), range * Mathf.Cos(radian));
                 ProjectileObject.GetComponent<Rigidbody2D>().AddForce(dirVec3.normalized * 500);
             }
