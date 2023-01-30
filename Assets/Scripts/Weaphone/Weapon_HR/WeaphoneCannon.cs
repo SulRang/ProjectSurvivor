@@ -5,7 +5,11 @@ using UnityEngine;
 public class WeaphoneCannon : Weaphone
 {
     float radius = 10f;
-
+    [SerializeField]
+    GameObject upgradeProjectile;
+    [SerializeField]
+    bool isUpgrade = false;
+    float level = 1;
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -14,6 +18,11 @@ public class WeaphoneCannon : Weaphone
         SetSpeed(200.0f);
         //공격 쿨다운
         SetCoolDown(2.0f);
+    }
+
+    public void LevelUp()
+    {
+        level++;
     }
 
     public override void Attack()
@@ -38,5 +47,21 @@ public class WeaphoneCannon : Weaphone
                 break;
             }
         }
+        if (isUpgrade)
+            UpgradeAttack();
+    }
+
+    void UpgradeAttack()
+    {
+        if (projectile == null)
+            return;
+
+        //투사체 생성
+        GameObject ProjectileObject = Instantiate(upgradeProjectile, transform);
+        //투사체 부모 오브젝트 제거
+        ProjectileObject.transform.parent = null;
+        ProjectileObject.SetActive(true);
+        //투사체 지속 시간 설정
+        ProjectileObject.GetComponent<Projectile>().SetDuration(10f);
     }
 }

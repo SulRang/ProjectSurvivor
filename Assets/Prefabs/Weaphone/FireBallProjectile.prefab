@@ -134,7 +134,10 @@ MonoBehaviour:
   damage: 1
   size: 2
   duration: 5
+  power: 2
   ExplosionObj: {fileID: 139366, guid: b3709c5527c6e134f8314366d0dc04fc, type: 3}
+  projectileObj: {fileID: 4765769615228761246, guid: 4ec0e0d92b96de04ca428f83a0c36fcd, type: 3}
+  isUpgrade: 0
 --- !u!58 &926408248424932622
 CircleCollider2D:
   m_ObjectHideFlags: 0

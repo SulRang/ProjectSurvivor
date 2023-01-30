@@ -11,7 +11,7 @@ public class WeaponBat : Weaphone
     Player_Move player;
 
     [SerializeField]
-    WeaphoneCenter weaponCenter;
+    WeaponCenter weaponCenter;
 
     protected override void Start()
     {
