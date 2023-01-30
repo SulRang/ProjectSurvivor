@@ -71,7 +71,7 @@ public class SpawnManager : MonoBehaviour
     {
         if (timeTexts[0].text == "10")
         {
-            spawnerList[1].GetComponent<SampleSpawner>().SetMaximum(5);
+            spawnerList[1].GetComponent<SampleSpawner>().SetMaximum(20);
             spawnerList[1].SetActive(true);
         }
     }

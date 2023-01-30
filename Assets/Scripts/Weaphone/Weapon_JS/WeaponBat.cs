@@ -13,6 +13,12 @@ public class WeaponBat : Weaphone
     [SerializeField]
     WeaphoneCenter weaponCenter;
 
+    [SerializeField]
+    GameObject oldBook;
+
+    [SerializeField]
+    GameObject upgradeObj;
+
     protected override void Start()
     {
         base.Start();
@@ -46,6 +52,16 @@ public class WeaponBat : Weaphone
             ProjectileObject.GetComponent<Projectile>().SetDuration(2.0f);
             ProjectileObject.transform.Rotate(new Vector3(0, 0, Quaternion.FromToRotation(Vector3.up, targetPos - transform.position).eulerAngles.z));
             ProjectileObject.GetComponent<Rigidbody2D>().AddForce((targetPos - transform.position).normalized * 10 * speed);
+        }
+    }
+
+    // 정령 업그레이드. 조건은 고서와 정령 모두 5레벨 이상. 공격속도가 매우 빨라짐
+    public void Upgrade()
+    {
+        if (oldBook.GetComponent<ACC_OldBook>().GetLevel() >= 5 && level >= 5)
+        {
+            upgradeObj.SetActive(true);
+            SetCoolDown(0.3f);
         }
     }
 }
