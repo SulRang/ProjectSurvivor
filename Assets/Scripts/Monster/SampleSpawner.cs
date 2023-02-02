@@ -90,7 +90,7 @@ public class SampleSpawner : MonoBehaviour
     {
         monster.gameObject.SetActive(false);
         --monster_Num;
-        Debug.Log("반환. " + monster_Num);
+        //Debug.Log("반환. " + monster_Num);
     }
 
     //풀에서 오브젝트를 파괴

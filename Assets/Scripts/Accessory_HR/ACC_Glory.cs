@@ -10,7 +10,7 @@ using UnityEngine;
 public class ACC_Glory : MonoBehaviour
 {
     [SerializeField]
-    static float acc_Glory_level = 1f;
+    static float acc_laurel_wreath_level = 1f;
 
     [SerializeField]
     float inc_Regeneration = 0.2f;
@@ -24,7 +24,7 @@ public class ACC_Glory : MonoBehaviour
     // Update is called once per frame
     void LevelUp()
     {
-        ++acc_Glory_level;
+        ++acc_laurel_wreath_level;
         Player_Status.instance.UpgradeStatus("Regeneration", inc_Regeneration);
     }
 }

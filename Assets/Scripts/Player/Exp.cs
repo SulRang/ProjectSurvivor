@@ -13,8 +13,7 @@ public class Exp : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            player_status.Current_Exp += Exp_1 * player_status.Exp_Gain_Rate; // °æÇèÄ¡ È¹µæ·®(1.0 ~ 2.0) * Exp_1
-            Player_Status.instance.UpgradeStatus("Hp", 1);
+            player_status.Current_Exp += Exp_1 * player_status.EXP_GAIN_RATE; // °æÇèÄ¡ È¹µæ·®(1.0 ~ 2.0) * Exp_1
             player_status.StatusUpdate();
             player_status.ExpCheck();
             Destroy(gameObject);
