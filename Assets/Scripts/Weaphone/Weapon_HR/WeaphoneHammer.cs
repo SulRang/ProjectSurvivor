@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WeaphoneHammer : Weaphone
 {
+    float level = 0;
+
     public static Vector3 Direction;
     public Transform player;
 
@@ -18,6 +20,11 @@ public class WeaphoneHammer : Weaphone
         SetSpeed(200.0f);
         //°ø°Ý Äð´Ù¿î
         SetCoolDown(2.0f);
+    }
+
+    public void LevelUp()
+    {
+        ++level;
     }
 
     public override void Attack()

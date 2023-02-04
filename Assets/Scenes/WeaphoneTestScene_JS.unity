@@ -982,8 +982,6 @@ MonoBehaviour:
   explosionPrefab: {fileID: 139366, guid: 4eb346b9531dc754786d0b4acd145e9f, type: 3}
   scroll: {fileID: 941696521}
   weaponCenter: {fileID: 318711664}
-  isUpgrade: 0
-  isUpgradeWithACC: 0
 --- !u!1 &289321496
 GameObject:
   m_ObjectHideFlags: 0
@@ -1029,6 +1027,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 2616638953241777541, guid: 24bd5d81ffddcfe4a869a9309ade0f8a, type: 3}
+  isUpgrade: 0
+  level: 1
 --- !u!1 &318711663
 GameObject:
   m_ObjectHideFlags: 0
@@ -1196,7 +1196,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 3605334599477010581, guid: dee74a99414298a47bac68a5615cc40d, type: 3}
   level: 3
-  isUpgrade: 0
   upgradeProjNum: 30
 --- !u!1 &504989033
 GameObject:
@@ -1214,7 +1213,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &504989034
 Transform:
   m_ObjectHideFlags: 0
@@ -7746,7 +7745,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1375922690
 Transform:
   m_ObjectHideFlags: 0
@@ -7775,8 +7774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 4459508250295415116, guid: a40481dbec254d444a1f09287163798e, type: 3}
-  level: 1
-  Shoes: {fileID: 14621934}
+  isUpgrade: 0
 --- !u!1 &1381957891
 GameObject:
   m_ObjectHideFlags: 0
