@@ -5,27 +5,60 @@ using TMPro;
 
 public class SelectionInitiate : MonoBehaviour
 {
-    public List<string> WeaponSet = new List<string> { };
-    public bool FullSet = false;
+    /*
+    List<string> A = new List<string> { "Arrow",
+                                        "Bat",
+                                        "Bomb",
+                                        //"Aura",
+                                        "Dart",
+                                        "Hammer",
+                                        "Mace",
+                                        "Cannon",
+                                        "Lazer",
+                                        "Dagger",
+                                        "CrossBow",
+                                        "FireBall",
+                                        "Bullet",
+                                        "Tornado",
+                                        "Lightning",
+                                        "Shield",};
 
-    WeaponArrow Arrow;
-    WeaponBat Bat;
-    WeaponBomb Bomb;
-    WeaponAura Aura;
-    WeaponDart Dart;
+    List<Weaphone> B = new List<Weaphone> { Arrow,
+                                            Bat,
+                                            Bomb,
+                                            //Aura,
+                                            Dart,
+                                            Hammer,
+                                            Mace,
+                                            Cannon,
+                                            Lazer,
+                                            Dagger,
+                                            CrossBow,
+                                            FireBall,
+                                            Bullet,
+                                            Tornado,
+                                            Lightning,
+                                            Shield,};
+    */
 
-    WeaphoneHammer Hammer;
-    WeaphoneMace Mace;
-    WeaphoneCannon Cannon;
-    WeaphoneLazer Lazer;
-    WeaphoneDagger Dagger;
+    static WeaponArrow Arrow;
+    static WeaponBat Bat;
+    static WeaponBomb Bomb;
+    static WeaponAura Aura;
+    static WeaponDart Dart;
 
-    WeaponCrossBow CrossBow;
-    WeaponFireBall FireBall;
-    WeaponBullet Bullet;
-    WeaponTornado Tornado;
-    WeaponLightning Lightning;
-    WeaponShield Shield;
+    static WeaphoneHammer Hammer;
+    static WeaphoneMace Mace;
+    static WeaphoneCannon Cannon;
+    static WeaphoneLazer Lazer;
+    static WeaphoneDagger Dagger;
+
+    static WeaponCrossBow CrossBow;
+    static WeaponFireBall FireBall;
+    static WeaponBullet Bullet;
+    static WeaponTornado Tornado;
+    static WeaponLightning Lightning;
+    static WeaponShield Shield;
 
     ShowRandomItem showItem;
     // Start is called before the first frame update
@@ -77,6 +110,15 @@ public class SelectionInitiate : MonoBehaviour
 
     public void Selected()
     {
+        /*
+        for (int i = 0; i < 27; i++)
+        {
+            if(gameObject.GetComponentsInChildren<TextMeshProUGUI>()[0].text == A[i])
+            {
+                B[i].gameObject.SetActive(true);
+                B[i].
+            }
+        }*/
         switch (gameObject.GetComponentsInChildren<TextMeshProUGUI>()[0].text)
         {
             /*
@@ -98,30 +140,29 @@ public class SelectionInitiate : MonoBehaviour
                 break;
             case "Dart":
                 Dart.gameObject.SetActive(true);
-                Aura.LevelUp();
+                Dart.LevelUp();
                 break;
 
             case "Hammer":
                 Hammer.gameObject.SetActive(true);
-                Aura.LevelUp();
+                Hammer.LevelUp();
                 break;
             case "Mace":
                 Mace.gameObject.SetActive(true);
-                Aura.LevelUp();
+                Mace.LevelUp();
                 break;
             case "Cannon":
                 Cannon.gameObject.SetActive(true);
-                Aura.LevelUp();
+                Cannon.LevelUp();
                 break;
             case "Lazer":
                 Lazer.gameObject.SetActive(true);
-                Aura.LevelUp();
+                Lazer.LevelUp();
                 break;
             case "Dagger":
                 Dagger.gameObject.SetActive(true);
-                Aura.LevelUp();
+                Dagger.LevelUp();
                 break;
         }
-        WeaponSet.Add(gameObject.GetComponentsInChildren<TextMeshProUGUI>()[0].text);
     }
 }

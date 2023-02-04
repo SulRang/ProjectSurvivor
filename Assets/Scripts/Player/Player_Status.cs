@@ -43,9 +43,14 @@ public class Player_Status : MonoBehaviour
 
     private void Update()
     {
+        ReGen();
+    }
+
+    void ReGen()
+    {
         //Debug.Log(Time.time + ", " + pTime);
         //3초마다 한 번씩 체력회복
-        if (Time.time - pTime > 3 && HP != Current_Hp)
+        if (Time.time - pTime > 3 && HP != Current_Hp && Current_Hp > 0)
         {
             Debug.Log(Current_Hp);
             Current_Hp *= (100 + REGENERATION) / 100;
@@ -125,6 +130,8 @@ public class Player_Status : MonoBehaviour
     public float Current_Hp { get => _Current_Hp; set => _Current_Hp = value; }
     public float Current_Exp { get => _Current_Exp; set => _Current_Exp = value; }
 
+    public float pMagnet = 0;
+
     //바뀐 Status 업데이트
     public void StatusUpdate()
     {
@@ -138,6 +145,8 @@ public class Player_Status : MonoBehaviour
         EXP_GAIN_RATE = _Exp_Gain_Rate[0] + (_Exp_Gain_Rate[1] * 0.2f);
         GOLD_GAIN_RATE = _Gold_Gain_Rate[0] + (_Gold_Gain_Rate[1] * 0.2f);
         FULL_EXP = _Full_Exp[0] + (_Full_Exp[1] * 100);
+
+        transform.Find("ExpJ").GetComponent<CircleCollider2D>().radius = MAGNET;
     }
 
     public void ExpCheck()
