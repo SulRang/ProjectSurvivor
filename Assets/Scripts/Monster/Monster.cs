@@ -45,6 +45,7 @@ public class Monster : MonoBehaviour
         {
             ExpDrop();
             DestroyMonster();
+            ScoreSystem.score += monsterData.score;
         }
     }
 

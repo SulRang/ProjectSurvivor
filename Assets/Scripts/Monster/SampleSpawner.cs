@@ -70,7 +70,7 @@ public class SampleSpawner : MonoBehaviour
     {        
         Monster monster;
         Vector3 position = Positioning();
-        Debug.Log("초기좌표  : " + position);
+        // Debug.Log("초기좌표  : " + position);
         monster = Instantiate(monsterPrefab, position, Quaternion.identity).GetComponent<Monster>();
         monster.SetManagedPool(pool);
         return monster;
@@ -99,8 +99,8 @@ public class SampleSpawner : MonoBehaviour
     // 카메라 화면 높이 좌표를 계산
     float ScreenPosition()
     {
-        float distance = Vector3.Distance(player.transform.position, player_Camera.transform.position); // 카메라에서 플레이어까지의 거
-        float frustumHeight = distance * Mathf.Tan(player_Camera.fieldOfView * 0.5f * Mathf.Deg2Rad) * 1.2f + 
+        float distance = Vector3.Distance(player.transform.position, Camera.main.transform.position); // 카메라에서 플레이어까지의 거
+        float frustumHeight = distance * Mathf.Tan(Camera.main.fieldOfView * 0.5f * Mathf.Deg2Rad) * 1.2f + 
             (player.transform.position.y > 0 ? player.transform.position.y : player.transform.position.y * -1f); // 카메라 화면 높이의 절반
 
         return frustumHeight;
@@ -126,14 +126,14 @@ public class SampleSpawner : MonoBehaviour
         {
             calPos = (insIndex == 0) ? new Vector3(Random.Range(-15f, 15f), -screenPoint, 0f) : new Vector3(screenPoint * 2f, Random.Range(-10f, 10f), 0f);
         }
-        Debug.Log(posIndex + " , " + insIndex);
+        // Debug.Log(posIndex + " , " + insIndex);
         return calPos;
     }
 
     void InitMonster(Monster _monster)
     {
         _monster.gameObject.transform.position = Positioning();
-        Debug.Log("변경좌표 : " + _monster.gameObject.transform.position);
+        // Debug.Log("변경좌표 : " + _monster.gameObject.transform.position);
     }
 
     public void SetPlayer(GameObject _player)
