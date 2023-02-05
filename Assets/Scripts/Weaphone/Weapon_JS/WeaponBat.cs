@@ -5,7 +5,7 @@ using UnityEngine;
 public class WeaponBat : Weaphone
 {
     [SerializeField]
-    int level = 1;
+    float level = 1f;
 
     [SerializeField]
     Player_Move player;
@@ -22,20 +22,21 @@ public class WeaponBat : Weaphone
     protected override void Start()
     {
         base.Start();
-        SetProjectileNum(level);
+        SetProjectileNum(level + Player_Status.instance.PROJECTILE_COUNT);
         SetSpeed(50.0f);
-        SetCoolDown(2.0f);
+        SetCoolDown(2.5f * (1.0f - Player_Status.instance.COOLDOWN));
         this.gameObject.transform.SetParent(player.transform);
     }
 
-    void LevelUp()
+    public void LevelUp()
     {
         ++level;
+        SetProjectileNum(++projectileNum);
     }
 
     public override void Attack()
     {
-        for (int i = 0; i < level; i++)
+        for (int i = 0; i < projectileNum; i++)
         {
             Transform target = weaponCenter.GetRandomTarget();
             if (projectile == null)

@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class WeaphoneMace : Weaphone
 {
+    float level = 0;
+
     public static Vector3 Direction;
     public Transform player;
 
     GameObject MaceObject;
     bool isTurn = false;
+
+    public void LevelUp()
+    {
+        ++level;
+    }
 
     //현재 이동방향 확인 함수
     void Direction_Check()

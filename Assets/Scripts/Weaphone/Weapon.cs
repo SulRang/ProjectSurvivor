@@ -9,7 +9,7 @@ public class Weaphone : MonoBehaviour
     protected float speed = 10.0f;
     protected float cooldown = 5.0f;
     protected float cooltime = 0;
-    protected int projectileNum = 1;
+    protected float projectileNum = 1; // 재성 변경(타입)
     protected float range = 2.0f;
 
     IEnumerator AttackCoroutine = null;
@@ -47,7 +47,7 @@ public class Weaphone : MonoBehaviour
 
     }
 
-    public void SetProjectileNum(int value)
+    public void SetProjectileNum(float value) // 재성 변경(타입)
     {
         projectileNum = value + (int)Player_Status.instance.PROJECTILE_COUNT - 1;
     }

@@ -10,13 +10,15 @@ public class WeaponArrow : Weaphone
     protected override void Start()
     {
         base.Start();
-        SetCoolDown(1.0f);
+        SetProjectileNum(level + Player_Status.instance.PROJECTILE_COUNT);
+        SetCoolDown(2.5f * (1.0f - Player_Status.instance.COOLDOWN));
         SetSpeed(300.0f);
     }
 
     void LevelUp()
     {
         ++level;
+        SetProjectileNum(++projectileNum);
     }
 
     public override void Attack()
@@ -27,7 +29,7 @@ public class WeaponArrow : Weaphone
         arrowParent.transform.parent = null;
         arrowParent.SetActive(true);
 
-        for (int i = 0; i < level; i++)
+        for (int i = 0; i < projectileNum; i++)
         {
             arrows[i] = Instantiate(projectile, transform.position + new Vector3(0.3f , i * 0.2f, 0f), Quaternion.identity);
 

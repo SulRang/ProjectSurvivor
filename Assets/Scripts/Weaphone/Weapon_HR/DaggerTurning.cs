@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DaggerTurning : MonoBehaviour
 {
-    int max = 0;
+    int max = 1;
     int count = 0;
     private void OnTriggerEnter2D(Collider2D collision)
     {

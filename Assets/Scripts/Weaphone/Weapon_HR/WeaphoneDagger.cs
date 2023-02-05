@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WeaphoneDagger : Weaphone
 {
+    float level = 0;
     public static Vector3 Direction; //대거 방향
     static int Radius = 8;
 
@@ -14,6 +15,11 @@ public class WeaphoneDagger : Weaphone
         base.Start();
         //공격 쿨다운
         SetCoolDown(2.0f);
+    }
+
+    public void LevelUp()
+    {
+        ++level;
     }
 
     public override void Attack()
