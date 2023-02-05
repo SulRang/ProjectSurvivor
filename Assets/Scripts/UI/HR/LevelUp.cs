@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class LevelUp : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class LevelUp : MonoBehaviour
     public GameObject Hpbar;
     public GameObject Status;
     public GameObject SelectionWindow;
+
+    public GameObject First;
+    public GameObject Second;
+    public GameObject Third;
 
     public float pLevel = 0;
     // Start is called before the first frame update
@@ -54,6 +59,7 @@ public class LevelUp : MonoBehaviour
 
     public void OnClickStart()
     {
+        //선택지 버튼을 눌렀을때 해당 값을 실행시킨다
         Time.timeScale = 1;
         IsPause = false;
         DeActivate_SelectionWindow();

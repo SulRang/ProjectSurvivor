@@ -17,6 +17,17 @@ public class WeaphoneLazer : Weaphone
     public Collider2D[] Cols;
     float count = 0;
 
+    float StartTime = 2.0f;
+    int level = 0;
+
+    public void LevelUp()
+    {
+        StartTime += 0.5f;
+        SetCoolDown(StartTime);
+        level++;
+        Debug.Log("레벨업 하였습니다. LV : " + level);
+    }
+
     void Direction_Check()
     {
         float Hor;
@@ -76,7 +87,7 @@ public class WeaphoneLazer : Weaphone
     {
         base.Start();
         //공격 쿨다운
-        SetCoolDown(2.0f);
+        SetCoolDown(StartTime);
     }
 
     public override void Attack()
@@ -100,7 +111,7 @@ public class WeaphoneLazer : Weaphone
 
                 if (degree <= Range / 2)
                 {
-                    Debug.Log(interV.normalized);
+                    //Debug.Log(interV.normalized);
                     GameObject LazerObject = Instantiate(projectile, 
                         new Vector3(transform.position.x, transform.position.y, transform.position.z), 
                         Quaternion.Euler(interV.normalized));

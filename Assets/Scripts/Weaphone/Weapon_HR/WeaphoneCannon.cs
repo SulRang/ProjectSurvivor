@@ -43,7 +43,6 @@ public class WeaphoneCannon : Weaphone
                 CannonObject.SetActive(true);
 
                 CannonObject.GetComponent<Projectile>().SetDuration(0.5f);
-
                 break;
             }
         }

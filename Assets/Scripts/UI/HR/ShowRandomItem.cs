@@ -6,25 +6,42 @@ using System.IO;
 
 public class ShowRandomItem : MonoBehaviour
 {
+    public bool StartLevel = false;
+
     public string FirstItem;
-    public string FirstItemLevel;
     public string FirstItemExplain;
 
     public string SecondItem;
-    public string SecondItemLevel;
     public string SecondItemExplain;
 
     public string ThirdItem;
-    public string ThirdItemLevel;
     public string ThirdItemExplain;
 
-    // Update is called once per frame
-    void Start()
+    private void OnEnable()
+    {
+        ItemListSet();
+    }
+    private void OnDisable()
+    {
+        StartLevel = false;
+    }
+
+    public void ItemListSet()
     {
         //오브젝트가 활성화하면 랜덤으로 선택된 아이템의 데이터베이스를 불러오고, 선택창에 저장한다.
-        if(gameObject.activeSelf)
+        if (gameObject.activeSelf)
         {
-            int[] Num = SelectRandom();
+            int[] Num;
+            if (StartLevel)
+            {
+                Debug.Log("시작");
+                Num = SelectRandom(16);
+            }
+            else
+            {
+                Debug.Log("레벨 업!");
+                Num = SelectRandom(28);
+            }
 
             StreamReader sr = new StreamReader(Application.dataPath + "/" + "ItemDatabase.csv");
 
@@ -43,38 +60,33 @@ public class ShowRandomItem : MonoBehaviour
                 }
 
                 var data_values = data_String.Split(',');
-                for (int i = 0; i < data_values.Length; i++)
-                {
-                    Debug.Log("v: " + i.ToString() + " " + data_values[i].ToString());
-                }
 
                 if (int.Parse(data_values[0]) == Num[0])
                 {
                     SecondItem = data_values[1];
-                    SecondItemLevel = data_values[4];
                     SecondItemExplain = data_values[3];
                 }
                 if (int.Parse(data_values[0]) == Num[1])
                 {
                     FirstItem = data_values[1];
-                    FirstItemLevel = data_values[4];
                     FirstItemExplain = data_values[3];
                 }
                 if (int.Parse(data_values[0]) == Num[2])
                 {
                     ThirdItem = data_values[1];
-                    ThirdItemLevel = data_values[4];
                     ThirdItemExplain = data_values[3];
                 }
             }
         }
     }
-    public int[] SelectRandom()
-    {
-        int a = Random.Range(0, 28);
-        int b = Random.Range(0, a);
-        int c = Random.Range(a, 28);
 
+    public int[] SelectRandom(int End)
+    {
+        int a = Random.Range(2, End - 1);
+        int b = Random.Range(1, a);
+        int c = Random.Range(a + 1, End);
+
+        Debug.Log(a + ", " + b + ", " + c);
         int[] Num = new int[] { a, b, c };
 
         return Num;

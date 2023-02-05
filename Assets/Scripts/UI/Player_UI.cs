@@ -23,10 +23,6 @@ public class Player_UI : MonoBehaviour
         Hpbar.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, gameObject.transform.position.y + 45);
         Expbar.value = player_status.Current_Exp / (100 + (player_status.Full_Exp * 100));
         GameObject.Find("Level").GetComponent<TextMeshProUGUI>().text = "LEVEL : " + player_status.Full_Exp.ToString();
-
-        if(player_status.Current_Hp != 0)
-        {
-            Hpbar.value = player_status.Current_Hp / player_status.HP;
-        }
+        Hpbar.value = player_status.Current_Hp / player_status.HP;
     }
 }

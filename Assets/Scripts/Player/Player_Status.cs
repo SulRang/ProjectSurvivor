@@ -39,6 +39,36 @@ public class Player_Status : MonoBehaviour
         UpgradeStatus("Speed", 8);
     }
 
+    float pTime = 0;
+
+    private void Update()
+    {
+        //Debug.Log(Time.time + ", " + pTime);
+        //3초마다 한 번씩 체력회복
+        if (Time.time - pTime > 3 && HP != Current_Hp)
+        {
+            Debug.Log(Current_Hp);
+            Current_Hp *= (100 + REGENERATION) / 100;
+            pTime = Time.time;
+        }
+    }
+
+    float HitTime = 0;
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Monster")
+        {
+            Debug.Log(Time.time + ", " + HitTime);
+            //0.2초마다 한 번씩 데미지
+            if (Time.time - pTime > 0.5)
+            {
+                Current_Hp -= 5;
+                HitTime = Time.time;
+                //Debug.Log(Current_Hp);
+            }
+        }
+    }
+
     //표시용 스텟
     public float HP;
     public float DEF;
@@ -57,13 +87,13 @@ public class Player_Status : MonoBehaviour
     public float FULL_EXP;
 
     //수정용 스텟
-    float _Current_Hp = 1000;               //현재 체력
+    public float _Current_Hp = 1000;               //현재 체력
     float _Current_Exp = 0;                 //현재 Exp
     float[] _Hp = { 1000, 0 };             //최대 체력        ( 500씩 상승 )
     float[] _Def = { 50, 0 };              //방어력           ( 공격력(피해량)의 [100 / (100 + a)%])
     float[] _Dmg = { 10, 0 };               //공격력           ( 5씩 상승 )
     float[] _Speed = { 3, 0 };             //추가 이동속도    ( 0.5씩 상승, 기본속도 3 )
-    float[] _Regeneration = { 0, 0 };      //재생             ( 일정 주기마다 1 ~ 5% 회복 )
+    float[] _Regeneration = { 1, 0 };      //재생             ( 일정 주기마다 1 ~ 5% 회복 )
     float[] _Cooldown = { 1, 0 };          //공격주기         
     float[] _Duration = { 1, 0 };            //지속시간
     float[] _range = { 1, 0 };               //사거리
@@ -91,6 +121,7 @@ public class Player_Status : MonoBehaviour
     public float Exp_Gain_Rate { get => _Exp_Gain_Rate[1]; set => _Exp_Gain_Rate[1] = value; }
     public float Gold_Gain_Rate { get => _Gold_Gain_Rate[1]; set => _Gold_Gain_Rate[1] = value; }
     public float Full_Exp { get => _Full_Exp[1]; set => _Full_Exp[1] = value; }
+    // 레벨 ?
     public float Current_Hp { get => _Current_Hp; set => _Current_Hp = value; }
     public float Current_Exp { get => _Current_Exp; set => _Current_Exp = value; }
 
