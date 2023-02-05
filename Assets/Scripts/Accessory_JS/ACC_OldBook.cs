@@ -14,9 +14,9 @@ public class ACC_OldBook : MonoBehaviour
     [SerializeField]
     static float acc_OldBook_level = 1f;
 
-    // 증가되는 공격력
+    // 증가되는 공격력. UpgradeStatus에서 수치 반영되므로 1로 설정.
     [SerializeField]
-    float inc_Dmg = 5f;
+    float inc_Dmg = 1f;
 
     // 감소되는 체력
     float dec_Hp = 0f;
@@ -29,10 +29,9 @@ public class ACC_OldBook : MonoBehaviour
     void Start()
     {
         Player_Status.instance.UpgradeStatus("Dmg", inc_Dmg);
-        //Player_Status.instance.UpgradeStatus("Hp", 500);
 
-        dec_Hp = -Player_Status.instance.Hp * 0.005f * acc_OldBook_level;
-        Player_Status.instance.UpgradeStatus("Hp", dec_Hp);
+        dec_Hp = -Player_Status.instance.Current_Hp * 0.005f * acc_OldBook_level; // Current_Hp를 표시형 변수로 바꿔야함
+        Player_Status.instance.UpgradeStatus("Current_Hp", dec_Hp); // Hp 감소.
 
         if (BeforeHpDecrease == null)
         {
@@ -43,7 +42,7 @@ public class ACC_OldBook : MonoBehaviour
     }
 
     // 레벨 업 함수. 레벨업과 함께 능력치 조정
-    void LevelUp()
+    public void LevelUp()
     {
         ++acc_OldBook_level;
         Player_Status.instance.UpgradeStatus("Dmg", inc_Dmg);

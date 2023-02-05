@@ -9,7 +9,7 @@ public class WeaponAuraUpgrade : MonoBehaviour
 
     private void Start()
     {
-        damage += Player_Status.instance.DMG;
+        damage *= Player_Status.instance.DMG;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

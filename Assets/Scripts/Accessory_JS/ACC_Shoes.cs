@@ -16,9 +16,9 @@ public class ACC_Shoes : MonoBehaviour
     [SerializeField]
     static float acc_Shoes_level = 1f;
 
-    // 증가되는 이동속도
+    // 증가되는 이동속도. 0.5씩 증가하도록 변수 지정
     [SerializeField]
-    float inc_Speed = 5f;
+    float inc_Speed = 1f;
 
     [SerializeField]
     float duration = 3f;

@@ -9,7 +9,7 @@ public class WeaponAura : MonoBehaviour
     float damage = 1f;
 
     [SerializeField]
-    int level = 1;
+    float level = 1;
 
     [SerializeField]
     Player_Move player;
@@ -27,7 +27,7 @@ public class WeaponAura : MonoBehaviour
 
     void Start()
     {
-        damage += Player_Status.instance.DMG;
+        damage *= Player_Status.instance.DMG;
         ScaleUpdate();
         this.gameObject.transform.SetParent(player.transform);
     }

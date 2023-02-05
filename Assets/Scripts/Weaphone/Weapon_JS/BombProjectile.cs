@@ -10,7 +10,6 @@ public class BombProjectile : Projectile_JS
     [SerializeField]
     GameObject explosionObj;
 
-    // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
