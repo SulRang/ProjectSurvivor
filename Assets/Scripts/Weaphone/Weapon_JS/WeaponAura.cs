@@ -41,7 +41,7 @@ public class WeaponAura : MonoBehaviour
     // Scroll 활성화 및 업그레이드, 크기 관련 장신구 활성화 및 업그레이드 시 실행해줘야함
     public void ScaleUpdate()
     {
-        transform.localScale = new Vector2((level * 1.5f) + 3 * Player_Status.instance.SIZE, (level * 1.5f) +  3 * Player_Status.instance.SIZE);
+        transform.localScale = new Vector2((level * 2f) * Player_Status.instance.SIZE, (level * 2f) * Player_Status.instance.SIZE);
     }
 
     // 오라 업그레이드. 조건은 월계관과 오라 모두 5레벨 이상. 범위가 더 넓은 오라로 업그레이드
