@@ -65,7 +65,7 @@ public class Player_Status : MonoBehaviour
     {
         if(collision.gameObject.tag == "Monster")
         {
-            Debug.Log(Time.time + ", " + HitTime);
+            //Debug.Log(Time.time + ", " + HitTime);
             //0.2초마다 한 번씩 데미지
             if (Time.time - pTime > 0.5)
             {
