@@ -26,6 +26,7 @@ public class WeaponSword : Weaphone
     public void LevelUp()
     {
         level++;
+        SetCoolDown(8.0f / (level));
     }
 
 
@@ -43,11 +44,12 @@ public class WeaponSword : Weaphone
         //투사체 생성
         GameObject ProjectileObject = Instantiate(projectile, transform);
         ProjectileObject.SetActive(true);
-
         //투사체 지속 시간 설정
         ProjectileObject.GetComponent<Projectile>().SetDuration(0.5f);
+        ProjectileObject.GetComponent<Projectile>().SetSize(1 + level / 2);
+
         //투사체 타겟 방향으로 각도 설정
-        float angle = Quaternion.FromToRotation(Vector3.up, targetPos - transform.position).eulerAngles.z;
+        float angle = Quaternion.FromToRotation(Vector3.up, targetPos - transform.position).eulerAngles.z - 90;
         ProjectileObject.transform.Rotate(new Vector3(0, 0, angle));
 
         if (isUpgrade)
@@ -76,13 +78,11 @@ public class WeaponSword : Weaphone
         ProjectileObject.transform.parent = null;
         ProjectileObject.SetActive(true);
 
-        //투사체 지속 시간 설정
-        ProjectileObject.GetComponent<Projectile>().SetDuration(1.0f);
         //투사체 크기 설정
-        ProjectileObject.GetComponent<Projectile>().SetSize(level/2.0f);
+        ProjectileObject.GetComponent<Projectile>().SetSize(1 + level/2.0f);
         //투사체 타겟 방향으로 각도 설정
-        ProjectileObject.transform.Rotate(new Vector3(0, 0, Quaternion.FromToRotation(Vector3.up, difVec3).eulerAngles.z));
+        ProjectileObject.transform.Rotate(new Vector3(0, 0, Quaternion.FromToRotation(Vector3.up, difVec3).eulerAngles.z - 90));
         //투사체 타겟 방향으로 이동
-        ProjectileObject.GetComponent<Rigidbody2D>().AddForce(difVec3.normalized * 10 * speed);
+        ProjectileObject.GetComponent<Rigidbody2D>().AddForce(difVec3.normalized * 50 * speed);
     }
 }

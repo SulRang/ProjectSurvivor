@@ -13,7 +13,7 @@ public class WeaponFireBallUpgrade : Weaphone
     {
         base.Start();
         //투사체 개수
-        SetProjectileNum(2);
+        SetProjectileNum(1);
         //투사체 속도
         SetSpeed(100.0f);
         //공격 쿨다운

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WeaphoneLazer : Weaphone
 {
+    float level = 1;
     public static Vector3 Direction; //레이저 방향
     public Transform Target;
     static int Range = 60;
@@ -16,6 +17,12 @@ public class WeaphoneLazer : Weaphone
     GameObject classProjectile;
     public Collider2D[] Cols;
     float count = 0;
+
+    public void LevelUp()
+    {
+        level++;
+        SetCoolDown(4.0f - level / 2);
+    }
 
     void Direction_Check()
     {
@@ -76,7 +83,7 @@ public class WeaphoneLazer : Weaphone
     {
         base.Start();
         //공격 쿨다운
-        SetCoolDown(2.0f);
+        SetCoolDown(3.5f);
     }
 
     public override void Attack()

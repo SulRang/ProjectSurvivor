@@ -18,12 +18,13 @@ public class WeaponCrossBow : Weaphone
         //투사체 속도
         SetSpeed(100.0f);
         //공격 쿨다운
-        SetCoolDown(8.0f / (level + 1));
+        SetCoolDown(8.0f - (level) / 2);
     }
 
     public void LevelUp()
     {
         level++;
+        SetCoolDown(8.0f - (level) / 2);
     }
 
 
@@ -49,6 +50,7 @@ public class WeaponCrossBow : Weaphone
 
         //투사체 지속 시간 설정
         ProjectileObject.GetComponent<Projectile>().SetDuration(2.0f);
+        ProjectileObject.GetComponent<Projectile>().SetSize(0.5f + level / 2);
         if (isUpgrade)
             ProjectileObject.GetComponent<CrossbowBoltProjectile>().Upgrade();
         //투사체 타겟 방향으로 각도 설정

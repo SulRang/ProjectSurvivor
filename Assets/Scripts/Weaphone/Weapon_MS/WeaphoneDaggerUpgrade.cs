@@ -23,8 +23,6 @@ public class WeaphoneDaggerUpgrade : Weaphone
     protected override void Start()
     {
         base.Start();
-        //°ø°Ý Äð´Ù¿î
-        SetCoolDown(2.0f);
     }
 
     public void LevelUp()

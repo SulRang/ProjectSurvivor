@@ -11,11 +11,13 @@ public class FireBallProjectile : Projectile
     [SerializeField]
     bool isUpgrade = false;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Monster")
         {
             OnHitMonster();
+            collision.GetComponent<Rigidbody2D>().AddForce((collision.transform.position - transform.position).normalized * power, ForceMode2D.Impulse);
+            collision.GetComponent<Monster>().GetDamage(damage);
         }
     }
 

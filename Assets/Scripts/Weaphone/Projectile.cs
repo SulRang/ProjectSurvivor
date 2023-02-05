@@ -8,17 +8,25 @@ public class Projectile : MonoBehaviour
     [SerializeField]
     protected float damage = 1;
     [SerializeField]
-    protected float size = 2.0f;
+    protected float size = 1.0f;
     [SerializeField]
-    protected float duration = 5.0f;
+    protected float duration = 3.0f;
     [SerializeField]
-    protected float power = 2.0f;
+    protected float power = 1.0f;
+    [SerializeField]
+    protected float criticalChance = 1.0f;
+    [SerializeField]
+    protected float criticalDamage = 1.0f;
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        transform.localScale = new Vector3(size, size, 1);
         damage *= Player_Status.instance.DMG;         //임시 데미지 수치
+        size *= Player_Status.instance.SIZE;
+        criticalChance += Player_Status.instance.CRITICAL;
+        criticalDamage *= Player_Status.instance.CRITICAL_DMG;
+
+        transform.localScale = new Vector3(size, size, 1);
     }
 
     // Update is called once per frame
@@ -33,8 +41,7 @@ public class Projectile : MonoBehaviour
     {
         if(collision.gameObject.tag == "Monster")
         {
-    
-            collision.GetComponent<Rigidbody2D>().AddForce((collision.transform.position - transform.position).normalized * power, ForceMode2D.Impulse);
+            Attack(collision);
         }
     }
     public void SetDuration(float _duration)
@@ -44,5 +51,22 @@ public class Projectile : MonoBehaviour
     public void SetSize(float _size)
     {
         size *= _size;
+    }
+
+    private void Attack(Collider2D coll)
+    {
+        coll.GetComponent<Rigidbody2D>().AddForce((coll.transform.position - transform.position).normalized * power, ForceMode2D.Impulse);
+        if(CriticalHit())
+            coll.GetComponent<Monster>().GetDamage(damage * criticalDamage);
+
+        coll.GetComponent<Monster>().GetDamage(damage);
+    }
+    
+    private bool CriticalHit()
+    {
+        int n = 0;
+        n = Random.Range(0, 1000);
+        criticalChance *= 1000;
+        return n <= criticalChance;
     }
 }

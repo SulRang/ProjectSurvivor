@@ -28,6 +28,9 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     Camera player_Camera;
 
+    [SerializeField]
+    List<GameObject> BossList = new List<GameObject>();
+
     // 플레이 시간 텍스트
     [SerializeField]
     Text[] timeTexts; // 0 : 초, 1 : 분
@@ -73,6 +76,19 @@ public class SpawnManager : MonoBehaviour
         {
             spawnerList[1].GetComponent<SampleSpawner>().SetMaximum(20);
             spawnerList[1].SetActive(true);
+        }
+    }
+
+    void SpawnBoss()
+    {
+        float radius = 12f;
+        int count = int.Parse(timeTexts[0].text);
+        if (count % 4 == 4)
+        {
+            float xRange = Random.Range(-6f, 6f);
+            float degree = Random.Range(0, 360);
+            float yRange = Mathf.Pow(radius * radius - xRange * xRange, 0.5f);
+            Instantiate(BossList[count], (player.transform.position) + new Vector3(xRange, yRange, 0), Quaternion.identity);
         }
     }
 }

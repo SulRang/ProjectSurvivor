@@ -7,7 +7,6 @@ public class Player_Status : MonoBehaviour
 {
     //임시 싱글톤
     public static Player_Status instance;
-
     public static Player_Status Instance
     {
         get
@@ -36,6 +35,14 @@ public class Player_Status : MonoBehaviour
     //테스트용 Start
     private void Start()
     {
+        StatusUpdate();
+        GameObject canvasObj;
+        GameObject upgradeUI;
+        if (canvasObj = GameObject.Find("Canvas"))
+        {
+            upgradeUI = canvasObj.transform.GetChild(2).gameObject;
+            upgradeUI.GetComponent<UpgradeShopManager>().UpdateUpgrade();
+        }
         UpgradeStatus("Speed", 8);
     }
 
@@ -46,7 +53,7 @@ public class Player_Status : MonoBehaviour
     public float SPEED;
     public float REGENERATION;
     public float COOLDOWN;
-    public float DURATION;
+    public float SIZE;
     public float RANGE;
     public float PROJECTILE_COUNT;
     public float MAGNET;
@@ -64,12 +71,12 @@ public class Player_Status : MonoBehaviour
     float[] _Dmg = { 10, 0 };               //공격력           ( 5씩 상승 )
     float[] _Speed = { 3, 0 };             //추가 이동속도    ( 0.5씩 상승, 기본속도 3 )
     float[] _Regeneration = { 0, 0 };      //재생             ( 일정 주기마다 1 ~ 5% 회복 )
-    float[] _Cooldown = { 1, 0 };          //공격주기         
-    float[] _Duration = { 1, 0 };            //지속시간
+    float[] _Cooldown = { 0.05f, 0 };          //공격주기      (1당 5%)
+    float[] _Size = { 1, 0 };             	    //발사체 크기 (1당 10%)
     float[] _range = { 1, 0 };               //사거리
-    float[] _Projectile_Count = { 1, 0 };  //발사체 수량
+    float[] _Projectile_Count = { 0, 0 };  //발사체 수량
     float[] _Magnet = { 1, 0 };              //아이템 획득 범위 ( 1씩 상승 )
-    float[] _Critical = { 0, 0 };            //치명률           ( 20%씩 상승 )
+    float[] _Critical = { 0.1f, 0 };            //치명률           ( 5%씩 상승 )
     float[] _Critical_Dmg = { 1.5f, 0 };   //치명타 데미지    ( 0.2씩 상승 )
     float[] _Exp_Gain_Rate = { 1, 0 };     //경험치 획득량    ( 0.2씩 상승 )
     float[] _Gold_Gain_Rate = { 1, 0 };    //골드 획득량      ( 0.2씩 상승 )
@@ -82,7 +89,7 @@ public class Player_Status : MonoBehaviour
     public float Speed { get => _Speed[1]; set => _Speed[1] = value; }
     public float Regeneration { get => _Regeneration[1]; set => _Regeneration[1] = value; }
     public float Cooldown { get => _Cooldown[1]; set => _Cooldown[1] = value; }
-    public float Duration { get => _Duration[1]; set => _Duration[1] = value; }
+    public float Size { get => _Size[1]; set => _Size[1] = value; }
     public float Range { get => _range[1]; set => _range[1] = value; }
     public float Projectile_Count { get => _Projectile_Count[1]; set => _Projectile_Count[1] = value; }
     public float Magnet { get => _Magnet[1]; set => _Magnet[1] = value; }
@@ -101,8 +108,13 @@ public class Player_Status : MonoBehaviour
         DEF = _Def[0] + (_Def[1] * 50);
         DMG = _Dmg[0] + (_Dmg[1] * 5);
         SPEED = _Speed[0] + (_Speed[1] * 0.5f);
+        REGENERATION = _Regeneration[0] + (_Regeneration[1] * 0.05f);
+        COOLDOWN = _Cooldown[0] + (_Cooldown[1] * 0.05f);
+        SIZE = _Size[0] + (_Size[1] * 0.1f);
+        RANGE = _range[0] + (_range[1] * 0.01f);
+        PROJECTILE_COUNT = _Projectile_Count[0] + _Projectile_Count[1];
         MAGNET = _Magnet[0] + (_Magnet[1] * 0.5f);
-        CRITICAL = _Critical[0] + (_Critical[1] * 0.2f);
+        CRITICAL = _Critical[0] + (_Critical[1] * 0.05f);
         CRITICAL_DMG = _Critical_Dmg[0] + (_Critical_Dmg[1] * 0.2f);
         EXP_GAIN_RATE = _Exp_Gain_Rate[0] + (_Exp_Gain_Rate[1] * 0.2f);
         GOLD_GAIN_RATE = _Gold_Gain_Rate[0] + (_Gold_Gain_Rate[1] * 0.2f);

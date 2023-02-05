@@ -21,6 +21,9 @@ public class Weaphone : MonoBehaviour
             AttackCoroutine = AttackCoolDown();
             StartCoroutine(AttackCoroutine);
         }
+        //°ø°Ý Äð´Ù¿î
+        SetCoolDown(cooldown * (1.0f - Player_Status.instance.COOLDOWN));
+        SetProjectileNum(projectileNum - 1 + (int)Player_Status.instance.PROJECTILE_COUNT);
     }
 
     IEnumerator AttackCoolDown()
@@ -46,7 +49,7 @@ public class Weaphone : MonoBehaviour
 
     public void SetProjectileNum(int value)
     {
-        projectileNum = value;
+        projectileNum = value + (int)Player_Status.instance.PROJECTILE_COUNT - 1;
     }
     public void SetSpeed(float value)
     {
@@ -55,6 +58,6 @@ public class Weaphone : MonoBehaviour
 
     public void SetCoolDown(float value)
     {
-        cooldown = value;
+        cooldown = value * (1.0f - Player_Status.instance.COOLDOWN);
     }
 }

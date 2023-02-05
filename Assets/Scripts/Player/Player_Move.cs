@@ -147,6 +147,7 @@ public class Player_Move : MonoBehaviour
     {
         player = new Player(new PlayerIdle());
         playerMove = gameObject.GetComponent<Player_Move>();
+
     }
 
     // Update is called once per frame
