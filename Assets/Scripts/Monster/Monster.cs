@@ -65,27 +65,27 @@ public class Monster : MonoBehaviour
         Instantiate(EXP, gameObject.transform.position, gameObject.transform.rotation);
     }
 
-    public void RePositinon(int _index)
+    public void RePositinon(int _index, GameObject _opposite)
     {
         switch (_index)
         {
-            //À§
+            //À§ Á¢ÃË
             case 0:
-                this.gameObject.transform.position = new Vector2(transform.position.x, playerPos.position.y - 7f);
+                this.gameObject.transform.position = new Vector2(transform.position.x + Random.Range(-5f, 5f), _opposite.transform.position.y + 5f);
                 break;
 
-            //¾Æ·¡
+            //¾Æ·¡ Á¢ÃË
             case 1:
-                this.gameObject.transform.position = new Vector2(transform.position.x, playerPos.position.y + 7f);
+                this.gameObject.transform.position = new Vector2(transform.position.x + Random.Range(-5f, 5f), _opposite.transform.position.y - 5f);
                 break;
-            //¿À¸¥ÂÊ
+            // ¿ÞÂÊ Á¢ÃË
             case 2:
-                this.gameObject.transform.position = new Vector2(playerPos.position.x + 12f, transform.position.y);
+                this.gameObject.transform.position = new Vector2(_opposite.transform.position.x - 5f, transform.position.y + Random.Range(-5f, 5f));
                 break;
 
-            //¿ÞÂÊ
+            //¿À¸¥ÂÊ Á¢ÃË
             case 3:
-                this.gameObject.transform.position = new Vector2(playerPos.position.x - 12f, transform.position.y);
+                this.gameObject.transform.position = new Vector2(_opposite.transform.position.x + 5f, transform.position.y + Random.Range(-5f, 5f));
                 break;
 
             default:
