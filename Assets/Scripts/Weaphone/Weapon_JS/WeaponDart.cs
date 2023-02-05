@@ -17,7 +17,8 @@ public class WeaponDart : Weaphone
     protected override void Start()
     {
         base.Start();
-        SetCoolDown(1.0f);
+        SetProjectileNum(level + Player_Status.instance.PROJECTILE_COUNT);
+        SetCoolDown(2.0f * (1.0f - Player_Status.instance.COOLDOWN));
         SetSpeed(300.0f);
     }
 
@@ -34,12 +35,12 @@ public class WeaponDart : Weaphone
         dartParent.transform.parent = null;
         dartParent.SetActive(true);
 
-        int angle = (level - 1) * 20; // 0 20 40 60 80 
-        int oneDegree = angle / level;
+        int angle = ((int)projectileNum - 1) * 20; // 0 20 40 60 80 
+        int oneDegree = angle / (int)projectileNum;
         int half = angle / 2;
 
         // 투사체 생성
-        for (int i = 0; i < level; i++)
+        for (int i = 0; i < projectileNum; i++)
         {
             darts[i] = Instantiate(projectile, transform.position + new Vector3(0.3f, i * 0.2f, 0f), Quaternion.identity);
 
@@ -77,9 +78,9 @@ public class WeaponDart : Weaphone
         int cal_Angle = half;
 
         //방사형 각도 
-        if (level <= 2)
+        if (projectileNum <= 2)
         {
-            for (int i = 0; i < level; i++)
+            for (int i = 0; i < projectileNum; i++)
             {
                 cal_Angle -= (i * angle);
                 darts[i].GetComponent<Rigidbody2D>().AddForce(Quaternion.AngleAxis(cal_Angle, Vector3.forward) * forceVector * speed);
@@ -87,7 +88,7 @@ public class WeaponDart : Weaphone
         }
         else
         {
-            for (int i = 0; i < level; i++)
+            for (int i = 0; i < projectileNum; i++)
             {
                 cal_Angle -= oneDegree;
                 darts[i].GetComponent<Rigidbody2D>().AddForce(Quaternion.AngleAxis(cal_Angle, Vector3.forward) * forceVector * speed);
@@ -134,6 +135,5 @@ public class WeaponDart : Weaphone
             upProj.GetComponent<Rigidbody2D>().AddForce(new Vector2(300f * Mathf.Sin(radian), 300f * Mathf.Cos(radian)));
             yield return new WaitForSeconds(0.01f);
         }
-
     }
 }

@@ -17,9 +17,9 @@ public class ACC_Scroll : MonoBehaviour
     [SerializeField]
     static float acc_Scroll_level = 1f;
 
-    // 증가되는 투사체 크기
+    // 증가되는 투사체 크기. 10%씩 오르도록 변수 설정.
     [SerializeField]
-    float inc_Size = 0.1f;
+    float inc_Size = 1f;
 
     [SerializeField]
     WeaponAura weaponAura;

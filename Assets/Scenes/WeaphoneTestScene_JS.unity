@@ -467,8 +467,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: WeaphoneTornado_JS, Assembly-CSharp
+      - m_Target: {fileID: 1223964313}
+        m_TargetAssemblyTypeName: WeaponBat, Assembly-CSharp
         m_MethodName: Upgrade
         m_Mode: 1
         m_Arguments:
@@ -1370,7 +1370,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &466728076
 Transform:
   m_ObjectHideFlags: 0
@@ -1774,7 +1774,7 @@ GameObject:
   - component: {fileID: 672308659}
   - component: {fileID: 672308658}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: BatUpgradeObj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7733,7 +7733,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1223964312
 Transform:
   m_ObjectHideFlags: 0
@@ -8951,7 +8951,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 0
   DEF: 0
-  DMG: 0
+  DMG: 1
   SPEED: 4
   REGENERATION: 0
   COOLDOWN: 0
@@ -9168,8 +9168,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1375922691}
-        m_TargetAssemblyTypeName: WeaphoneTornado, Assembly-CSharp
+      - m_Target: {fileID: 1080127054}
+        m_TargetAssemblyTypeName: ACC_OldBook, Assembly-CSharp
         m_MethodName: LevelUp
         m_Mode: 1
         m_Arguments:
@@ -9238,7 +9238,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1678367811
 Transform:
   m_ObjectHideFlags: 0
@@ -10193,8 +10193,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 14621936}
-        m_TargetAssemblyTypeName: ACC_Shoes, Assembly-CSharp
+      - m_Target: {fileID: 1223964313}
+        m_TargetAssemblyTypeName: WeaponBat, Assembly-CSharp
         m_MethodName: LevelUp
         m_Mode: 1
         m_Arguments:
@@ -10461,9 +10461,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1678367812}
-        m_TargetAssemblyTypeName: WeaponAura, Assembly-CSharp
-        m_MethodName: UpgradeWithACC
+      - m_Target: {fileID: 14621936}
+        m_TargetAssemblyTypeName: ACC_Shoes, Assembly-CSharp
+        m_MethodName: LevelUp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

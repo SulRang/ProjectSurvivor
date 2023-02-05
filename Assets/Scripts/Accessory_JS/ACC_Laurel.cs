@@ -14,9 +14,9 @@ public class ACC_Laurel : MonoBehaviour
     [SerializeField]
     static float acc_Laurel_level = 1f;
 
-    // 증가되는 경험치 획득량
+    // 증가되는 경험치 획득량. 0.2씩 오르도록 변수 설정
     [SerializeField]
-    float inc_Exp = 0.2f;
+    float inc_Exp = 1f;
 
     void Start()
     {

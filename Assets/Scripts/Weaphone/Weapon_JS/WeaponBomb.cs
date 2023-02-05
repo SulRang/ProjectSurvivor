@@ -30,7 +30,7 @@ public class WeaponBomb : Weaphone
     {
         base.Start();
         SetSpeed(0f);
-        SetCoolDown(7f - level - Player_Status.instance.Cooldown);
+        SetCoolDown((7f - level) * (1.0f - Player_Status.instance.COOLDOWN));
     }
 
     public void LevelUp()

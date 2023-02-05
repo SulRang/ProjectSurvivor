@@ -17,7 +17,7 @@ public class Monster : MonoBehaviour
 
     IObjectPool<Monster> objectPool;
 
-    int curHp;
+    float curHp;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +37,7 @@ public class Monster : MonoBehaviour
         Invoke("DestroyMonster", 10f);
     }
 
-    public void GetDamage(int damage)
+    public void GetDamage(float damage)
     {
         //Debug.Log(curHp);
         curHp -= damage;
