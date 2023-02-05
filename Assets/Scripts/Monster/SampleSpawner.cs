@@ -46,10 +46,8 @@ public class SampleSpawner : MonoBehaviour
 
     public void Spawn()
     {
-        //monsterPrefab = monsterDataList[index].prefab;
         var monster = pool.Get();
         monster.GetComponent<Monster>().monsterData = curMonster;
-        //monster.GetComponent<Monster>().ReadyDestroy();
         ++monster_Num;
     }
 
@@ -72,7 +70,7 @@ public class SampleSpawner : MonoBehaviour
     {        
         Monster monster;
         Vector3 position = Positioning();
-
+        Debug.Log("초기좌표  : " + position);
         monster = Instantiate(monsterPrefab, position, Quaternion.identity).GetComponent<Monster>();
         monster.SetManagedPool(pool);
         return monster;
@@ -90,7 +88,6 @@ public class SampleSpawner : MonoBehaviour
     {
         monster.gameObject.SetActive(false);
         --monster_Num;
-        //Debug.Log("반환. " + monster_Num);
     }
 
     //풀에서 오브젝트를 파괴
@@ -104,7 +101,7 @@ public class SampleSpawner : MonoBehaviour
     {
         float distance = Vector3.Distance(player.transform.position, player_Camera.transform.position); // 카메라에서 플레이어까지의 거
         float frustumHeight = distance * Mathf.Tan(player_Camera.fieldOfView * 0.5f * Mathf.Deg2Rad) * 1.2f + 
-            (player.transform.position.y > 0 ? player.transform.position.y : player.transform.position.y * -1f) * 1.5f; // 카메라 화면 높이의 절반
+            (player.transform.position.y > 0 ? player.transform.position.y : player.transform.position.y * -1f); // 카메라 화면 높이의 절반
 
         return frustumHeight;
         
@@ -122,20 +119,21 @@ public class SampleSpawner : MonoBehaviour
 
         if (posIndex == 0) // 위, 왼쪽
         {
-            calPos = (insIndex == 0) ? new Vector3(Random.Range(-15f, 15f), screenPoint, 0f) : new Vector3(screenPoint * 1.5f, Random.Range(-10f, 10f), 0f);
+            calPos = (insIndex == 0) ? new Vector3(Random.Range(-15f, 15f), screenPoint, 0f) : new Vector3(-screenPoint * 2f, Random.Range(-10f, 10f), 0f);
 
         }
         else // 아래, 오른쪽
         {
-            calPos = (insIndex == 0) ? new Vector3(Random.Range(-15f, 15f), -screenPoint, 0f) : new Vector3(-screenPoint * 1.5f, Random.Range(-10f, 10f), 0f);
+            calPos = (insIndex == 0) ? new Vector3(Random.Range(-15f, 15f), -screenPoint, 0f) : new Vector3(screenPoint * 2f, Random.Range(-10f, 10f), 0f);
         }
-
+        Debug.Log(posIndex + " , " + insIndex);
         return calPos;
     }
 
     void InitMonster(Monster _monster)
     {
         _monster.gameObject.transform.position = Positioning();
+        Debug.Log("변경좌표 : " + _monster.gameObject.transform.position);
     }
 
     public void SetPlayer(GameObject _player)

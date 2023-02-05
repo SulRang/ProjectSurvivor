@@ -8,10 +8,13 @@ public class RepositionScanner : MonoBehaviour
     [SerializeField]
     int _index;
 
+    [SerializeField]
+    GameObject opposite;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Monster")
-            collision.GetComponent<Monster>().RePositinon(_index);
+            collision.GetComponent<Monster>().RePositinon(_index, opposite);
     }
 
 
