@@ -10,12 +10,4 @@ public class Explosion : Projectile
         base.Start();
         Destroy(gameObject, 1f);
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.tag == "Monster")
-        {
-            //collision.GetComponent<Monster>().GetDamage((int)Player_Status.instance.DMG);
-        }
-    }
 }

@@ -23,7 +23,7 @@ public class StatUI : MonoBehaviour
         GameObject.Find("SpStat").GetComponent<TextMeshProUGUI>().text = playerStatus.SPEED.ToString();
         GameObject.Find("DmgStat").GetComponent<TextMeshProUGUI>().text = playerStatus.DMG.ToString();
         GameObject.Find("CoolStat").GetComponent<TextMeshProUGUI>().text = playerStatus.COOLDOWN.ToString();
-        GameObject.Find("DurationStat").GetComponent<TextMeshProUGUI>().text = playerStatus.DURATION.ToString();
+        GameObject.Find("SizeStat").GetComponent<TextMeshProUGUI>().text = playerStatus.SIZE.ToString();
         GameObject.Find("CountStat").GetComponent<TextMeshProUGUI>().text = playerStatus.PROJECTILE_COUNT.ToString();
         GameObject.Find("MgStat").GetComponent<TextMeshProUGUI>().text = playerStatus.MAGNET.ToString();
         GameObject.Find("CritStat").GetComponent<TextMeshProUGUI>().text = playerStatus.CRITICAL.ToString();

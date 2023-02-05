@@ -17,7 +17,7 @@ public class Projectile_JS : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        transform.localScale = new Vector3(size + Player_Status.instance.Duration, size + Player_Status.instance.Duration, 1);
+        transform.localScale = new Vector3(size + Player_Status.instance.SIZE, size + Player_Status.instance.SIZE, 1);
         damage += Player_Status.instance.DMG;         //임시 데미지 수치
     }
 
@@ -45,6 +45,6 @@ public class Projectile_JS : MonoBehaviour
     public void SetSize(float _size)
     {
         size += _size;
-        transform.localScale = new Vector3(size + Player_Status.instance.Duration, size + Player_Status.instance.Duration, 1);
+        transform.localScale = new Vector3(size + Player_Status.instance.SIZE, size + Player_Status.instance.SIZE, 1);
     }
 }

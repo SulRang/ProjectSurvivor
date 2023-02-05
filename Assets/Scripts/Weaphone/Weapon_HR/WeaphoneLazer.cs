@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class WeaphoneLazer : Weaphone
 {
-    public static Vector3 Direction; //·¹ÀÌÀú ¹æÇâ
+    float level = 1;
+    public static Vector3 Direction; //ë ˆì´ì € ë°©í–¥
     public Transform Target;
     static int Range = 60;
     static int Radius = 8;
@@ -16,7 +17,6 @@ public class WeaphoneLazer : Weaphone
     GameObject classProjectile;
     public Collider2D[] Cols;
     float count = 0;
-
     float StartTime = 2.0f;
     int level = 0;
 
@@ -25,7 +25,7 @@ public class WeaphoneLazer : Weaphone
         StartTime += 0.5f;
         SetCoolDown(StartTime);
         level++;
-        Debug.Log("·¹º§¾÷ ÇÏ¿´½À´Ï´Ù. LV : " + level);
+        Debug.Log("ë ˆë²¨ì—… í•˜ì˜€ìŠµë‹ˆë‹¤. LV : " + level);
     }
 
     void Direction_Check()
@@ -36,48 +36,48 @@ public class WeaphoneLazer : Weaphone
         Hor = Player_Move.playerMove.Horizontal;
         Ver = Player_Move.playerMove.Vertical;
 
-        //Å°º¸µå ÀÔ·Â Ã¼Å©
+        //í‚¤ë³´ë“œ ì…ë ¥ ì²´í¬
         if (Hor > 0)
         {
-            if (Ver > 0) // ¿ì»ó
+            if (Ver > 0) // ìš°ìƒ
             {
                 Direction = new Vector3(0.71f, 0.71f, 0);
             }
-            else if (Ver < 0) // ¿ìÇÏ
+            else if (Ver < 0) // ìš°í•˜
             {
                 Direction = new Vector3(0.71f, -0.71f, 0);
             }
-            else // ¿ì
+            else // ìš°
             {
                 Direction = new Vector3(1f, 0, 0);
             }
         }
         else if (Hor < 0)
         {
-            if (Ver > 0) // ÁÂ»ó
+            if (Ver > 0) // ì¢Œìƒ
             {
                 Direction = new Vector3(-0.71f, 0.71f, 0);
             }
-            else if (Ver < 0) // ÁÂÇÏ
+            else if (Ver < 0) // ì¢Œí•˜
             {
                 Direction = new Vector3(-0.71f, -0.71f, 0);
             }
-            else // ÁÂ
+            else // ì¢Œ
             {
                 Direction = new Vector3(-1f, 0, 0);
             }
         }
-        else // xÃà Á¤Áö
+        else // xì¶• ì •ì§€
         {
-            if (Ver > 0) // »ó
+            if (Ver > 0) // ìƒ
             {
                 Direction = new Vector3(0, 1f, 0);
             }
-            else if (Ver < 0) // ÇÏ
+            else if (Ver < 0) // í•˜
             {
                 Direction = new Vector3(0, -1f, 0);
             }
-            else  //Á¤Áö
+            else  //ì •ì§€
             {
             }
         }
@@ -86,7 +86,7 @@ public class WeaphoneLazer : Weaphone
     protected override void Start()
     {
         base.Start();
-        //°ø°İ Äğ´Ù¿î
+        //ê³µê²© ì¿¨ë‹¤ìš´
         SetCoolDown(StartTime);
     }
 
@@ -136,17 +136,17 @@ public class WeaphoneLazer : Weaphone
     {
         for (int i = 0; i < 4; i++)
         {
-            //Åõ»çÃ¼ °³¼ö¿¡ µû¸¥ °¢µµ ¼³Á¤
+            //íˆ¬ì‚¬ì²´ ê°œìˆ˜ì— ë”°ë¥¸ ê°ë„ ì„¤ì •
             float degree = 45 + 360 / 4 * i;
             float radian = Mathf.Deg2Rad * degree;
-            //Åõ»çÃ¼ »ı¼º
+            //íˆ¬ì‚¬ì²´ ìƒì„±
             GameObject ProjectileObject = Instantiate(projectile, transform);
             ProjectileObject.transform.localPosition = Vector3.zero;
             ProjectileObject.SetActive(true);
             ProjectileObject.transform.parent = null;
-            //Åõ»çÃ¼ Áö¼Ó½Ã°£ ¼³Á¤
+            //íˆ¬ì‚¬ì²´ ì§€ì†ì‹œê°„ ì„¤ì •
             ProjectileObject.GetComponent<Projectile>().SetDuration(1.0f);
-            //Åõ»çÃ¼ °¢µµ ¹× ÀÌµ¿ ¼³Á¤
+            //íˆ¬ì‚¬ì²´ ê°ë„ ë° ì´ë™ ì„¤ì •
             ProjectileObject.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, degree));
             Vector3 dirVec3 = new Vector3(Mathf.Sin(radian), Mathf.Cos(radian));
             ProjectileObject.GetComponent<Rigidbody2D>().AddForce(dirVec3.normalized * 500);
@@ -166,14 +166,14 @@ public class WeaphoneLazer : Weaphone
             return;
         if (target == null)
             return;
-        //Å¸°Ù vector °è»ê (y 1À» ´õÇØ¾ß Å¸°ÙÀÇ °¡¿îµ¥)
+        //íƒ€ê²Ÿ vector ê³„ì‚° (y 1ì„ ë”í•´ì•¼ íƒ€ê²Ÿì˜ ê°€ìš´ë°)
         Vector3 targetPos = target.position + new Vector3(0, 1, 0);
 
-        //Åõ»çÃ¼ »ı¼º
+        //íˆ¬ì‚¬ì²´ ìƒì„±
         GameObject ProjectileObject = Instantiate(classProjectile, target);
         ProjectileObject.SetActive(true);
 
-        //Åõ»çÃ¼ Áö¼Ó ½Ã°£ ¼³Á¤
+        //íˆ¬ì‚¬ì²´ ì§€ì† ì‹œê°„ ì„¤ì •
         ProjectileObject.GetComponent<Projectile>().SetDuration(8.0f);
     }
 }

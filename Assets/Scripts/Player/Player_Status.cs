@@ -5,9 +5,8 @@ using System.Reflection;
 
 public class Player_Status : MonoBehaviour
 {
-    //ÀÓ½Ã ½Ì±ÛÅæ
+    //ì„ì‹œ ì‹±ê¸€í†¤
     public static Player_Status instance;
-
     public static Player_Status Instance
     {
         get
@@ -33,9 +32,17 @@ public class Player_Status : MonoBehaviour
         }
     }
 
-    //Å×½ºÆ®¿ë Start
+    //í…ŒìŠ¤íŠ¸ìš© Start
     private void Start()
     {
+        StatusUpdate();
+        GameObject canvasObj;
+        GameObject upgradeUI;
+        if (canvasObj = GameObject.Find("Canvas"))
+        {
+            upgradeUI = canvasObj.transform.GetChild(2).gameObject;
+            upgradeUI.GetComponent<UpgradeShopManager>().UpdateUpgrade();
+        }
         UpgradeStatus("Speed", 8);
     }
 
@@ -44,7 +51,7 @@ public class Player_Status : MonoBehaviour
     private void Update()
     {
         //Debug.Log(Time.time + ", " + pTime);
-        //3ÃÊ¸¶´Ù ÇÑ ¹ø¾¿ Ã¼·ÂÈ¸º¹
+        //3ì´ˆë§ˆë‹¤ í•œ ë²ˆì”© ì²´ë ¥íšŒë³µ
         if (Time.time - pTime > 3 && HP != Current_Hp)
         {
             Debug.Log(Current_Hp);
@@ -59,7 +66,7 @@ public class Player_Status : MonoBehaviour
         if(collision.gameObject.tag == "Monster")
         {
             Debug.Log(Time.time + ", " + HitTime);
-            //0.2ÃÊ¸¶´Ù ÇÑ ¹ø¾¿ µ¥¹ÌÁö
+            //0.2ì´ˆë§ˆë‹¤ í•œ ë²ˆì”© ë°ë¯¸ì§€
             if (Time.time - pTime > 0.5)
             {
                 Current_Hp -= 5;
@@ -69,14 +76,14 @@ public class Player_Status : MonoBehaviour
         }
     }
 
-    //Ç¥½Ã¿ë ½ºÅİ
+    //í‘œì‹œìš© ìŠ¤í…Ÿ
     public float HP;
     public float DEF;
     public float DMG;
     public float SPEED;
     public float REGENERATION;
     public float COOLDOWN;
-    public float DURATION;
+    public float SIZE;
     public float RANGE;
     public float PROJECTILE_COUNT;
     public float MAGNET;
@@ -86,24 +93,24 @@ public class Player_Status : MonoBehaviour
     public float GOLD_GAIN_RATE;
     public float FULL_EXP;
 
-    //¼öÁ¤¿ë ½ºÅİ
-    public float _Current_Hp = 1000;               //ÇöÀç Ã¼·Â
-    float _Current_Exp = 0;                 //ÇöÀç Exp
-    float[] _Hp = { 1000, 0 };             //ÃÖ´ë Ã¼·Â        ( 500¾¿ »ó½Â )
-    float[] _Def = { 50, 0 };              //¹æ¾î·Â           ( °ø°İ·Â(ÇÇÇØ·®)ÀÇ [100 / (100 + a)%])
-    float[] _Dmg = { 10, 0 };               //°ø°İ·Â           ( 5¾¿ »ó½Â )
-    float[] _Speed = { 3, 0 };             //Ãß°¡ ÀÌµ¿¼Óµµ    ( 0.5¾¿ »ó½Â, ±âº»¼Óµµ 3 )
-    float[] _Regeneration = { 1, 0 };      //Àç»ı             ( ÀÏÁ¤ ÁÖ±â¸¶´Ù 1 ~ 5% È¸º¹ )
-    float[] _Cooldown = { 1, 0 };          //°ø°İÁÖ±â         
-    float[] _Duration = { 1, 0 };            //Áö¼Ó½Ã°£
-    float[] _range = { 1, 0 };               //»ç°Å¸®
-    float[] _Projectile_Count = { 1, 0 };  //¹ß»çÃ¼ ¼ö·®
-    float[] _Magnet = { 1, 0 };              //¾ÆÀÌÅÛ È¹µæ ¹üÀ§ ( 1¾¿ »ó½Â )
-    float[] _Critical = { 0, 0 };            //Ä¡¸í·ü           ( 20%¾¿ »ó½Â )
-    float[] _Critical_Dmg = { 1.5f, 0 };   //Ä¡¸íÅ¸ µ¥¹ÌÁö    ( 0.2¾¿ »ó½Â )
-    float[] _Exp_Gain_Rate = { 1, 0 };     //°æÇèÄ¡ È¹µæ·®    ( 0.2¾¿ »ó½Â )
-    float[] _Gold_Gain_Rate = { 1, 0 };    //°ñµå È¹µæ·®      ( 0.2¾¿ »ó½Â )
-    float[] _Full_Exp = { 100, 0 };        //ÃÖ´ë °æÇèÄ¡
+    //ìˆ˜ì •ìš© ìŠ¤í…Ÿ
+    public float _Current_Hp = 1000;               //í˜„ì¬ ì²´ë ¥
+    float _Current_Exp = 0;                 //í˜„ì¬ Exp
+    float[] _Hp = { 1000, 0 };             //ìµœëŒ€ ì²´ë ¥        ( 500ì”© ìƒìŠ¹ )
+    float[] _Def = { 50, 0 };              //ë°©ì–´ë ¥           ( ê³µê²©ë ¥(í”¼í•´ëŸ‰)ì˜ [100 / (100 + a)%])
+    float[] _Dmg = { 10, 0 };               //ê³µê²©ë ¥           ( 5ì”© ìƒìŠ¹ )
+    float[] _Speed = { 3, 0 };             //ì¶”ê°€ ì´ë™ì†ë„    ( 0.5ì”© ìƒìŠ¹, ê¸°ë³¸ì†ë„ 3 )
+    float[] _Regeneration = { 1, 0 };      //ì¬ìƒ             ( ì¼ì • ì£¼ê¸°ë§ˆë‹¤ 1 ~ 5% íšŒë³µ )
+    float[] _Cooldown = { 0.05f, 0 };          //ê³µê²©ì£¼ê¸°      (1ë‹¹ 5%)
+    float[] _Size = { 1, 0 };             	    //ë°œì‚¬ì²´ í¬ê¸° (1ë‹¹ 10%)
+    float[] _range = { 1, 0 };               //ì‚¬ê±°ë¦¬
+    float[] _Projectile_Count = { 0, 0 };  //ë°œì‚¬ì²´ ìˆ˜ëŸ‰
+    float[] _Magnet = { 1, 0 };              //ì•„ì´í…œ íšë“ ë²”ìœ„ ( 1ì”© ìƒìŠ¹ )
+    float[] _Critical = { 0.1f, 0 };            //ì¹˜ëª…ë¥            ( 5%ì”© ìƒìŠ¹ )
+    float[] _Critical_Dmg = { 1.5f, 0 };   //ì¹˜ëª…íƒ€ ë°ë¯¸ì§€    ( 0.2ì”© ìƒìŠ¹ )
+    float[] _Exp_Gain_Rate = { 1, 0 };     //ê²½í—˜ì¹˜ íšë“ëŸ‰    ( 0.2ì”© ìƒìŠ¹ )
+    float[] _Gold_Gain_Rate = { 1, 0 };    //ê³¨ë“œ íšë“ëŸ‰      ( 0.2ì”© ìƒìŠ¹ )
+    float[] _Full_Exp = { 100, 0 };        //ìµœëŒ€ ê²½í—˜ì¹˜
 
     //Getter Setter
     public float Hp { get => _Hp[1]; set => _Hp[1] = value; }
@@ -112,7 +119,7 @@ public class Player_Status : MonoBehaviour
     public float Speed { get => _Speed[1]; set => _Speed[1] = value; }
     public float Regeneration { get => _Regeneration[1]; set => _Regeneration[1] = value; }
     public float Cooldown { get => _Cooldown[1]; set => _Cooldown[1] = value; }
-    public float Duration { get => _Duration[1]; set => _Duration[1] = value; }
+    public float Size { get => _Size[1]; set => _Size[1] = value; }
     public float Range { get => _range[1]; set => _range[1] = value; }
     public float Projectile_Count { get => _Projectile_Count[1]; set => _Projectile_Count[1] = value; }
     public float Magnet { get => _Magnet[1]; set => _Magnet[1] = value; }
@@ -121,19 +128,24 @@ public class Player_Status : MonoBehaviour
     public float Exp_Gain_Rate { get => _Exp_Gain_Rate[1]; set => _Exp_Gain_Rate[1] = value; }
     public float Gold_Gain_Rate { get => _Gold_Gain_Rate[1]; set => _Gold_Gain_Rate[1] = value; }
     public float Full_Exp { get => _Full_Exp[1]; set => _Full_Exp[1] = value; }
-    // ·¹º§ ?
+    // ë ˆë²¨ ?
     public float Current_Hp { get => _Current_Hp; set => _Current_Hp = value; }
     public float Current_Exp { get => _Current_Exp; set => _Current_Exp = value; }
 
-    //¹Ù²ï Status ¾÷µ¥ÀÌÆ®
+    //ë°”ë€ Status ì—…ë°ì´íŠ¸
     public void StatusUpdate()
     {
         HP = _Hp[0] + (_Hp[1] * 500);
         DEF = _Def[0] + (_Def[1] * 50);
         DMG = _Dmg[0] + (_Dmg[1] * 5);
         SPEED = _Speed[0] + (_Speed[1] * 0.5f);
+        REGENERATION = _Regeneration[0] + (_Regeneration[1] * 0.05f);
+        COOLDOWN = _Cooldown[0] + (_Cooldown[1] * 0.05f);
+        SIZE = _Size[0] + (_Size[1] * 0.1f);
+        RANGE = _range[0] + (_range[1] * 0.01f);
+        PROJECTILE_COUNT = _Projectile_Count[0] + _Projectile_Count[1];
         MAGNET = _Magnet[0] + (_Magnet[1] * 0.5f);
-        CRITICAL = _Critical[0] + (_Critical[1] * 0.2f);
+        CRITICAL = _Critical[0] + (_Critical[1] * 0.05f);
         CRITICAL_DMG = _Critical_Dmg[0] + (_Critical_Dmg[1] * 0.2f);
         EXP_GAIN_RATE = _Exp_Gain_Rate[0] + (_Exp_Gain_Rate[1] * 0.2f);
         GOLD_GAIN_RATE = _Gold_Gain_Rate[0] + (_Gold_Gain_Rate[1] * 0.2f);
@@ -151,9 +163,9 @@ public class Player_Status : MonoBehaviour
         }
     }
 
-    /// UpgradeStatus("½ºÅÈ ÀÌ¸§", °ª)
+    /// UpgradeStatus("ìŠ¤íƒ¯ ì´ë¦„", ê°’)
     /// ex) UpgradeStatus("Hp", 1);
-    /// ½ºÅÈ ÀÌ¸§Àº Getter Setter Âü°í
+    /// ìŠ¤íƒ¯ ì´ë¦„ì€ Getter Setter ì°¸ê³ 
     public void UpgradeStatus(string _name, float _value)
     {
         foreach(PropertyInfo pInfo in typeof(Player_Status).GetProperties())

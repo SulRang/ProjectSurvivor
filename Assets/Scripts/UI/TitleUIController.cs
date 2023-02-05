@@ -8,7 +8,7 @@ public class TitleUIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
@@ -19,11 +19,12 @@ public class TitleUIController : MonoBehaviour
 
     public void OnClickStartBtn()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("MinSuInGameTestScene");
+        gameObject.transform.GetChild(0).gameObject.SetActive(false);
     }
     public void OnClickExitBtn()
     {
-
+        Application.Quit();
     }
     public void OnClickTitleBtn()
     {

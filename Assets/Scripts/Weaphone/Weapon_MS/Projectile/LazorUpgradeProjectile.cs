@@ -25,6 +25,8 @@ public class LazorUpgradeProjectile : Projectile
         if (collision.gameObject.tag == "Monster")
         {
             target = collision.gameObject;
+            collision.GetComponent<Rigidbody2D>().AddForce((collision.transform.position - transform.position).normalized * power, ForceMode2D.Impulse);
+            collision.GetComponent<Monster>().GetDamage(damage);
         }
     }
 }

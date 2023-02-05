@@ -10,13 +10,19 @@ public class UpgradeShopManager : MonoBehaviour
     GameObject selectedElement;
 
     [SerializeField]
+    GameObject parentElement;
+
+    [SerializeField]
     TMP_Text goldText;
     int gold = 100;
+    
+    Dictionary<string, float> statusDict;
 
     // Start is called before the first frame update
     void Start()
     {
         goldText.text = gold.ToString() + "G";
+        statusDict = new Dictionary<string, float>();
     }
 
     // Update is called once per frame
@@ -31,6 +37,57 @@ public class UpgradeShopManager : MonoBehaviour
 
     public void Upgrade()
     {
-        Debug.Log(selectedElement);
+        Debug.Log(selectedElement.transform.GetChild(1));
+        string statusName = selectedElement.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text;
+        string statusLevelStr = selectedElement.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text;
+        float statusLevel = float.Parse(statusLevelStr);
+        statusLevel++;
+        selectedElement.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = statusLevel.ToString();
+        if (statusDict.ContainsKey(statusName))
+        {
+            statusDict[statusName] = statusLevel;
+        }
+        else
+        {
+            statusDict.Add(statusName, statusLevel);
+        }
+    }
+
+    public void UpdateText()
+    {
+        Transform[] allElements = parentElement.GetComponentsInChildren<Transform>();
+        foreach(Transform child in allElements)
+        {
+            if (child.name.Contains("Element"))
+            {
+                string statusName = child.transform.GetChild(1).name;
+                float statusLevel;
+                statusDict.TryGetValue(statusName, out statusLevel);
+                child.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = statusLevel.ToString();
+            }
+        }
+
+    }
+
+    public void UpdateUpgrade()
+    {
+        foreach(KeyValuePair<string, float> statusData in statusDict)
+        {
+            Player_Status.instance.UpgradeStatus(statusData.Key, statusData.Value);
+        }
+    }
+
+    public void ResetUpgrade()
+    {
+        List<string> statusList = new List<string>();
+        foreach(KeyValuePair<string, float> statusData in statusDict )
+        {
+            statusList.Add(statusData.Key);
+        }
+        for (int i = 0; i < statusDict.Count; i++)
+        {
+            statusDict[statusList[i]] = 0;
+        }
+        UpdateText();
     }
 }

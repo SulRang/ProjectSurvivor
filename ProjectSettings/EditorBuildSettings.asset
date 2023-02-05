@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: 62630f721b0b3ae45af21f1184b9d44f
+  - enabled: 1
+    path: Assets/Scenes/MinsuInGameTestScene.unity
+    guid: d0f6bed1282361a4b94fdbce2fcd3142
   m_configObjects: {}

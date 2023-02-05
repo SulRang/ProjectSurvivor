@@ -84,10 +84,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e9bb182f69b89f41a771cc328770e28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 1.5
   size: 1
   duration: 10
   power: 2
+  criticalChance: 1
+  criticalDamage: 1
   explosion: {fileID: 139366, guid: 15f27bc1ead941b48ae7b3e1890fd2f0, type: 3}
 --- !u!1 &6948094701700113454
 GameObject:

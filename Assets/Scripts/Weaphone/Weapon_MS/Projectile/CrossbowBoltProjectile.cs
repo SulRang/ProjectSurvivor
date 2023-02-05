@@ -43,6 +43,11 @@ public class CrossbowBoltProjectile : Projectile
 
             }
         }
+        if(collision.tag == "Monster")
+        {
+            collision.GetComponent<Rigidbody2D>().AddForce((collision.transform.position - transform.position).normalized * power, ForceMode2D.Impulse);
+            collision.GetComponent<Monster>().GetDamage(damage);
+        }
     }
 
     public void Upgrade()

@@ -26,6 +26,7 @@ public class WeaponLightning : Weaphone
     public void LevelUp()
     {
         level++;
+        SetProjectileNum(level);
     }
 
     public override void Attack()
@@ -39,7 +40,7 @@ public class WeaponLightning : Weaphone
         //타겟 vector 계산 (y 1을 더해야 타겟의 가운데)
         Vector3 targetPos = target.position + new Vector3(0, 0.5f, 0);
         GameObject ProjectileObject;
-        for (int i = 0; i < projectileNum + level; i++)
+        for (int i = 0; i < projectileNum; i++)
         {
             if (isUpgrade)
             {

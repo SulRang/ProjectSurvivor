@@ -15,7 +15,7 @@ public class WeaponShield : Weaphone
     {
         base.Start();
         //투사체 개수
-        SetProjectileNum(2);
+        SetProjectileNum(1);
         //투사체 속도
         SetSpeed(100.0f);
         //공격 쿨다운
@@ -24,6 +24,7 @@ public class WeaponShield : Weaphone
     public void levelUp()
     {
         level++;
+        SetProjectileNum(level);
     }
 
     private void Update()
@@ -35,10 +36,10 @@ public class WeaponShield : Weaphone
     {
         if (projectile == null)
             return;
-        for(int i = 0; i < projectileNum + level; i++)
+        for(int i = 0; i < projectileNum; i++)
         {
             //투사체 개수에 따른 각도 설정
-            float degree = 360.0f / (projectileNum + level) * i;
+            float degree = 360.0f / (projectileNum) * i;
             float radian = Mathf.Deg2Rad * degree;
             //투사체 생성
             GameObject shieldObject = Instantiate(projectile, transform);

@@ -17,12 +17,13 @@ public class WeaphoneCannon : Weaphone
         //투사체 개수
         SetSpeed(200.0f);
         //공격 쿨다운
-        SetCoolDown(2.0f);
+        SetCoolDown(5.0f);
     }
 
     public void LevelUp()
     {
         level++;
+        SetCoolDown(5.0f / level);
     }
 
     public override void Attack()

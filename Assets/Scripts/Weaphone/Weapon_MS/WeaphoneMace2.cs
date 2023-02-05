@@ -15,7 +15,7 @@ public class WeaphoneMace2 : Weaphone
 
     GameObject MaceObject;
     bool isTurn = false;
-    float level = 1;
+    int level = 1;
     
     //현재 이동방향 확인 함수
     void Direction_Check()
@@ -77,6 +77,7 @@ public class WeaphoneMace2 : Weaphone
     public void LevelUp()
     {
         level++;
+        SetProjectileNum(level);
     }
 
     // Start is called before the first frame update
@@ -85,8 +86,6 @@ public class WeaphoneMace2 : Weaphone
         base.Start();
         //투사체 개수
         SetSpeed(200.0f);
-        //공격 쿨다운
-        SetCoolDown(2.0f);
     }
 
     public override void Attack()
@@ -113,6 +112,7 @@ public class WeaphoneMace2 : Weaphone
         MaceObject.GetComponent<Projectile>().SetDuration(0.5f);
         //투사체 방향 및 이동 설정
         MaceObject.GetComponent<Rigidbody>().AddTorque(new Vector3(0,0,1) * 300 * (-1));
+        projectile.GetComponent<Projectile>().SetSize(1 + level/2);
         isTurn = true;
         transform.position = player.position;
         transform.rotation = player.rotation;
@@ -128,10 +128,10 @@ public class WeaphoneMace2 : Weaphone
     {
         if (projectile == null)
             return;
-        for (int i = 0; i < projectileNum + level; i++)
+        for (int i = 0; i < projectileNum; i++)
         {
             //투사체 개수에 따른 각도 설정
-            float degree = 360.0f / (projectileNum + level) * i;
+            float degree = 360.0f / (projectileNum) * i;
             float radian = Mathf.Deg2Rad * degree;
             //투사체 생성
             GameObject projectileObject = Instantiate(classProjectile, transform);
