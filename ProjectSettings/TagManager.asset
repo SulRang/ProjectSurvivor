@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Monster
   - Trigger
+  - Exp
   layers:
   - Default
   - TransparentFX
