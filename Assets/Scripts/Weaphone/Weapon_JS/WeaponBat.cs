@@ -22,7 +22,7 @@ public class WeaponBat : Weaphone
     protected override void Start()
     {
         base.Start();
-        SetProjectileNum(level + Player_Status.instance.PROJECTILE_COUNT);
+        SetProjectileNum(level);
         SetSpeed(50.0f);
         SetCoolDown(2.5f * (1.0f - Player_Status.instance.COOLDOWN));
         this.gameObject.transform.SetParent(player.transform);

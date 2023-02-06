@@ -127,7 +127,7 @@ public class Player_Status : MonoBehaviour
     float[] _Hp = { 500, 0 };             //최대 체력        ( 500씩 상승 )
     float[] _Def = { 50, 0 };              //방어력           ( 공격력(피해량)의 [100 / (100 + a)%])
     float[] _Dmg = { 5, 0 };               //공격력           ( 5씩 상승 )
-    float[] _Speed = { 3, 0 };             //추가 이동속도    ( 0.5씩 상승, 기본속도 3 )
+    float[] _Speed = { 4, 0 };             //추가 이동속도    ( 0.5씩 상승, 기본속도 3 )
     float[] _Regeneration = { 1, 0 };      //재생             ( 일정 주기마다 1 ~ 5% 회복 )
     float[] _Cooldown = { 0.05f, 0 };          //공격주기      (1당 5%)
     float[] _Size = { 1, 0 };             	    //발사체 크기 (1당 10%)
