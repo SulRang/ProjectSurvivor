@@ -55,9 +55,9 @@ MonoBehaviour:
   player: {fileID: 0}
   player_Camera: {fileID: 0}
   triggers:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 9208035141603722757, guid: d47641534e55de942b13231e9aca43ff, type: 3}
+  - {fileID: 3319431810867772903, guid: 315ccdc272d586e419da4dfb761aaeef, type: 3}
+  - {fileID: 4661028220913301254, guid: a61b0acb82bd7754e9a68bbb4d57ae7a, type: 3}
+  - {fileID: 4880394512534768228, guid: 479752278d10b854fa932689185e5982, type: 3}
   monster_Num: 0
   maximum: 30

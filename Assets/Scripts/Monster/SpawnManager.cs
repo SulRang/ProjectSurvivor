@@ -66,7 +66,6 @@ public class SpawnManager : MonoBehaviour
             spawner.GetComponent<SampleSpawner>().SetPlayer(player);
             spawner.GetComponent<SampleSpawner>().SetPlayerCamera(player_Camera);
             spawner.GetComponent<SampleSpawner>().SetMonsterData(enemyList[i]);
-            spawner.GetComponent<SampleSpawner>().SetTriggers(Triggers);
             spawner.name = enemyList[i].monsterName + " Spawner";
 
             spawnerList.Add(spawner);

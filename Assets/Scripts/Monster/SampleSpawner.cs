@@ -73,7 +73,6 @@ public class SampleSpawner : MonoBehaviour
     {        
         Monster monster;
         Vector3 position = Positioning();
-        // Debug.Log("초기좌표  : " + position);
         monster = Instantiate(monsterPrefab, position, Quaternion.identity).GetComponent<Monster>();
         monster.SetManagedPool(pool);
         return monster;
@@ -82,7 +81,6 @@ public class SampleSpawner : MonoBehaviour
     // 풀로부터 오브젝트를 가져옴
     void GetMonster(Monster monster)
     {
-        InitMonster(monster);
         monster.gameObject.SetActive(true);
     }
 
@@ -102,7 +100,7 @@ public class SampleSpawner : MonoBehaviour
     // 카메라 화면 높이 좌표를 계산
     float ScreenPosition()
     {
-        float distance = Vector3.Distance(player.transform.position, Camera.main.transform.position); // 카메라에서 플레이어까지의 거
+        float distance = Vector3.Distance(player.transform.position, Camera.main.transform.position); // 카메라에서 플레이어까지의 거리
         float frustumHeight = distance * Mathf.Tan(Camera.main.fieldOfView * 0.5f * Mathf.Deg2Rad) * 1.2f + 
             (player.transform.position.y > 0 ? player.transform.position.y : player.transform.position.y * -1f); // 카메라 화면 높이의 절반
 
@@ -129,14 +127,7 @@ public class SampleSpawner : MonoBehaviour
         {
             calPos = (insIndex == 0) ? new Vector3(Random.Range(-15f, 15f), -screenPoint, 0f) : new Vector3(screenPoint * 2f, Random.Range(-10f, 10f), 0f);
         }
-        // Debug.Log(posIndex + " , " + insIndex);
         return calPos;
-    }
-
-    void InitMonster(Monster _monster)
-    {
-        _monster.gameObject.transform.position = Positioning();
-        // Debug.Log("변경좌표 : " + _monster.gameObject.transform.position);
     }
 
     public void SetPlayer(GameObject _player)
@@ -159,11 +150,8 @@ public class SampleSpawner : MonoBehaviour
         maximum = _maximum;
     }
 
-    public void SetTriggers(GameObject[] _triggers)
+    public void SetTrigger(int index, GameObject _trigger)
     {
-        for (int i = 0; i < _triggers.Length; i++)
-        {
-            triggers[i] = _triggers[i];
-        }
+        triggers[index] = _trigger;
     }
 }
