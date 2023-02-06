@@ -5,8 +5,6 @@ using UnityEngine;
 public class Bipod : Accessory
 {
     bool isActive = false;
-    [SerializeField]
-    int level = 1;
     public override void LevelUp()
     {
         level++;

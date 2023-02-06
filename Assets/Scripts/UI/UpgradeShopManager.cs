@@ -14,21 +14,23 @@ public class UpgradeShopManager : MonoBehaviour
 
     [SerializeField]
     TMP_Text goldText;
-    int gold = 100;
+    int gold = 0;
     
     Dictionary<string, float> statusDict;
 
     // Start is called before the first frame update
     void Start()
     {
-        goldText.text = gold.ToString() + "G";
+        gold = GoldSystem.instance_gold.GetGold();
+        goldText.text = gold + "G";
         statusDict = new Dictionary<string, float>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        gold = GoldSystem.instance_gold.GetGold();
+        goldText.text = gold + "G";
     }
     public void SelectElement()
     {
@@ -37,11 +39,16 @@ public class UpgradeShopManager : MonoBehaviour
 
     public void Upgrade()
     {
-        Debug.Log(selectedElement.transform.GetChild(1));
+        //Debug.Log(selectedElement.transform.GetChild(1));
         string statusName = selectedElement.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text;
         string statusLevelStr = selectedElement.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text;
         float statusLevel = float.Parse(statusLevelStr);
+        if(statusLevel == 5)
+        {
+            return;
+        }
         statusLevel++;
+        GoldSystem.instance_gold.SetGold(-10 * (int)statusLevel);
         selectedElement.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = statusLevel.ToString();
         if (statusDict.ContainsKey(statusName))
         {

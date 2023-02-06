@@ -21,6 +21,7 @@ public class WeaphoneLazer : Weaphone
     public Collider2D[] Cols;
     float count = 0;
     float StartTime = 2.0f;
+    float level = 1;
     // int level = 0;
 
 
@@ -191,7 +192,7 @@ public class WeaphoneLazer : Weaphone
 
     public void UpgradeWithAcc()
     {
-        if (accessory.activeSelf && !isClass && level >= 5)
+        if (accessory.GetComponent<ACC_Ring>().GetLevel() >= 5 && !isClass && level >= 5)
         {
             isUpgrade = true;
         }

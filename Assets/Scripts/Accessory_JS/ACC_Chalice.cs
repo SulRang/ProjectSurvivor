@@ -30,4 +30,9 @@ public class ACC_Chalice : MonoBehaviour
 
         Player_Status.instance.UpgradeStatus("Regeneration", inc_Regeneration);
     }
+
+    public float GetLevel()
+    {
+        return acc_Chalice_level;
+    }
 }

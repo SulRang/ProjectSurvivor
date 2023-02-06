@@ -71,7 +71,7 @@ public class WeaponShield : Weaphone
 
     public void UpgradeWithAcc()
     {
-        if (accessory.activeSelf && level >= 5)
+        if (accessory.GetComponent<Accessory>().GetLevel() >= 5 && level >= 5)
         {
             isUpgrade = true;
         }

@@ -155,7 +155,7 @@ public class WeaphoneDaggerUpgrade : Weaphone
 
     public void UpgradeWithAcc()
     {
-        if(accessory.activeSelf && !isClass && level >= 5)
+        if(accessory.GetComponent<ACC_MoneyPocket>().GetLevel() >= 5 && !isClass && level >= 5)
         {
             isUpgrade = true;
         }

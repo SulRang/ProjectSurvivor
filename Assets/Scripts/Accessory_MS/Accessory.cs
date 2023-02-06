@@ -9,7 +9,7 @@ public class Accessory : MonoBehaviour
     [SerializeField]
     protected float statusValue;
     [SerializeField]
-    int level = 1;
+    protected float level = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,5 +26,10 @@ public class Accessory : MonoBehaviour
     {
         level++;
         Player_Status.instance.UpgradeStatus(statusName, statusValue);
+    }
+
+    public virtual float GetLevel()
+    {
+        return level;
     }
 }
