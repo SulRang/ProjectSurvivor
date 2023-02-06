@@ -27,4 +27,8 @@ public class ACC_Book : MonoBehaviour
         ++acc_Book_level;
         Player_Status.instance.UpgradeStatus("Cooldown", inc_Cooldown);
     }
+    public float GetLevel()
+    {
+        return acc_Book_level;
+    }
 }

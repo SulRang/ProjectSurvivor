@@ -40,7 +40,7 @@ public class Player_Status : MonoBehaviour
         StatusUpdate();
         GameObject canvasObj;
         GameObject upgradeUI;
-        if (canvasObj = GameObject.Find("Canvas"))
+        if (canvasObj = GameObject.Find("Canvas (Title)"))
         {
             upgradeUI = canvasObj.transform.GetChild(2).gameObject;
             upgradeUI.GetComponent<UpgradeShopManager>().UpdateUpgrade();
@@ -78,16 +78,26 @@ public class Player_Status : MonoBehaviour
         Time.timeScale = 0f;
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Monster")
+        {
+            Current_Hp -= collision.transform.GetComponent<Monster>().monsterData.damage;
+            HitTime = Time.time;
+
+        }
+    }
+
     float HitTime = 0;
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Monster")
         {
             //Debug.Log(Time.time + ", " + HitTime);
             //0.2초마다 한 번씩 데미지
-            if (Time.time - pTime > 0.5)
+            if (Time.time - pTime > 1f)
             {
-                Current_Hp -= 5;
+                Current_Hp -= collision.transform.GetComponent<Monster>().monsterData.damage;
                 HitTime = Time.time;
                 //Debug.Log(Current_Hp);
             }

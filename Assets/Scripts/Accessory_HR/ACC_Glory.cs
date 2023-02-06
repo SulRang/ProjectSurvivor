@@ -27,4 +27,8 @@ public class ACC_Glory : MonoBehaviour
         ++acc_laurel_wreath_level;
         Player_Status.instance.UpgradeStatus("Regeneration", inc_Regeneration);
     }
+    public float GetLevel()
+    {
+        return acc_laurel_wreath_level;
+    }
 }

@@ -27,4 +27,8 @@ public class ACC_MoneyPocket : MonoBehaviour
         ++acc_Gold_level;
         Player_Status.instance.UpgradeStatus("Gold_Gain_Rate", inc_Gold_Gain_Rate);
     }
+    public float GetLevel()
+    {
+        return acc_Gold_level;
+    }
 }

@@ -69,7 +69,7 @@ public class WeaphoneCannon : Weaphone
 
     public void UpgradeWithAcc()
     {
-        if (accessory.activeSelf && level >= 5)
+        if (level >= 5 && accessory.GetComponent<Accessory>().GetLevel() >= 5)
         {
             isUpgrade = true;
         }

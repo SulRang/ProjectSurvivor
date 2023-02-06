@@ -4,18 +4,24 @@ using UnityEngine;
 
 public class WeaphoneMace : Weaphone
 {
-    float level = 0;
+    [SerializeField]
+    bool isUpgrade = false;
+    [SerializeField]
+    bool isClass = false;
+    [SerializeField]
+    GameObject classProjectile;
+    [SerializeField]
+    GameObject accessory;
+
+    [SerializeField]
+    int classIdx = 4;
 
     public static Vector3 Direction;
     public Transform player;
 
     GameObject MaceObject;
     bool isTurn = false;
-
-    public void LevelUp()
-    {
-        ++level;
-    }
+    int level = 1;
 
     //현재 이동방향 확인 함수
     void Direction_Check()
@@ -74,14 +80,19 @@ public class WeaphoneMace : Weaphone
         }
     }
 
+    public void LevelUp()
+    {
+        level++;
+        SetProjectileNum(level / 2);
+        SetCoolDown(3 - level / 5f);
+    }
+
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
         //투사체 개수
         SetSpeed(200.0f);
-        //공격 쿨다운
-        SetCoolDown(2.0f);
     }
 
     public override void Attack()
@@ -107,10 +118,38 @@ public class WeaphoneMace : Weaphone
         //투사체 지속시간 설정
         MaceObject.GetComponent<Projectile>().SetDuration(0.5f);
         //투사체 방향 및 이동 설정
-        MaceObject.GetComponent<Rigidbody>().AddTorque(new Vector3(0,0,1) * 300 * (-1));
+        MaceObject.GetComponent<Rigidbody>().AddTorque(new Vector3(0, 0, 1) * 300 * (-1));
+        projectile.GetComponent<Projectile>().SetSize(1 + level / 2);
         isTurn = true;
         transform.position = player.position;
         transform.rotation = player.rotation;
+        if (isUpgrade)
+        {
+            MaceObject.transform.GetChild(0).GetComponent<MaceProjectile>().Upgrade();
+        }
+        if (isClass)
+            ClassAttack();
+    }
+
+    public void ClassAttack()
+    {
+        if (projectile == null)
+            return;
+        for (int i = 0; i < projectileNum; i++)
+        {
+            //투사체 개수에 따른 각도 설정
+            float degree = 360.0f / (projectileNum) * i;
+            float radian = Mathf.Deg2Rad * degree;
+            //투사체 생성
+            GameObject projectileObject = Instantiate(classProjectile, transform);
+            projectileObject.SetActive(true);
+            //투사체 지속시간 설정
+            projectileObject.GetComponent<Projectile>().SetDuration(1.0f);
+            //투사체 각도 및 이동 설정
+            projectileObject.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, -degree));
+            projectileObject.transform.localPosition = new Vector3(range * Mathf.Sin(radian), range * Mathf.Cos(radian));
+            projectileObject.transform.parent = null;
+        }
     }
 
     private void Update()
@@ -118,6 +157,22 @@ public class WeaphoneMace : Weaphone
         if (isTurn && MaceObject != null)
         {
             MaceObject.transform.RotateAround(player.position, Vector3.back, 200 * Time.deltaTime);
+        }
+    }
+
+    public void Upgrade()
+    {
+        if (!Player_Status.instance.HasClass(classIdx) && !isUpgrade && level >= 5)
+        {
+            isClass = true;
+        }
+    }
+
+    public void UpgradeWithAcc()
+    {
+        if (accessory.GetComponent<ACC_Chalice>().GetLevel() >= 5 && !isClass && level >= 5)
+        {
+            isUpgrade = true;
         }
     }
 }

@@ -18,6 +18,8 @@ public class Monster : MonoBehaviour
     IObjectPool<Monster> objectPool;
 
     float curHp;
+    float iTime = 0.5f;
+    bool isHit = false;
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +43,8 @@ public class Monster : MonoBehaviour
     {
         //Debug.Log(curHp);
         curHp -= damage;
+        isHit = true;
+        Invoke("OffHit", iTime);
         if (curHp <= 0)
         {
             ExpDrop();
@@ -52,6 +56,10 @@ public class Monster : MonoBehaviour
             DestroyMonster();
             ScoreSystem.score += monsterData.score;
         }
+    }
+    void OffHit()
+    {
+        isHit = false;
     }
 
     // 오브젝트 풀을 전달받음

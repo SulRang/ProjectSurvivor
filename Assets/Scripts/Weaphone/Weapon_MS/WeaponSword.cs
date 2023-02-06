@@ -9,8 +9,6 @@ public class WeaponSword : Weaphone
     [SerializeField]
     bool isClass = false;
     [SerializeField]
-    GameObject accessory;
-    [SerializeField]
     int classIdx = 8;
 
     /// <summary>

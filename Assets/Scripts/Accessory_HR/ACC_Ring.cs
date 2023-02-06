@@ -29,4 +29,9 @@ public class ACC_Ring : MonoBehaviour
         ++acc_Ring_level;
         Player_Status.instance.UpgradeStatus("Duration", inc_Duration);
     }
+    public float GetLevel()
+    {
+        return acc_Ring_level;
+    }
+    
 }

@@ -45,24 +45,24 @@ public class SelectionInitiate : MonoBehaviour
     void Start()
     {
         //비활성화 오브젝트기 때문에 부모 오브젝트를 먼저 찾는다.
-        Arrow = GameObject.Find("Weaphone").transform.Find("WeaponArrow").GetComponent<WeaponArrow>();
-        Bat = GameObject.Find("Weaphone").transform.Find("WeaponBat").GetComponent<WeaponBat>();
-        Bomb = GameObject.Find("Weaphone").transform.Find("WeaponBomb").GetComponent<WeaponBomb>();
-        Aura = GameObject.Find("Weaphone").transform.Find("WeaponAura").GetComponent<WeaponAura>();
-        Dart = GameObject.Find("Weaphone").transform.Find("WeaponDart").GetComponent<WeaponDart>();
+        Arrow = GameObject.Find("Weapon").transform.Find("WeaponArrow").GetComponent<WeaponArrow>();
+        Bat = GameObject.Find("Weapon").transform.Find("WeaponBat").GetComponent<WeaponBat>();
+        Bomb = GameObject.Find("Weapon").transform.Find("WeaponBomb").GetComponent<WeaponBomb>();
+        Aura = GameObject.Find("Weapon").transform.Find("WeaponAura").GetComponent<WeaponAura>();
+        Dart = GameObject.Find("Weapon").transform.Find("WeaponDart").GetComponent<WeaponDart>();
 
-        Hammer = GameObject.Find("Weaphone").transform.Find("WeaponHammer").GetComponent<WeaphoneHammer>();
-        Mace = GameObject.Find("Weaphone").transform.Find("WeaponMace").GetComponent<WeaphoneMace>();
-        Cannon = GameObject.Find("Weaphone").transform.Find("WeaponCannon").GetComponent<WeaphoneCannon>();
-        Lazer = GameObject.Find("Weaphone").transform.Find("WeaponLazer").GetComponent<WeaphoneLazer>();
-        Dagger = GameObject.Find("Weaphone").transform.Find("WeaponDagger").GetComponent<WeaphoneDagger>();
+        Hammer = GameObject.Find("Weapon").transform.Find("WeaponHammer").GetComponent<WeaphoneHammer>();
+        Mace = GameObject.Find("Weapon").transform.Find("WeaponMace").GetComponent<WeaphoneMace>();
+        Cannon = GameObject.Find("Weapon").transform.Find("WeaponCannon").GetComponent<WeaphoneCannon>();
+        Lazer = GameObject.Find("Weapon").transform.Find("WeaponLazer").GetComponent<WeaphoneLazer>();
+        Dagger = GameObject.Find("Weapon").transform.Find("WeaponDagger").GetComponent<WeaphoneDagger>();
 
-        CrossBow = GameObject.Find("Weaphone").transform.Find("WeaponCrossBow").GetComponent<WeaponCrossBow>();
-        FireBall = GameObject.Find("Weaphone").transform.Find("WeaponFireBall").GetComponent<WeaponFireBall>();
-        Sword   = GameObject.Find("Weaphone").transform.Find("WeaponSword").GetComponent<WeaponSword>();
-        Tornado = GameObject.Find("Weaphone").transform.Find("WeaponTornado").GetComponent<WeaponTornado>();
-        Lightning = GameObject.Find("Weaphone").transform.Find("WeaponLightning").GetComponent<WeaponLightning>();
-        Shield = GameObject.Find("Weaphone").transform.Find("WeaponShield").GetComponent<WeaponShield>();
+        CrossBow = GameObject.Find("Weapon").transform.Find("WeaponCrossBow").GetComponent<WeaponCrossBow>();
+        FireBall = GameObject.Find("Weapon").transform.Find("WeaponFireBall").GetComponent<WeaponFireBall>();
+        Sword   = GameObject.Find("Weapon").transform.Find("WeaponSword").GetComponent<WeaponSword>();
+        Tornado = GameObject.Find("Weapon").transform.Find("WeaponTornado").GetComponent<WeaponTornado>();
+        Lightning = GameObject.Find("Weapon").transform.Find("WeaponLightning").GetComponent<WeaponLightning>();
+        Shield = GameObject.Find("Weapon").transform.Find("WeaponShield").GetComponent<WeaponShield>();
 
         OldBook = GameObject.Find("Accessory").transform.Find("OldBook").GetComponent<ACC_OldBook>();
         Shoes = GameObject.Find("Accessory").transform.Find("Shoes").GetComponent<ACC_Shoes>();
