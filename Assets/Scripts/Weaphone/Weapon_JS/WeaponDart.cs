@@ -25,18 +25,19 @@ public class WeaponDart : Weaphone
     public void LevelUp()
     {
         ++level;
+        SetProjectileNum(++projectileNum);
     }
 
     public override void Attack()
     {
-        GameObject[] darts = new GameObject[level];
+        GameObject[] darts = new GameObject[(int)projectileNum];
         GameObject dartParent = new GameObject("dartParent");
         dartParent.transform.position = transform.position;
         dartParent.transform.parent = null;
         dartParent.SetActive(true);
 
         int angle = ((int)projectileNum - 1) * 20; // 0 20 40 60 80 
-        int oneDegree = angle / (int)projectileNum;
+        int oneDegree = angle / ((int)projectileNum == 0 ? 1 : (int)projectileNum);
         int half = angle / 2;
 
         // 투사체 생성
@@ -67,7 +68,7 @@ public class WeaponDart : Weaphone
         {
             dartParent.transform.Rotate(0, (Player_Move.Right) ? 0 : 180, 0);
 
-            forceVector = (Player_Move.Right) ? Vector3.right : Vector3.left;
+            forceVector = (Player_Move.Right) ? Vector2.left : Vector2.right;
         }
         else
         {

@@ -42,6 +42,7 @@ public class ACC_Shoes : MonoBehaviour
     public void LevelUp()
     {
         ++acc_Shoes_level;
+        ++inc_Speed;
     }
 
     // 체력 감소 코루틴. 쿨타임 (5초) 마다 지속시간 (3 * (level / 2. level 2부터) 초) 동안 이동속도 증가

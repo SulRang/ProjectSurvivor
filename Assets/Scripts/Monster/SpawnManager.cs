@@ -31,6 +31,9 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     List<GameObject> BossList = new List<GameObject>();
 
+    [SerializeField]
+    GameObject[] Triggers;
+
     // 플레이 시간 텍스트
     [SerializeField]
     Text[] timeTexts; // 0 : 초, 1 : 분

@@ -45,6 +45,7 @@ public class Monster : MonoBehaviour
         {
             ExpDrop();
             DestroyMonster();
+            ScoreSystem.score += monsterData.score;
         }
     }
 
@@ -57,6 +58,7 @@ public class Monster : MonoBehaviour
     //오브젝트 비활성화
     public void DestroyMonster()
     {
+        Positioning();
         objectPool.Release(this);
     }
 
@@ -86,6 +88,36 @@ public class Monster : MonoBehaviour
             //오른쪽 접촉
             case 3:
                 this.gameObject.transform.position = new Vector2(_opposite.transform.position.x + 5f, transform.position.y + Random.Range(-5f, 5f));
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    public void Positioning()
+    {
+        int _index = Random.Range(0, 4);
+        switch (_index)
+        {
+            //위
+            case 0:
+                this.gameObject.transform.position = new Vector3(playerPos.position.x + Random.Range(-10f, 10f), playerPos.position.y + 14f, 0f);
+                break;
+
+            //아래
+            case 1:
+                this.gameObject.transform.position = new Vector3(playerPos.position.x + Random.Range(-10f, 10f), playerPos.position.y - 14f, 0f);
+                break;
+
+            // 왼쪽
+            case 2:
+                this.gameObject.transform.position = new Vector3(playerPos.position.x - 20f, playerPos.position.y + Random.Range(-15f, 15f), 0f);
+                break;
+
+            //오른쪽
+            case 3:
+                this.gameObject.transform.position = new Vector3(playerPos.position.x + 20f, playerPos.position.y + Random.Range(-15f, 15f), 0f);
                 break;
 
             default:
