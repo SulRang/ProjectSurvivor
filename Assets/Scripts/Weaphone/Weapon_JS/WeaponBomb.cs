@@ -39,6 +39,11 @@ public class WeaponBomb : Weaphone
     public void LevelUp()
     {
         ++level;
+        if (level >= 5)
+        {
+            UpgradeWithACC();
+            Upgrade();
+        }
     }
 
     public override void Attack()

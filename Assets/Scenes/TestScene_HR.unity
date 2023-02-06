@@ -169,6 +169,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 2589475232310529815, guid: 561bca340e904b74497926125be5e069, type: 3}
+  isUpgrade: 0
+  isClass: 0
+  classProjectile: {fileID: 0}
+  accessory: {fileID: 0}
+  classIdx: 4
   player: {fileID: 910048923}
 --- !u!54 &113712853
 Rigidbody:
@@ -831,7 +836,6 @@ MonoBehaviour:
   projectile: {fileID: 6687951272782799601, guid: 66df9872b17d3794d80751d637e5f745, type: 3}
   level: 1
   isClass: 0
-  accessory: {fileID: 0}
   classIdx: 8
 --- !u!1 &695414273
 GameObject:
@@ -1157,7 +1161,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1082744584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85086,7 +85090,7 @@ MonoBehaviour:
   projectile: {fileID: 4459508250295415116, guid: a40481dbec254d444a1f09287163798e, type: 3}
   isUpgrade: 0
   isClass: 0
-  accessory: {fileID: 0}
+  shoes: {fileID: 0}
   classIdx: 9
 --- !u!1 &1453884590 stripped
 GameObject:
@@ -85706,7 +85710,7 @@ GameObject:
   - component: {fileID: 2009861520}
   - component: {fileID: 2009861519}
   m_Layer: 0
-  m_Name: Weaphone
+  m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -34,6 +34,11 @@ public class WeaponFireBall : Weaphone
     {
         level++;
         SetCoolDown(10.0f - (level));
+        if (level >= 5)
+        {
+            UpgradeWithAcc();
+            Upgrade();
+        }
     }
 
 

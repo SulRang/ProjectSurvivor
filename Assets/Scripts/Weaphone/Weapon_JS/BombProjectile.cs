@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BombProjectile : Projectile_JS
+public class BombProjectile : Projectile
 {
     [SerializeField]
     public float _setDuration = 2.0f;

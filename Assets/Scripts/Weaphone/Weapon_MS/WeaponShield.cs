@@ -27,6 +27,10 @@ public class WeaponShield : Weaphone
     {
         level++;
         SetProjectileNum(level);
+        if (level >= 5)
+        {
+            UpgradeWithAcc();
+        }
     }
 
     private void Update()

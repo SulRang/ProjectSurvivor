@@ -38,6 +38,9 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     Text[] timeTexts; // 0 : 초, 1 : 분
 
+    [SerializeField]
+    List<bool> flagBoss = new List<bool>();
+
     private void Awake()
     {
         InitSpawner();
@@ -75,25 +78,68 @@ public class SpawnManager : MonoBehaviour
     // 시간에 따른 spawner 조정 함수
     void TimeCheker()
     {
+        int min = int.Parse(timeTexts[0].text);
+        int sec = int.Parse(timeTexts[0].text);
+        if (min % 4 == 0 && sec == 0)
+        {
+            if (min / 4 == 0)
+            {
+                ChangeMob(1);
+            }
+            else if (min / 4 == 1)
+            {
+                spawnerList[1].SetActive(false);
+                ChangeMob(2);
+                ChangeMob(3);
+                ChangeMob(4);
+                ChangeMob(5);
+            }
+            else if (min / 4 == 2)
+            {
+                ChangeMob(6);
+                spawnerList[2].SetActive(false);
+                spawnerList[3].SetActive(false);
+                spawnerList[4].SetActive(false);
+                spawnerList[5].SetActive(false);
+            }
+            else if (min / 4 == 3)
+            {
+                ChangeMob(7);
+                spawnerList[6].SetActive(false);
+            }
+            else if (min / 4 == 4)
+            {
+                ChangeMob(8);
+                spawnerList[7].SetActive(false);
+            }
+
+        }
         /*
         if (timeTexts[0].text == "10")
         {
             spawnerList[1].GetComponent<SampleSpawner>().SetMaximum(20);
             spawnerList[1].SetActive(true);
         }*/
+        SpawnBoss();
+    }
 
+    void ChangeMob(int idx)
+    {
+        spawnerList[idx].GetComponent<SampleSpawner>().SetMaximum(20);
+        spawnerList[idx].SetActive(true);
     }
 
     void SpawnBoss()
     {
         float radius = 12f;
-        int count = int.Parse(timeTexts[0].text);
+        int count = int.Parse(timeTexts[1].text);
         if (count % 5 == 4)
         {
             float xRange = Random.Range(-6f, 6f);
             float degree = Random.Range(0, 360);
             float yRange = Mathf.Pow(radius * radius - xRange * xRange, 0.5f);
-            Instantiate(BossList[count/5], (player.transform.position) + new Vector3(xRange, yRange, 0), Quaternion.identity);
+            if(flagBoss[count/5])
+                Instantiate(BossList[count/5], (player.transform.position) + new Vector3(xRange, yRange, 0), Quaternion.identity);
         }
     }
 }

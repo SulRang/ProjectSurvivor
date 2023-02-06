@@ -39,6 +39,10 @@ public class WeaponAura : MonoBehaviour
     {
         ++level;
         ScaleUpdate();
+        if (level >= 5)
+        {
+            Upgrade();
+        }
     }
 
     // Scroll 활성화 및 업그레이드, 크기 관련 장신구 활성화 및 업그레이드 시 실행해줘야함

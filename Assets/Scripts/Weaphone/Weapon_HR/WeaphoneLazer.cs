@@ -31,6 +31,11 @@ public class WeaphoneLazer : Weaphone
         SetCoolDown(StartTime);
         level++;
         Debug.Log("레벨업 하였습니다. LV : " + level);
+        if (level >= 5)
+        {
+            UpgradeWithAcc();
+            Upgrade();
+        }
     }
 
     void Direction_Check()

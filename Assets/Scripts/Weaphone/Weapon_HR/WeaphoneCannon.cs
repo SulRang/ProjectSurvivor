@@ -26,6 +26,10 @@ public class WeaphoneCannon : Weaphone
     {
         level++;
         SetCoolDown(5.0f / level);
+        if (level >= 5)
+        {
+            UpgradeWithAcc();
+        }
     }
 
     public override void Attack()

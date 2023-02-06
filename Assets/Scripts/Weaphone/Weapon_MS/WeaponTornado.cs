@@ -30,6 +30,11 @@ public class WeaponTornado : Weaphone
     public void LevelUp()
     {
         level++;
+        if (level >= 5)
+        {
+            UpgradeWithACC();
+            Upgrade();
+        }
     }
 
     public override void Attack()

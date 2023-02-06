@@ -27,6 +27,10 @@ public class WeaponCrossBow : Weaphone
     {
         level++;
         SetCoolDown(8.0f - (level) / 2);
+        if (level >= 5)
+        {
+            UpgradeWithAcc();
+        }
     }
 
 
@@ -63,7 +67,7 @@ public class WeaponCrossBow : Weaphone
 
     public void UpgradeWithAcc()
     {
-        if (accessory.activeSelf && level >= 5)
+        if (accessory.GetComponent<Accessory>().GetLevel() >= 5 && level >= 5)
         {
             isUpgrade = true;
         }
