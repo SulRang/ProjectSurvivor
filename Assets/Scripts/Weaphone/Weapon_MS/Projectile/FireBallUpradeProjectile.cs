@@ -10,6 +10,7 @@ public class FireBallUpradeProjectile : Projectile
     // Start is called before the first frame update
     protected override void Start()
     {
+        base.Start();
         //투사체 타겟 방향으로 이동
         rigidBody = gameObject.GetComponent<Rigidbody2D>();
         rigidBody.AddForce((Vector2.down + Vector2.left).normalized * 1000);

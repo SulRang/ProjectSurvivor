@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WeaphoneLazer : Weaphone
 {
-    float level = 1;
     public static Vector3 Direction; //레이저 방향
     public Transform Target;
     static int Range = 60;
@@ -15,10 +14,15 @@ public class WeaphoneLazer : Weaphone
     bool isClass = false;
     [SerializeField]
     GameObject classProjectile;
+    [SerializeField]
+    GameObject accessory;
+    [SerializeField]
+    int classIdx = 6;
     public Collider2D[] Cols;
     float count = 0;
     float StartTime = 2.0f;
     int level = 0;
+
 
     public void LevelUp()
     {
@@ -175,5 +179,21 @@ public class WeaphoneLazer : Weaphone
 
         //투사체 지속 시간 설정
         ProjectileObject.GetComponent<Projectile>().SetDuration(8.0f);
+    }
+
+    public void Upgrade()
+    {
+        if (!Player_Status.instance.HasClass(classIdx) && !isUpgrade && level >= 5)
+        {
+            isClass = true;
+        }
+    }
+
+    public void UpgradeWithAcc()
+    {
+        if (accessory.activeSelf && !isClass && level >= 5)
+        {
+            isUpgrade = true;
+        }
     }
 }

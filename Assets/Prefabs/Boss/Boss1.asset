@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Boss1
   m_EditorClassIdentifier: 
   monsterName: GoblinBoss
-  hp: 400
+  hp: 500
   moveSpeed: 1.25
   damage: 10
   size: 4

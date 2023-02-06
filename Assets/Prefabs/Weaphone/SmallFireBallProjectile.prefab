@@ -168,8 +168,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb5074445e76f064fbd783003f41c629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 0.5
   size: 1
   duration: 1
   power: 0.5
+  criticalChance: 1
+  criticalDamage: 1
   ExplosionObj: {fileID: 139366, guid: b3709c5527c6e134f8314366d0dc04fc, type: 3}

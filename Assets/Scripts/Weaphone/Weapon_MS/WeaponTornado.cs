@@ -8,6 +8,13 @@ public class WeaponTornado : Weaphone
     int level = 0;
     [SerializeField]
     bool isUpgrade = false;
+    [SerializeField]
+    bool isClass = false;
+    [SerializeField]
+    GameObject accessory;
+    [SerializeField]
+    int classIdx = 9;
+
     /// <summary>
     /// 랜덤한 타겟으로 투사체를 소환하는 무기
     /// </summary>
@@ -47,13 +54,13 @@ public class WeaponTornado : Weaphone
         //투사체 지속 시간 설정
         ProjectileObject.GetComponent<Projectile>().SetDuration(1.0f);
 
-        if (isUpgrade)
-            UpgradeAttack();
+        if (isClass)
+            ClassAttack();
     }
 
 
 
-    public void UpgradeAttack()
+    public void ClassAttack()
     {
         if (count > 4)
         {
@@ -77,5 +84,21 @@ public class WeaponTornado : Weaphone
         }
         else
             count++;
+    }
+
+    public void Upgrade()
+    {
+        if (!Player_Status.instance.HasClass(classIdx) && !isUpgrade && level >= 5)
+        {
+            isClass = true;
+        }
+    }
+
+    public void UpgradeWithAcc()
+    {
+        if (accessory.activeSelf && !isClass && level >= 5)
+        {
+            isUpgrade = true;
+        }
     }
 }

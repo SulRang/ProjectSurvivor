@@ -7,6 +7,8 @@ public class Player_Status : MonoBehaviour
 {
     //임시 싱글톤
     public static Player_Status instance;
+    bool hasClass = false;
+
     public static Player_Status Instance
     {
         get
@@ -178,5 +180,14 @@ public class Player_Status : MonoBehaviour
             }
         }
         StatusUpdate();
+    }
+
+    public bool HasClass(int idx)
+    {
+        if (!hasClass)
+        {
+            GetComponent<PlayerClassImage>().ChangeClass(idx);
+        }
+        return hasClass;
     }
 }

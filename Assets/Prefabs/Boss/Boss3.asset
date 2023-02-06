@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Boss3
   m_EditorClassIdentifier: 
   monsterName: WolfBoss
-  hp: 1000
+  hp: 2000
   moveSpeed: 2
   damage: 10
   size: 3

@@ -6,12 +6,12 @@ public class PlayerClassImage : MonoBehaviour
 {
     SkinnedMeshRenderer skinnedMesh;
     [SerializeField]
-    Texture2D texture2D;
+    List<Texture2D> texture2D = new List<Texture2D>();
     // Start is called before the first frame update
     void Start()
     {
         skinnedMesh = gameObject.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>();
-        ChangeClass();
+        ChangeClass(0);
     }
 
     // Update is called once per frame
@@ -20,8 +20,8 @@ public class PlayerClassImage : MonoBehaviour
         
     }
 
-    public void ChangeClass()
+    public void ChangeClass(int idx)
     {
-        skinnedMesh.sharedMaterial.mainTexture = texture2D;
+        skinnedMesh.sharedMaterial.mainTexture = texture2D[idx];
     }
 }

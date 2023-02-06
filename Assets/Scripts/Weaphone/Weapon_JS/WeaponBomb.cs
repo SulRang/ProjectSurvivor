@@ -20,6 +20,9 @@ public class WeaponBomb : Weaphone
     [SerializeField]
     WeaponCenter weaponCenter;
 
+    [SerializeField]
+    int classIdx = 3;
+
     bool isUpgrade = false;
 
     bool isUpgradeWithACC = false;
@@ -84,7 +87,7 @@ public class WeaponBomb : Weaphone
     // ÆøÅº ÀüÁ÷. Á¶°ÇÀº ÆøÅº 5·¹º§ ÀÌ»ó. ÀÏÁ¤ ½Ã°£ °£°ÝÀ¸·Î ¹«ÀÛÀ§ ÆøÅº ÅõÃ´
     public void Upgrade()
     {
-        if (level >= 5)
+        if (level >= 5 && !Player_Status.instance.HasClass(classIdx))
         {
             isUpgrade = true;
             StartCoroutine(BeforeUpgradeAttackCoroutine());

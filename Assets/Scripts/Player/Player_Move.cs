@@ -144,7 +144,7 @@ public class Player_Move : MonoBehaviour
         }
         cameraObject.transform.position = new Vector3(Position.x, Position.y, Position.z - 10);
         transform.position = Vector3.Lerp(transform.position, Position, 0.5f);
-        triggers.GetComponent<ObjectInitializer>().RotationInit(); // 재성 추가 부분
+       // triggers.GetComponent<ObjectInitializer>().RotationInit(); // 재성 추가 부분
     }
 
     // Start is called before the first frame update

@@ -44,6 +44,11 @@ public class Monster : MonoBehaviour
         if (curHp <= 0)
         {
             ExpDrop();
+            if (gameObject.name.Contains("Boss"))
+            {
+                Destroy(gameObject);
+                return;
+            }
             DestroyMonster();
         }
     }

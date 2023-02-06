@@ -10,6 +10,12 @@ public class WeaphoneMace2 : Weaphone
     bool isClass = false;
     [SerializeField]
     GameObject classProjectile;
+    [SerializeField]
+    GameObject accessory;
+
+    [SerializeField]
+    int classIdx = 4;
+
     public static Vector3 Direction;
     public Transform player;
 
@@ -77,7 +83,8 @@ public class WeaphoneMace2 : Weaphone
     public void LevelUp()
     {
         level++;
-        SetProjectileNum(level);
+        SetProjectileNum(level/2);
+        SetCoolDown(3 - level/5f);
     }
 
     // Start is called before the first frame update
@@ -150,6 +157,22 @@ public class WeaphoneMace2 : Weaphone
         if (isTurn && MaceObject != null)
         {
             MaceObject.transform.RotateAround(player.position, Vector3.back, 200 * Time.deltaTime);
+        }
+    }
+
+    public void Upgrade()
+    {
+        if (!Player_Status.instance.HasClass(classIdx) && !isUpgrade && level >= 5)
+        {
+            isClass = true;
+        }
+    }
+
+    public void UpgradeWithAcc()
+    {
+        if (accessory.activeSelf && !isClass && level >= 5)
+        {
+            isUpgrade = true;
         }
     }
 }

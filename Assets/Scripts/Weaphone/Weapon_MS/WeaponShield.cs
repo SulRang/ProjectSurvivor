@@ -8,6 +8,8 @@ public class WeaponShield : Weaphone
     bool isUpgrade = false;
     [SerializeField]
     int level = 1;
+    [SerializeField]
+    GameObject accessory;
     /// <summary>
     /// 투사체 개수에 따라 일정한 각도로 360도를 공전하는 무기
     /// </summary>
@@ -65,5 +67,13 @@ public class WeaponShield : Weaphone
         shieldObject.GetComponent<Projectile>().SetDuration(0.2f);
         shieldObject.GetComponent<Projectile>().SetSize(4.0f);
         shieldObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.2f);
+    }
+
+    public void UpgradeWithAcc()
+    {
+        if (accessory.activeSelf && level >= 5)
+        {
+            isUpgrade = true;
+        }
     }
 }
