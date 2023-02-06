@@ -46,9 +46,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2381034d26e04aa4b99cf4bc5e8fe23a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 1.5
   size: 1
   duration: 5
+  power: 2
+  criticalChance: 1
+  criticalDamage: 1
 --- !u!54 &394012953613593070
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -198,3 +201,6 @@ MonoBehaviour:
   damage: 3
   size: 2
   duration: 5
+  power: 1
+  criticalChance: 1
+  criticalDamage: 1

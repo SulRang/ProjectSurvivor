@@ -13,7 +13,8 @@ public class WeaponDart : Weaphone
 
     [SerializeField]
     float upgradeProjNum = 30;
-
+    [SerializeField]
+    int classIdx = 2;
     protected override void Start()
     {
         base.Start();
@@ -100,7 +101,7 @@ public class WeaponDart : Weaphone
     // 표창 전직. 조건은 표창 5레벨 이상. 일정 시간 간격으로 나선형 표창 발사.
     public void Upgrade()
     {
-        if (level >= 5)
+        if (level >= 5 && !Player_Status.instance.HasClass(classIdx))
         {
             isUpgrade = true;
             StartCoroutine(BeforeUpgradeAttackCoroutine());

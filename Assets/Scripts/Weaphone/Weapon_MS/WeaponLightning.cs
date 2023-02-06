@@ -6,6 +6,8 @@ public class WeaponLightning : Weaphone
 {
     [SerializeField]
     bool isUpgrade = false;
+    [SerializeField]
+    GameObject accessory;
     int level = 1;
 
     [SerializeField]
@@ -64,6 +66,13 @@ public class WeaponLightning : Weaphone
                 //투사체 지속 시간 설정
                 ProjectileObject.GetComponent<Projectile>().SetDuration(1.5f);
             }
+        }
+    }
+    public void UpgradeWithAcc()
+    {
+        if (accessory.activeSelf && level >= 5)
+        {
+            isUpgrade = true;
         }
     }
 }

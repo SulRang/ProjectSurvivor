@@ -19,9 +19,13 @@ public class WeaponAura : MonoBehaviour
     [SerializeField]
     GameObject upgradeObj;
 
+    [SerializeField]
+    int classIdx = 1;
+
     bool isUpgrade = false;
 
     float cooltime = 0f;
+
 
 
     void Start()
@@ -62,7 +66,7 @@ public class WeaponAura : MonoBehaviour
     // 오라 전직. 조건은 오라 5레벨 이상. 범위가 더 넓은 오라 일정 시간 간격마다 추가 활성화
     public void Upgrade()
     {
-        if (level >= 5)
+        if (level >= 5 && !Player_Status.instance.HasClass(classIdx))
         {
             isUpgrade = true;
             StartCoroutine(UpgradeAttackCoroutine());

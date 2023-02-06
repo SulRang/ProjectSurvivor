@@ -7,7 +7,11 @@ public class WeaponSword : Weaphone
     [SerializeField]
     int level = 1;
     [SerializeField]
-    bool isUpgrade = false;
+    bool isClass = false;
+    [SerializeField]
+    GameObject accessory;
+    [SerializeField]
+    int classIdx = 8;
 
     /// <summary>
     /// 가까운 타겟으로 투사체를 날리는 무기
@@ -52,13 +56,13 @@ public class WeaponSword : Weaphone
         float angle = Quaternion.FromToRotation(Vector3.up, targetPos - transform.position).eulerAngles.z - 90;
         ProjectileObject.transform.Rotate(new Vector3(0, 0, angle));
 
-        if (isUpgrade)
+        if (isClass)
         {
-            UpgradeAttack();
+            ClassAttack();
         }
     }
 
-    public void UpgradeAttack()
+    public void ClassAttack()
     {
         //가까운 타겟 Transform 가져오기
         Transform target = transform.parent.GetComponent<WeaponCenter>().GetCloseTarget();
@@ -84,5 +88,13 @@ public class WeaponSword : Weaphone
         ProjectileObject.transform.Rotate(new Vector3(0, 0, Quaternion.FromToRotation(Vector3.up, difVec3).eulerAngles.z - 90));
         //투사체 타겟 방향으로 이동
         ProjectileObject.GetComponent<Rigidbody2D>().AddForce(difVec3.normalized * 50 * speed);
+    }
+
+    public void Upgrade()
+    {
+        if (!Player_Status.instance.HasClass(classIdx) && level >= 5)
+        {
+            isClass = true;
+        }
     }
 }

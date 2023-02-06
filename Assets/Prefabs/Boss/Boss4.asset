@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterName: TrollBoss
   hp: 5000
-  moveSpeed: 1.25
+  moveSpeed: 0.75
   damage: 100
   size: 5
   prefab: {fileID: 165392, guid: 39e54726c272aea43b5ab00ccfa4c631, type: 3}

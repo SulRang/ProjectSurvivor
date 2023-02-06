@@ -9,18 +9,23 @@ public class WeaponTornado : Weaphone
     [SerializeField]
     bool isUpgrade = false;
     [SerializeField]
+    bool isClass = false;
+    [SerializeField]
+    GameObject accessory;
+    [SerializeField]
+    int classIdx = 9;
     GameObject Shoes;
     /// <summary>
-    /// ·£´ıÇÑ Å¸°ÙÀ¸·Î Åõ»çÃ¼¸¦ ¼ÒÈ¯ÇÏ´Â ¹«±â
+    /// ëœë¤í•œ íƒ€ê²Ÿìœ¼ë¡œ íˆ¬ì‚¬ì²´ë¥¼ ì†Œí™˜í•˜ëŠ” ë¬´ê¸°
     /// </summary>
     protected override void Start()
     {
         base.Start();
-        //Åõ»çÃ¼ °³¼ö
+        //íˆ¬ì‚¬ì²´ ê°œìˆ˜
         SetProjectileNum(1);
-        //Åõ»çÃ¼ ¼Óµµ
+        //íˆ¬ì‚¬ì²´ ì†ë„
         SetSpeed(100.0f);
-        //°ø°İ Äğ´Ù¿î
+        //ê³µê²© ì¿¨ë‹¤ìš´
         SetCoolDown(1.0f);
     }
     public void LevelUp()
@@ -30,30 +35,30 @@ public class WeaponTornado : Weaphone
 
     public override void Attack()
     {
-        //·£´ıÇÑ Å¸°Ù Transform °¡Á®¿À±â
+        //ëœë¤í•œ íƒ€ê²Ÿ Transform ê°€ì ¸ì˜¤ê¸°
         Transform target = transform.parent.GetComponent<WeaponCenter>().GetRandomTarget();
         if (projectile == null)
             return;
         if (target == null)
             return;
-        //Å¸°Ù vector °è»ê (y 1À» ´õÇØ¾ß Å¸°ÙÀÇ °¡¿îµ¥)
+        //íƒ€ê²Ÿ vector ê³„ì‚° (y 1ì„ ë”í•´ì•¼ íƒ€ê²Ÿì˜ ê°€ìš´ë°)
         Vector3 targetPos = target.position + new Vector3(0, 0.5f, 0);
 
-        //Åõ»çÃ¼ »ı¼º
+        //íˆ¬ì‚¬ì²´ ìƒì„±
         GameObject ProjectileObject = Instantiate(projectile, target);
-        //Åõ»çÃ¼ ºÎ¸ğ ¿ÀºêÁ§Æ® Á¦°Å
+        //íˆ¬ì‚¬ì²´ ë¶€ëª¨ ì˜¤ë¸Œì íŠ¸ ì œê±°
         ProjectileObject.transform.parent = null;
         ProjectileObject.SetActive(true);
-        //Åõ»çÃ¼ Å©±â ¼³Á¤
+        //íˆ¬ì‚¬ì²´ í¬ê¸° ì„¤ì •
         ProjectileObject.GetComponent<Projectile>().SetSize(1 + level / 2);
-        //Åõ»çÃ¼ Áö¼Ó ½Ã°£ ¼³Á¤
+        //íˆ¬ì‚¬ì²´ ì§€ì† ì‹œê°„ ì„¤ì •
         ProjectileObject.GetComponent<Projectile>().SetDuration(1.0f);
 
-        if (isUpgrade)
-            UpgradeAttack();
+        if (isClass)
+            ClassAttack();
     }
 
-    // ºÎÃ¤ ¾÷±×·¹ÀÌµå. Á¶°ÇÀº ½Å¹ß°ú ºÎÃ¤ ¸ğµÎ 5·¹º§ ÀÌ»ó.
+    // ë¶€ì±„ ì—…ê·¸ë ˆì´ë“œ. ì¡°ê±´ì€ ì‹ ë°œê³¼ ë¶€ì±„ ëª¨ë‘ 5ë ˆë²¨ ì´ìƒ.
     public void UpgradeWithACC()
     {
         if (Shoes.GetComponent<ACC_Shoes>().GetLevel() >= 5 && level >= 5)
@@ -62,22 +67,22 @@ public class WeaponTornado : Weaphone
         }
     }
 
-    public void UpgradeAttack()
+    public void ClassAttack()
     {
         if (count > 4)
         {
             for (int i = 0; i < 8; i++)
             {
-                //Åõ»çÃ¼ °³¼ö¿¡ µû¸¥ °¢µµ ¼³Á¤
+                //íˆ¬ì‚¬ì²´ ê°œìˆ˜ì— ë”°ë¥¸ ê°ë„ ì„¤ì •
                 float degree = 360 / 8 * i;
                 float radian = Mathf.Deg2Rad * degree;
-                //Åõ»çÃ¼ »ı¼º
+                //íˆ¬ì‚¬ì²´ ìƒì„±
                 GameObject ProjectileObject = Instantiate(projectile, transform);
                 ProjectileObject.SetActive(true);
                 ProjectileObject.transform.parent = null;
-                //Åõ»çÃ¼ Áö¼Ó½Ã°£ ¼³Á¤
+                //íˆ¬ì‚¬ì²´ ì§€ì†ì‹œê°„ ì„¤ì •
                 ProjectileObject.GetComponent<Projectile>().SetDuration(2.0f);
-                //Åõ»çÃ¼ °¢µµ ¹× ÀÌµ¿ ¼³Á¤
+                //íˆ¬ì‚¬ì²´ ê°ë„ ë° ì´ë™ ì„¤ì •
                 //ProjectileObject.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 90 - degree));
                 Vector3 dirVec3 = new Vector3(range * Mathf.Sin(radian), range * Mathf.Cos(radian));
                 ProjectileObject.GetComponent<Rigidbody2D>().AddForce(dirVec3.normalized * 500);
@@ -86,5 +91,13 @@ public class WeaponTornado : Weaphone
         }
         else
             count++;
+    }
+
+    public void Upgrade()
+    {
+        if (!Player_Status.instance.HasClass(classIdx) && !isUpgrade && level >= 5)
+        {
+            isClass = true;
+        }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WeaphoneHammer : Weaphone
 {
-    float level = 0;
+    int level = 0;
 
     public static Vector3 Direction;
     public Transform player;
@@ -19,12 +19,13 @@ public class WeaphoneHammer : Weaphone
         //투사체 개수
         SetSpeed(200.0f);
         //공격 쿨다운
-        SetCoolDown(2.0f);
+        SetCoolDown(4.0f);
     }
 
     public void LevelUp()
     {
         ++level;
+        SetCoolDown(4 - level / 2.5f);
     }
 
     public override void Attack()

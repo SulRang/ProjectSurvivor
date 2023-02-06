@@ -16,9 +16,16 @@ public class WeaphoneDaggerUpgrade : Weaphone
     [SerializeField]
     GameObject upgradProjectile;
 
+    [SerializeField]
+    GameObject accessory;
+
     public Collider2D[] Cols;
     int stackCount = 0;
     int level = 1;
+
+    [SerializeField]
+    int classIdx = 5;
+    
 
     protected override void Start()
     {
@@ -135,6 +142,22 @@ public class WeaphoneDaggerUpgrade : Weaphone
             ProjectileObject.transform.Rotate(new Vector3(0, 0, Quaternion.FromToRotation(Vector3.up, difVec3).eulerAngles.z));
             //투사체 타겟 방향으로 이동
             ProjectileObject.GetComponent<Rigidbody2D>().AddForce(difVec3.normalized * 100 * speed);
+        }
+    }
+
+    public void Upgrade()
+    {
+        if (!Player_Status.instance.HasClass(classIdx) && !isUpgrade && level >= 5)
+        {
+            isClass = true;
+        }
+    }
+
+    public void UpgradeWithAcc()
+    {
+        if(accessory.activeSelf && !isClass && level >= 5)
+        {
+            isUpgrade = true;
         }
     }
 }

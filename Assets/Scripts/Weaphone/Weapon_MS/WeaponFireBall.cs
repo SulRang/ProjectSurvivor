@@ -10,6 +10,11 @@ public class WeaponFireBall : Weaphone
     bool isClass = false;
     [SerializeField]
     GameObject classProjectile;
+    [SerializeField]
+    GameObject accessory;
+    [SerializeField]
+    int classIdx = 7;
+    [SerializeField]
     int level = 1;
     /// <summary>
     /// 가까운 타겟으로 투사체를 날리는 무기
@@ -34,6 +39,8 @@ public class WeaponFireBall : Weaphone
 
     public override void Attack()
     {
+        if (level >= 5 && !isClass)
+            Upgrade();
         //가까운 타겟 Transform 가져오기
         Transform target = transform.parent.GetComponent<WeaponCenter>().GetCloseTarget();
         if (projectile == null)
@@ -84,6 +91,21 @@ public class WeaponFireBall : Weaphone
             ProjectileObject.SetActive(true);
             ProjectileObject.GetComponent<Projectile>().SetDuration(12.0f);
             ProjectileObject.transform.position += new Vector3(12.0f, 12.0f);
+        }
+    }
+    public void Upgrade()
+    {
+        if (!Player_Status.instance.HasClass(classIdx) && !isUpgrade && level >= 5)
+        {
+            isClass = true;
+        }
+    }
+
+    public void UpgradeWithAcc()
+    {
+        if (accessory.activeSelf && !isClass && level >= 5)
+        {
+            isUpgrade = true;
         }
     }
 }

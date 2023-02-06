@@ -8,6 +8,8 @@ public class WeaphoneCannon : Weaphone
     [SerializeField]
     GameObject upgradeProjectile;
     [SerializeField]
+    GameObject accessory;
+    [SerializeField]
     bool isUpgrade = false;
     float level = 1;
     // Start is called before the first frame update
@@ -63,5 +65,13 @@ public class WeaphoneCannon : Weaphone
         ProjectileObject.SetActive(true);
         //투사체 지속 시간 설정
         ProjectileObject.GetComponent<Projectile>().SetDuration(10f);
+    }
+
+    public void UpgradeWithAcc()
+    {
+        if (accessory.activeSelf && level >= 5)
+        {
+            isUpgrade = true;
+        }
     }
 }

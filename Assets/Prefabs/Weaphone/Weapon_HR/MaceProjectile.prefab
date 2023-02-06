@@ -46,10 +46,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2381034d26e04aa4b99cf4bc5e8fe23a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 1
   size: 3
   duration: 10
   power: 2
+  criticalChance: 1
+  criticalDamage: 1
 --- !u!54 &2807003376251753564
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -215,6 +217,8 @@ MonoBehaviour:
   size: 1
   duration: 10
   power: 2
+  criticalChance: 1
+  criticalDamage: 1
 --- !u!4 &3310671640130000089 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6715374904229609137, guid: 956a1ab0ff6ebf7418125a284024ba00, type: 3}

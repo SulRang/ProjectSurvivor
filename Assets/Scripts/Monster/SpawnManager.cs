@@ -93,7 +93,7 @@ public class SpawnManager : MonoBehaviour
             float xRange = Random.Range(-6f, 6f);
             float degree = Random.Range(0, 360);
             float yRange = Mathf.Pow(radius * radius - xRange * xRange, 0.5f);
-            Instantiate(BossList[count], (player.transform.position) + new Vector3(xRange, yRange, 0), Quaternion.identity);
+            Instantiate(BossList[count/4], (player.transform.position) + new Vector3(xRange, yRange, 0), Quaternion.identity);
         }
     }
 }
