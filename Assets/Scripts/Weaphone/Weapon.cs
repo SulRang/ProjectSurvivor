@@ -23,7 +23,7 @@ public class Weaphone : MonoBehaviour
         }
         //°ø°Ý Äð´Ù¿î
         SetCoolDown(cooldown * (1.0f - Player_Status.instance.COOLDOWN));
-        SetProjectileNum(projectileNum - 1 + (int)Player_Status.instance.PROJECTILE_COUNT);
+        SetProjectileNum(projectileNum);
     }
 
     IEnumerator AttackCoolDown()

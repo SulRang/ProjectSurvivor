@@ -10,7 +10,7 @@ public class WeaponArrow : Weaphone
     protected override void Start()
     {
         base.Start();
-        SetProjectileNum(level + Player_Status.instance.PROJECTILE_COUNT);
+        SetProjectileNum(level);
         SetCoolDown(2.0f * (1.0f - Player_Status.instance.COOLDOWN));
         SetSpeed(300.0f);
     }
@@ -18,7 +18,7 @@ public class WeaponArrow : Weaphone
     public void LevelUp()
     {
         ++level;
-        SetProjectileNum(++projectileNum);
+        SetProjectileNum(level);
     }
 
     public override void Attack()

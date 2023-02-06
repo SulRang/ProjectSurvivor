@@ -4757,8 +4757,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   size: 2
-  duration: 5
+  duration: 3
   power: -1
+  criticalChance: 1
+  criticalDamage: 1
 --- !u!50 &-8116477510818467735
 Rigidbody2D:
   serializedVersion: 4
