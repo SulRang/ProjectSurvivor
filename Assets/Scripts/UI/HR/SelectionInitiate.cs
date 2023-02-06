@@ -38,7 +38,7 @@ public class SelectionInitiate : MonoBehaviour
     Bipod           Bipod;
 
     //°©¿Ê, ÇÁ¸®Áò, ¸Á¿ø°æÀº ¾Ç¼¼¼­¸®·Î ¹­´Â´Ù.
-    Accessory[] accessory;
+    Accessory[] accessory = new Accessory[3];
 
     ShowRandomItem showItem;
     // Start is called before the first frame update
@@ -74,7 +74,10 @@ public class SelectionInitiate : MonoBehaviour
         Book = GameObject.Find("Accessory").transform.Find("Book").GetComponent<ACC_Book>();
         Bipod = GameObject.Find("Accessory").transform.Find("Bipod").GetComponent<Bipod>();
 
-        accessory = GameObject.Find("Accessory").transform.GetComponentsInChildren<Accessory>();
+        accessory[0] = GameObject.Find("Accessory").transform.Find("Armor").GetComponent<Accessory>();
+        accessory[1] = GameObject.Find("Accessory").transform.Find("Prism").GetComponent<Accessory>();
+        accessory[2] = GameObject.Find("Accessory").transform.Find("TeleScope").GetComponent<Accessory>();
+
 
         showItem = gameObject.GetComponentInParent<ShowRandomItem>();
     }
