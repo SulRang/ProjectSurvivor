@@ -23,7 +23,7 @@ public class WeaponTornado : Weaphone
         //°ø°Ý Äð´Ù¿î
         SetCoolDown(1.0f);
     }
-    public void levelUp()
+    public void LevelUp()
     {
         level++;
     }

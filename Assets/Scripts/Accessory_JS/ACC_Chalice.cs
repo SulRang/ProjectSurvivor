@@ -24,7 +24,7 @@ public class ACC_Chalice : MonoBehaviour
     }
 
     // 레벨 업 함수. 레벨업과 함께 능력치 조정
-    void LevelUp()
+    public void LevelUp()
     {
         ++acc_Chalice_level;
 

@@ -22,7 +22,7 @@ public class ACC_MoneyPocket : MonoBehaviour
     }
 
     // Update is called once per frame
-    void LevelUp()
+    public void LevelUp()
     {
         ++acc_Gold_level;
         Player_Status.instance.UpgradeStatus("Gold_Gain_Rate", inc_Gold_Gain_Rate);
