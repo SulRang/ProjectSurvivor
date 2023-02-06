@@ -23,7 +23,7 @@ public class WeaponShield : Weaphone
         //°ø°Ý Äð´Ù¿î
         SetCoolDown(5.0f);
     }
-    public void levelUp()
+    public void LevelUp()
     {
         level++;
         SetProjectileNum(level);

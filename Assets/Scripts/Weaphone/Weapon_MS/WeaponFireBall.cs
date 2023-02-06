@@ -30,7 +30,7 @@ public class WeaponFireBall : Weaphone
         SetCoolDown(10.0f);
     }
 
-    public void levelUp()
+    public void LevelUp()
     {
         level++;
         SetCoolDown(10.0f - (level));

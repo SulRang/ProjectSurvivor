@@ -5,7 +5,7 @@ using UnityEngine;
 /*
  * 장신구 - 고서
  * 데미지가 (inc_Dmg * acc_OldBook_level) 만큼 증가하는 대신
- * 쿨타임 (5초) 마다 현재 체력의 (0.5% * acc_OldBook_level) 만큼 감소
+ * 쿨타임 (5초) 마다 현재 체력의 (1% * acc_OldBook_level) 만큼 감소
  * 
  */
 public class ACC_OldBook : MonoBehaviour
@@ -30,8 +30,10 @@ public class ACC_OldBook : MonoBehaviour
     {
         Player_Status.instance.UpgradeStatus("Dmg", inc_Dmg);
 
-        dec_Hp = -Player_Status.instance.Current_Hp * 0.005f * acc_OldBook_level; // Current_Hp를 표시형 변수로 바꿔야함
+        dec_Hp = -Player_Status.instance.Current_Hp * 0.01f * acc_OldBook_level;
         Player_Status.instance.UpgradeStatus("Current_Hp", dec_Hp); // Hp 감소.
+        Debug.Log(Player_Status.instance.Current_Hp);
+
 
         if (BeforeHpDecrease == null)
         {
@@ -57,8 +59,9 @@ public class ACC_OldBook : MonoBehaviour
             if (cooltime >= cooldown)
             {
                 cooltime -= cooldown;
-                dec_Hp = -Player_Status.instance.Hp * 0.005f * acc_OldBook_level;
+                dec_Hp = -Player_Status.instance.Hp * 0.01f * acc_OldBook_level;
                 Player_Status.instance.UpgradeStatus("Hp", dec_Hp);
+                Debug.Log(Player_Status.instance.Current_Hp);
             }
             yield return new WaitForSeconds(0);
         }

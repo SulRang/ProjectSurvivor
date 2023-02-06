@@ -18,3 +18,4 @@ MonoBehaviour:
   damage: 6
   size: 1
   prefab: {fileID: 136324, guid: e7cad298b9950ad4ba8b15bda0d6a5dc, type: 3}
+  score: 30

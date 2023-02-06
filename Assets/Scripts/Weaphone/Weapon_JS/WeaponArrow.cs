@@ -11,11 +11,11 @@ public class WeaponArrow : Weaphone
     {
         base.Start();
         SetProjectileNum(level + Player_Status.instance.PROJECTILE_COUNT);
-        SetCoolDown(2.5f * (1.0f - Player_Status.instance.COOLDOWN));
+        SetCoolDown(2.0f * (1.0f - Player_Status.instance.COOLDOWN));
         SetSpeed(300.0f);
     }
 
-    void LevelUp()
+    public void LevelUp()
     {
         ++level;
         SetProjectileNum(++projectileNum);
@@ -23,11 +23,12 @@ public class WeaponArrow : Weaphone
 
     public override void Attack()
     {
-        GameObject[] arrows = new GameObject[level];
+        GameObject[] arrows = new GameObject[(int)projectileNum];
         GameObject arrowParent = new GameObject("arrowParent");
         arrowParent.transform.position = transform.position;
         arrowParent.transform.parent = null;
         arrowParent.SetActive(true);
+        //GameObject arrow = Instantiate(projectile, transform.position + new Vector3(0.3f, 0.2f, 0f), Quaternion.identity);
 
         for (int i = 0; i < projectileNum; i++)
         {
@@ -37,6 +38,7 @@ public class WeaponArrow : Weaphone
             arrows[i].SetActive(true);
             
             arrows[i].GetComponent<Projectile>().SetDuration(2.0f);
+            Debug.Log("sfjkslkfj");
         }
 
         Destroy(arrowParent, 2.0f);
@@ -54,9 +56,9 @@ public class WeaponArrow : Weaphone
         }
         else if (playerToward == Vector2.zero)
         {
-            arrowParent.transform.Rotate(0, (Player_Move.Right) ? 0 : 180, 0);
+            arrowParent.transform.Rotate(0, (Player_Move.Right) ? 180 : 0, 0);
             
-            forceVector = (Player_Move.Right) ? Vector2.right : Vector3.left;
+            forceVector = (Player_Move.Right) ? Vector2.left : Vector2.right;
         }
         else
         {
@@ -64,7 +66,7 @@ public class WeaponArrow : Weaphone
             forceVector = playerToward;
         }
 
-        for (int i = 0; i < level; i++)
+        for (int i = 0; i < projectileNum; i++)
         {
             arrows[i].GetComponent<Rigidbody2D>().AddForce(forceVector * speed);
         }

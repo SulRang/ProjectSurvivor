@@ -31,6 +31,9 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     List<GameObject> BossList = new List<GameObject>();
 
+    [SerializeField]
+    GameObject[] Triggers;
+
     // 플레이 시간 텍스트
     [SerializeField]
     Text[] timeTexts; // 0 : 초, 1 : 분
@@ -72,11 +75,13 @@ public class SpawnManager : MonoBehaviour
     // 시간에 따른 spawner 조정 함수
     void TimeCheker()
     {
+        /*
         if (timeTexts[0].text == "10")
         {
             spawnerList[1].GetComponent<SampleSpawner>().SetMaximum(20);
             spawnerList[1].SetActive(true);
-        }
+        }*/
+
     }
 
     void SpawnBoss()

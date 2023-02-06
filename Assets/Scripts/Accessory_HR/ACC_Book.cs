@@ -22,7 +22,7 @@ public class ACC_Book : MonoBehaviour
     }
 
     // Update is called once per frame
-    void LevelUp()
+    public void LevelUp()
     {
         ++acc_Book_level;
         Player_Status.instance.UpgradeStatus("Cooldown", inc_Cooldown);
