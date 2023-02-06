@@ -45,7 +45,6 @@ public class GameManager_JS : MonoBehaviour
         int cal_gold = scoreSystem.FinalScore() / 1000;
         goldText.text = cal_gold.ToString();
         GoldSystem.instance_gold.SetGold(cal_gold);
-        Debug.Log("°ñµå : " + GoldSystem.instance_gold.GetGold());
     }
 
     public void Retry()
@@ -54,5 +53,13 @@ public class GameManager_JS : MonoBehaviour
         Time.timeScale = 1f;
         scoreSystem.InitScore();
         SceneManager.LoadScene("InGameTestScene_JS");
+    }
+
+    public void ToTitle()
+    {
+        gameoverUI.SetActive(false);
+        scoreSystem.InitScore();
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("TitleScene_JS");
     }
 }

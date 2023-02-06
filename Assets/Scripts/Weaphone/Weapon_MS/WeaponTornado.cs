@@ -8,6 +8,8 @@ public class WeaponTornado : Weaphone
     int level = 0;
     [SerializeField]
     bool isUpgrade = false;
+    [SerializeField]
+    GameObject Shoes;
     /// <summary>
     /// 랜덤한 타겟으로 투사체를 소환하는 무기
     /// </summary>
@@ -51,7 +53,14 @@ public class WeaponTornado : Weaphone
             UpgradeAttack();
     }
 
-
+    // 부채 업그레이드. 조건은 신발과 부채 모두 5레벨 이상.
+    public void UpgradeWithACC()
+    {
+        if (Shoes.GetComponent<ACC_Shoes>().GetLevel() >= 5 && level >= 5)
+        {
+            isUpgrade = true;
+        }
+    }
 
     public void UpgradeAttack()
     {

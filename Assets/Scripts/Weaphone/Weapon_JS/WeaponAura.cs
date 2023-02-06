@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WeaponAura : MonoBehaviour
 {
-    //Monster쪽이 (int)damage 여서 데미지를 1 이하로 설정할 수 없음. 수정 필요.
     [SerializeField]
     float damage = 1f;
 

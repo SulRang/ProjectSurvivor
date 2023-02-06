@@ -52,11 +52,16 @@ public class Player_Status : MonoBehaviour
     {
         //Debug.Log(Time.time + ", " + pTime);
         //3초마다 한 번씩 체력회복
-        if (Time.time - pTime > 3 && HP != Current_Hp)
+        if (Time.time - pTime > 3 && HP >= Current_Hp)
         {
             Debug.Log(Current_Hp);
             Current_Hp *= (100 + REGENERATION) / 100;
             pTime = Time.time;
+
+            if (Current_Hp > HP)
+            {
+                Current_Hp = HP;
+            }
         }
 
         if (Current_Hp <= 0)
