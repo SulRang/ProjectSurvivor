@@ -5,6 +5,12 @@ using UnityEngine;
 public class Bipod : Accessory
 {
     bool isActive = false;
+    [SerializeField]
+    int level = 1;
+    public override void LevelUp()
+    {
+        level++;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -18,7 +24,7 @@ public class Bipod : Accessory
         {
             if (!isActive)
             {
-                Player_Status.instance.UpgradeStatus(statusName, statusValue);
+                Player_Status.instance.UpgradeStatus(statusName, statusValue * level);
                 isActive = true;
             }
         }
@@ -26,7 +32,7 @@ public class Bipod : Accessory
         {
             if (isActive)
             {
-                Player_Status.instance.UpgradeStatus(statusName, -statusValue);
+                Player_Status.instance.UpgradeStatus(statusName, -(statusValue * level));
                 isActive = false;
             }
         }
