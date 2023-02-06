@@ -828,6 +828,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _index: 2
   opposite: {fileID: 1291101744}
+  sampleSpawner: {fileID: 0}
 --- !u!61 &175383098
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1399,7 +1400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 3605334599477010581, guid: dee74a99414298a47bac68a5615cc40d, type: 3}
-  level: 3
+  level: 1
   upgradeProjNum: 30
 --- !u!1 &504989033
 GameObject:
@@ -7713,6 +7714,8 @@ MonoBehaviour:
   spawnerList: []
   player: {fileID: 1587748643}
   player_Camera: {fileID: 715019338}
+  BossList: []
+  Triggers: []
   timeTexts:
   - {fileID: 1157290964}
   - {fileID: 1861430399}
@@ -7867,6 +7870,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _index: 3
   opposite: {fileID: 175383095}
+  sampleSpawner: {fileID: 0}
 --- !u!61 &1291101747
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8955,7 +8959,7 @@ MonoBehaviour:
   SPEED: 4
   REGENERATION: 0
   COOLDOWN: 0
-  DURATION: 0
+  SIZE: 0
   RANGE: 0
   PROJECTILE_COUNT: 0
   MAGNET: 0
@@ -8964,6 +8968,7 @@ MonoBehaviour:
   EXP_GAIN_RATE: 0
   GOLD_GAIN_RATE: 0
   FULL_EXP: 0
+  _Current_Hp: 1000
 --- !u!1 &1628346409
 GameObject:
   m_ObjectHideFlags: 0
@@ -9702,6 +9707,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _index: 0
   opposite: {fileID: 2018107195}
+  sampleSpawner: {fileID: 0}
 --- !u!61 &1843373164
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10015,6 +10021,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _index: 1
   opposite: {fileID: 1843373161}
+  sampleSpawner: {fileID: 0}
 --- !u!61 &2018107198
 BoxCollider2D:
   m_ObjectHideFlags: 0

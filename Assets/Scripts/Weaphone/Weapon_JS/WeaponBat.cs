@@ -57,7 +57,7 @@ public class WeaponBat : Weaphone
     }
 
     // 정령 업그레이드. 조건은 고서와 정령 모두 5레벨 이상. 공격속도가 매우 빨라짐
-    public void Upgrade()
+    public void UpgradeWithACC()
     {
         if (oldBook.GetComponent<ACC_OldBook>().GetLevel() >= 5 && level >= 5)
         {

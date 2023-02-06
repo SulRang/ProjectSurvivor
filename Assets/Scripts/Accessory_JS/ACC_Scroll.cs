@@ -5,10 +5,8 @@ using UnityEngine;
 /*
  * 
  * 장신구 - 주문서
- * 투사체 크기가 (acc_Scroll_level * 0.1) 만큼 증가.
- * Player_Status에 관련 변수가 없어 사용하지 않는 Duration(지속시간) 변수를 대신 사용.
- * 해당 변수 수정 필요.
- * 투사체 스크립트 Projectile에도 반영 필요.
+ * 투사체 크기가 (acc_Scroll_level * 0.1) 만큼 증가..
+ * 무기 투사체 스크립트 Projectile에도 반영 필요.
  * 
  */
 public class ACC_Scroll : MonoBehaviour
@@ -26,7 +24,7 @@ public class ACC_Scroll : MonoBehaviour
 
     void Start()
     {
-        Player_Status.instance.UpgradeStatus("Duration", inc_Size);
+        Player_Status.instance.UpgradeStatus("Size", inc_Size);
         weaponAura.ScaleUpdate();
     }
 
@@ -34,7 +32,7 @@ public class ACC_Scroll : MonoBehaviour
     public void LevelUp()
     {
         ++acc_Scroll_level;
-        Player_Status.instance.UpgradeStatus("Duration", inc_Size);
+        Player_Status.instance.UpgradeStatus("Size", inc_Size);
         weaponAura.ScaleUpdate();
     }
 

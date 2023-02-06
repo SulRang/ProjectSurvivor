@@ -22,4 +22,7 @@ public class MonsterData : ScriptableObject
 
     [SerializeField]
     public GameObject prefab;
+
+    [SerializeField]
+    public int score;
 }
