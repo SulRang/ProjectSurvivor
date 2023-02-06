@@ -28,6 +28,9 @@ public class SampleSpawner : MonoBehaviour
     [SerializeField]
     IObjectPool<Monster> pool;
 
+    [SerializeField]
+    public GameObject[] triggers;
+
     public int monster_Num = 0;
 
     public int maximum = 0;
@@ -154,5 +157,13 @@ public class SampleSpawner : MonoBehaviour
     public void SetMaximum(int _maximum)
     {
         maximum = _maximum;
+    }
+
+    public void SetTriggers(GameObject[] _triggers)
+    {
+        for (int i = 0; i < _triggers.Length; i++)
+        {
+            triggers[i] = _triggers[i];
+        }
     }
 }

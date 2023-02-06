@@ -58,6 +58,17 @@ public class Player_Status : MonoBehaviour
             Current_Hp *= (100 + REGENERATION) / 100;
             pTime = Time.time;
         }
+
+        if (Current_Hp <= 0)
+        {
+            Current_Hp = 0;
+            GameOver();
+        }
+    }
+
+    void GameOver()
+    {
+        Time.timeScale = 0f;
     }
 
     float HitTime = 0;

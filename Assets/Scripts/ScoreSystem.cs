@@ -37,4 +37,18 @@ public class ScoreSystem : MonoBehaviour
         }
 
     }
+
+    public int FinalScore()
+    {
+        cal_Value += score;
+        return (int)cal_Value;
+    }
+
+    public void InitScore()
+    {
+        score = 0;
+        cal_Value = 0f;
+        scoreText.text = null;
+        standard = 10;
+    }
 }
