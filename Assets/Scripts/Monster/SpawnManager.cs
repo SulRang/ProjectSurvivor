@@ -88,12 +88,12 @@ public class SpawnManager : MonoBehaviour
     {
         float radius = 12f;
         int count = int.Parse(timeTexts[0].text);
-        if (count % 4 == 4)
+        if (count % 5 == 4)
         {
             float xRange = Random.Range(-6f, 6f);
             float degree = Random.Range(0, 360);
             float yRange = Mathf.Pow(radius * radius - xRange * xRange, 0.5f);
-            Instantiate(BossList[count/4], (player.transform.position) + new Vector3(xRange, yRange, 0), Quaternion.identity);
+            Instantiate(BossList[count/5], (player.transform.position) + new Vector3(xRange, yRange, 0), Quaternion.identity);
         }
     }
 }
