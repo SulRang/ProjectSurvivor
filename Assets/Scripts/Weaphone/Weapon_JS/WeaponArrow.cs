@@ -15,7 +15,7 @@ public class WeaponArrow : Weaphone
         SetSpeed(300.0f);
     }
 
-    void LevelUp()
+    public void LevelUp()
     {
         ++level;
         SetProjectileNum(++projectileNum);

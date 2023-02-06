@@ -24,7 +24,7 @@ public class ACC_Ring : MonoBehaviour
     }
 
     // Update is called once per frame
-    void LevelUp()
+    public void LevelUp()
     {
         ++acc_Ring_level;
         Player_Status.instance.UpgradeStatus("Duration", inc_Duration);

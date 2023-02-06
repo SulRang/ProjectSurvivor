@@ -18,7 +18,6 @@ public class WeaphoneLazer : Weaphone
     public Collider2D[] Cols;
     float count = 0;
     float StartTime = 2.0f;
-    int level = 0;
 
     public void LevelUp()
     {
