@@ -58,7 +58,6 @@ public class WeaponBomb : Weaphone
         explosionObject.SetActive(false);
 
         float _setDuration = projectileObject.GetComponent<BombProjectile>()._setDuration;
-        //Invoke("explosion", _setDuration - 0.4f);
     }
 
     void explosion()
@@ -130,7 +129,6 @@ public class WeaponBomb : Weaphone
             upExplosionObject.SetActive(false);
 
             float _setDuration = upProjectileObject.GetComponent<BombProjectile>()._setDuration;
-            //Invoke("explosion", _setDuration - 0.5f);
 
             upProjectileObject.GetComponent<Rigidbody2D>().AddForce((targetPos - transform.position).normalized * 75f);
         }
