@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  size: 3
+  size: 2
   duration: 10
   power: 2
   criticalChance: 1

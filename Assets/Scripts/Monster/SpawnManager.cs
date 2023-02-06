@@ -79,7 +79,7 @@ public class SpawnManager : MonoBehaviour
     void TimeCheker()
     {
         int min = int.Parse(timeTexts[0].text);
-        int sec = int.Parse(timeTexts[0].text);
+        int sec = int.Parse(timeTexts[1].text);
         if (min % 4 == 0 && sec == 0)
         {
             if (min / 4 == 0)
@@ -132,14 +132,19 @@ public class SpawnManager : MonoBehaviour
     void SpawnBoss()
     {
         float radius = 12f;
-        int count = int.Parse(timeTexts[1].text);
-        if (count % 5 == 4)
+        int min = int.Parse(timeTexts[0].text);
+        int sec = int.Parse(timeTexts[1].text);
+        if (min % 5 == 4 && sec == 0)
         {
             float xRange = Random.Range(-6f, 6f);
             float degree = Random.Range(0, 360);
             float yRange = Mathf.Pow(radius * radius - xRange * xRange, 0.5f);
-            if(flagBoss[count/5])
-                Instantiate(BossList[count/5], (player.transform.position) + new Vector3(xRange, yRange, 0), Quaternion.identity);
+            if (flagBoss[min / 5])
+            {
+                Instantiate(BossList[min / 5], (player.transform.position) + new Vector3(xRange, yRange, 0), Quaternion.identity);
+                flagBoss[min / 5] = false;
+            }
+                
         }
     }
 }

@@ -57,13 +57,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2589475232310529815}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2381034d26e04aa4b99cf4bc5e8fe23a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  size: 2
+  size: 1
   duration: 5
   power: 2.5
   criticalChance: 1
@@ -213,9 +213,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f86eb80b0969fe41bbad3880b38135b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 1
   size: 2
-  duration: 5
+  duration: 2
   power: 2
   criticalChance: 1
   criticalDamage: 1

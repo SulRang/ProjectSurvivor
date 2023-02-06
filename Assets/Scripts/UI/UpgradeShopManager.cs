@@ -15,7 +15,7 @@ public class UpgradeShopManager : MonoBehaviour
     [SerializeField]
     TMP_Text goldText;
     int gold = 0;
-    
+    int useGold = 0;
     Dictionary<string, float> statusDict;
 
     // Start is called before the first frame update
@@ -49,6 +49,7 @@ public class UpgradeShopManager : MonoBehaviour
         }
         statusLevel++;
         GoldSystem.instance_gold.SetGold(-10 * (int)statusLevel);
+        useGold += 10 * (int)statusLevel;
         selectedElement.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = statusLevel.ToString();
         if (statusDict.ContainsKey(statusName))
         {
@@ -96,5 +97,7 @@ public class UpgradeShopManager : MonoBehaviour
             statusDict[statusList[i]] = 0;
         }
         UpdateText();
+        GoldSystem.instance_gold.SetGold(useGold);
+        useGold = 0;
     }
 }

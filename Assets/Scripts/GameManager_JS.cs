@@ -52,7 +52,7 @@ public class GameManager_JS : MonoBehaviour
         gameoverUI.SetActive(false);
         Time.timeScale = 1f;
         scoreSystem.InitScore();
-        SceneManager.LoadScene("InGameTestScene_JS");
+        SceneManager.LoadScene("MainGameScene");
     }
 
     public void ToTitle()
@@ -60,6 +60,7 @@ public class GameManager_JS : MonoBehaviour
         gameoverUI.SetActive(false);
         scoreSystem.InitScore();
         Time.timeScale = 1f;
-        SceneManager.LoadScene("TitleScene_JS");
+        SceneManager.LoadScene("TitleScene");
+        GameObject.Find("Canvas (Title)").transform.GetChild(0).gameObject.SetActive(true);
     }
 }
