@@ -42,6 +42,8 @@ public class Monster : MonoBehaviour
     public void GetDamage(float damage)
     {
         //Debug.Log(curHp);
+        if (isHit)
+            return;
         curHp -= damage;
         isHit = true;
         Invoke("OffHit", iTime);

@@ -35,6 +35,11 @@ public class WeaphoneDaggerUpgrade : Weaphone
     public void LevelUp()
     {
         level++;
+        if (level >= 5)
+        {
+            UpgradeWithAcc();
+            Upgrade();
+        }
     }
 
 

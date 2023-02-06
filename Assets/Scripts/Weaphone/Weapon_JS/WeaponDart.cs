@@ -27,6 +27,10 @@ public class WeaponDart : Weaphone
     {
         ++level;
         SetProjectileNum(++projectileNum);
+        if (level >= 5)
+        {
+            Upgrade();
+        }
     }
 
     public override void Attack()

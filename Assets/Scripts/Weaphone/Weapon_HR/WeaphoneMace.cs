@@ -85,6 +85,11 @@ public class WeaphoneMace : Weaphone
         level++;
         SetProjectileNum(level / 2);
         SetCoolDown(3 - level / 5f);
+        if (level >= 5)
+        {
+            UpgradeWithAcc();
+            Upgrade();
+        }
     }
 
     // Start is called before the first frame update

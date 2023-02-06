@@ -29,6 +29,10 @@ public class WeaponLightning : Weaphone
     {
         level++;
         SetProjectileNum(level);
+        if (level >= 5)
+        {
+            UpgradeWithAcc();
+        }
     }
 
     public override void Attack()

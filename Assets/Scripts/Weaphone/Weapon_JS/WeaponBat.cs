@@ -32,6 +32,10 @@ public class WeaponBat : Weaphone
     {
         ++level;
         SetProjectileNum(++projectileNum);
+        if (level >= 5)
+        {
+            UpgradeWithACC();
+        }
     }
 
     public override void Attack()

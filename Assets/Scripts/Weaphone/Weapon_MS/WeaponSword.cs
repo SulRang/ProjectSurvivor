@@ -29,6 +29,10 @@ public class WeaponSword : Weaphone
     {
         level++;
         SetCoolDown(8.0f / (level));
+        if (level >= 5)
+        {
+            Upgrade();
+        }
     }
 
 
