@@ -42,7 +42,7 @@ public class GameManager_JS : MonoBehaviour
         Time.timeScale = 0f;
         gameoverUI.SetActive(true);
         scoreText.text = scoreSystem.FinalScore().ToString();
-        int cal_gold = scoreSystem.FinalScore() / 1000;
+        int cal_gold = (int)((scoreSystem.FinalScore() / 1000) * Player_Status.instance.GOLD_GAIN_RATE);
         goldText.text = cal_gold.ToString();
         GoldSystem.instance_gold.SetGold(cal_gold);
     }

@@ -25,4 +25,5 @@ public class MonsterData : ScriptableObject
 
     [SerializeField]
     public int score;
+
 }

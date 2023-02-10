@@ -25,10 +25,6 @@ public class Player_Move : MonoBehaviour
     public float Horizontal;
     public float Vertical;
 
-    //재성 추가 변수
-    [SerializeField]
-    GameObject triggers;
-
     abstract class PlayerState
     {
         protected Player _player;

@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class ObjectInitializer : MonoBehaviour
 {
+    [SerializeField]
+    GameObject player;
 
-    public void RotationInit()
+    private void Update()
     {
-        if (this.gameObject.transform.eulerAngles.y == 180)
-        {
-            this.gameObject.transform.eulerAngles = Vector3.zero;
-        }
+        gameObject.transform.position = player.transform.position;
     }
 }
