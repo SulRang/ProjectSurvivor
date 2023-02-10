@@ -39,9 +39,18 @@ public class WeaponAura : MonoBehaviour
     {
         ++level;
         ScaleUpdate();
+
+        // 전직 or 업그레이드 가능 여부 확인
         if (level >= 5)
         {
-            Upgrade();
+            if (laurel.GetComponent<ACC_Laurel>().GetLevel() >= 5)
+            {
+                UpgradeWithACC();
+            }
+            else
+            {
+                Upgrade();
+            }
         }
     }
 
@@ -54,7 +63,7 @@ public class WeaponAura : MonoBehaviour
     // 오라 업그레이드. 조건은 월계관과 오라 모두 5레벨 이상. 범위가 더 넓은 오라로 업그레이드
     public void UpgradeWithACC()
     {
-        if (laurel.GetComponent<ACC_Laurel>().GetLevel() >= 5 && level >= 5)
+        if (laurel.GetComponent<ACC_Laurel>().GetLevel() >= 5 && level >= 5 && !Player_Status.instance.HasClass(classIdx))
         {
             // 사전에 전직이 되어있으면 해당 기능 취소.
             if (isUpgrade)

@@ -36,7 +36,7 @@ public class SpawnManager : MonoBehaviour
 
     // 플레이 시간 텍스트
     [SerializeField]
-    Text[] timeTexts; // 0 : 초, 1 : 분
+    Text[] timeTexts; // 0 : 분, 1 : 초
 
     [SerializeField]
     List<bool> flagBoss = new List<bool>();

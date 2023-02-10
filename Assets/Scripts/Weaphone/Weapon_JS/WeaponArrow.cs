@@ -38,7 +38,6 @@ public class WeaponArrow : Weaphone
             arrows[i].SetActive(true);
             
             arrows[i].GetComponent<Projectile>().SetDuration(2.0f);
-            Debug.Log("sfjkslkfj");
         }
 
         Destroy(arrowParent, 2.0f);
