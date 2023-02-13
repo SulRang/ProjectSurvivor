@@ -53,13 +53,13 @@ public class Projectile : MonoBehaviour
         size *= _size;
     }
 
-    private void Attack(Collider2D coll)
+    protected void Attack(Collider2D coll)
     {
-        coll.GetComponent<Rigidbody2D>().AddForce((coll.transform.position - transform.position).normalized * power, ForceMode2D.Impulse);
+        //coll.GetComponent<Rigidbody2D>().AddForce((coll.transform.position - transform.position).normalized * power, ForceMode2D.Impulse);
         if(CriticalHit())
-            coll.GetComponent<Monster>().GetDamage(damage * criticalDamage);
+            coll.GetComponent<Monster>().GetDamage(damage * criticalDamage, power);
 
-        coll.GetComponent<Monster>().GetDamage(damage);
+        coll.GetComponent<Monster>().GetDamage(damage, power);
     }
     
     private bool CriticalHit()
