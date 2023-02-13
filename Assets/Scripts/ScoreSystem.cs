@@ -8,6 +8,8 @@ public class ScoreSystem : MonoBehaviour
     [SerializeField]
     Text scoreText;
 
+    int[] standards = { 10, 30, 50 };
+
     [SerializeField]
     int standard = 10;
 
@@ -20,22 +22,25 @@ public class ScoreSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        standard = standards[0];
     }
 
     // Update is called once per frame
     void Update()
-    {
-        time += Time.deltaTime;
-        cal_Value = time * standard;
-        scoreText.text = (score + (int)cal_Value).ToString();
-
-        // 5분마다 점수 증가
-        if (((int)time / 60 % 60) != 0 && ((int)time / 60 % 60) % 5 == 0) 
+    {        
+        // 10분에 점수 증가
+        if (((int)time / 60 % 60) == 10 && ((int)time % 60) == 0)
         {
-            standard += 20;
+            standard = standards[1];
+        }
+        // 20분에 점수 증가
+        else if (((int)time / 60 % 60) == 20 && ((int)time % 60) == 0)
+        {
+            standard = standards[2];
         }
 
+        cal_Value += Time.deltaTime * standard;
+        scoreText.text = (score + (int)cal_Value).ToString();
     }
 
     public int FinalScore()
@@ -51,4 +56,5 @@ public class ScoreSystem : MonoBehaviour
         scoreText.text = null;
         standard = 10;
     }
+
 }

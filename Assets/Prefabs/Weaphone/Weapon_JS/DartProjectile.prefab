@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -602604969977476367}
   - component: {fileID: 6505240794841635593}
   - component: {fileID: 8807718542380309913}
+  - component: {fileID: -6603802377275453615}
   m_Layer: 0
   m_Name: DartProjectile
   m_TagString: Untagged
@@ -102,6 +103,9 @@ MonoBehaviour:
   damage: 0.5
   size: 0.1
   duration: 3
+  power: 1
+  criticalChance: 1
+  criticalDamage: 1
 --- !u!50 &6505240794841635593
 Rigidbody2D:
   serializedVersion: 4
@@ -149,3 +153,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.4699225, y: 4.7748666}
   m_EdgeRadius: 0
+--- !u!114 &-6603802377275453615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3605334599477010581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47c71a6ff20a54b4cb95ee78a1f44b41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -8,7 +8,7 @@ public class BombProjectile : Projectile
     public float _setDuration = 2.0f;
 
     [SerializeField]
-    GameObject explosionObj;
+    public GameObject explosionObj;
 
     protected override void Start()
     {
@@ -20,7 +20,7 @@ public class BombProjectile : Projectile
     void explosion()
     {
         explosionObj.SetActive(true);
-        this.GetComponent<BoxCollider2D>().enabled = true;
+        gameObject.GetComponent<BoxCollider2D>().enabled = true;
     }
 
 }

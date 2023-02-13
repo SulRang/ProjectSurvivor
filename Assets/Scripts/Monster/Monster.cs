@@ -89,12 +89,12 @@ public class Monster : MonoBehaviour
         {
             //¿ß ¡¢√À
             case 0:
-                this.gameObject.transform.position = new Vector2(transform.position.x + Random.Range(-5f, 5f), _opposite.transform.position.y + 5f);
+                this.gameObject.transform.position = new Vector2(transform.position.x + Random.Range(-5f, 5f), _opposite.transform.position.y + 7f);
                 break;
 
             //æ∆∑° ¡¢√À
             case 1:
-                this.gameObject.transform.position = new Vector2(transform.position.x + Random.Range(-5f, 5f), _opposite.transform.position.y - 5f);
+                this.gameObject.transform.position = new Vector2(transform.position.x + Random.Range(-5f, 5f), _opposite.transform.position.y - 10f);
                 break;
             // øﬁ¬  ¡¢√À
             case 2:

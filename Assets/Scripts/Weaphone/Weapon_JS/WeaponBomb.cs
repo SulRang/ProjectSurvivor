@@ -7,11 +7,6 @@ public class WeaponBomb : Weaphone
     [SerializeField]
     float level = 1f;
 
-    [SerializeField]
-    GameObject explosionPrefab;
-
-    GameObject explosionObject;
-
     GameObject projectileObject;
 
     [SerializeField]
@@ -39,10 +34,17 @@ public class WeaponBomb : Weaphone
     public void LevelUp()
     {
         ++level;
+        // 전직 or 업그레이드 가능 여부 확인
         if (level >= 5)
         {
-            UpgradeWithACC();
-            Upgrade();
+            if (scroll.GetComponent<ACC_Scroll>().GetLevel() >= 5)
+            {
+                UpgradeWithACC();
+            }
+            else
+            {
+                Upgrade();
+            }
         }
     }
 
@@ -61,25 +63,18 @@ public class WeaponBomb : Weaphone
         projectileObject.transform.parent = null;
         projectileObject.SetActive(true);
         projectileObject.GetComponent<BoxCollider2D>().enabled = false;
-        explosionObject = Instantiate(explosionPrefab, transform);
-        explosionObject.transform.SetParent(projectileObject.transform);
-        explosionObject.SetActive(false);
 
-        float _setDuration = projectileObject.GetComponent<BombProjectile>()._setDuration;
-    }
-
-    void explosion()
-    {
-        explosionObject.SetActive(true);
-        explosionObject.GetComponentInParent<BoxCollider2D>().enabled = true;
+        projectileObject.GetComponent<BombProjectile>().explosionObj.SetActive(false);
     }
 
     // 폭탄 업그레이드. 조건은 주문서와 폭탄 모두 5레벨 이상. 폭탄 크기 크게 증가.
     public void UpgradeWithACC()
     {
-        if (scroll.GetComponent<ACC_Scroll>().GetLevel() >= 5 && level >= 5)
+        if (scroll.GetComponent<ACC_Scroll>().GetLevel() >= 5 && level >= 5 && !Player_Status.instance.HasClass(classIdx))
         {
             isUpgradeWithACC = true;
+
+            // 사전에 전직이 되어있으면 해당 기능 취소.
             if (isUpgrade)
             {
                 StopCoroutine(BeforeUpgradeAttackCoroutine());
@@ -132,11 +127,7 @@ public class WeaponBomb : Weaphone
             upProjectileObject.transform.parent = null;
             upProjectileObject.SetActive(true);
             upProjectileObject.GetComponent<BoxCollider2D>().enabled = false;
-            GameObject upExplosionObject = Instantiate(explosionPrefab, transform);
-            upExplosionObject.transform.SetParent(upProjectileObject.transform);
-            upExplosionObject.SetActive(false);
-
-            float _setDuration = upProjectileObject.GetComponent<BombProjectile>()._setDuration;
+            upProjectileObject.GetComponent<BombProjectile>().explosionObj.SetActive(false);
 
             upProjectileObject.GetComponent<Rigidbody2D>().AddForce((targetPos - transform.position).normalized * 75f);
         }
