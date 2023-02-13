@@ -25,6 +25,9 @@ public class ACC_OldBook : MonoBehaviour
     protected float cooldown = 5.0f;
     protected float cooltime = 0;
 
+    [SerializeField]
+    WeaponAura weaponAura;
+
     IEnumerator BeforeHpDecrease = null;
     void Start()
     {
@@ -32,8 +35,7 @@ public class ACC_OldBook : MonoBehaviour
 
         dec_Hp = -Player_Status.instance.Current_Hp * 0.01f * acc_OldBook_level;
         Player_Status.instance.UpgradeStatus("Current_Hp", dec_Hp); // Hp °¨¼Ò.
-        Debug.Log(Player_Status.instance.Current_Hp);
-
+        weaponAura.DamageUpdate();
 
         if (BeforeHpDecrease == null)
         {
@@ -61,7 +63,6 @@ public class ACC_OldBook : MonoBehaviour
                 cooltime -= cooldown;
                 dec_Hp = -Player_Status.instance.Hp * 0.01f * acc_OldBook_level;
                 Player_Status.instance.UpgradeStatus("Hp", dec_Hp);
-                Debug.Log(Player_Status.instance.Current_Hp);
             }
             yield return new WaitForSeconds(0);
         }

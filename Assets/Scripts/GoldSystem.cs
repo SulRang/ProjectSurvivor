@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GoldSystem : MonoBehaviour
 {
+    [SerializeField]
+    Text minuteText;
+
     private static int gold = 100;
 
     //½Ì±ÛÅæ
@@ -33,18 +37,6 @@ public class GoldSystem : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public int GetGold()
     {
         return gold;
@@ -53,5 +45,25 @@ public class GoldSystem : MonoBehaviour
     public void SetGold(int _gold)
     {
         gold += _gold;
+    }
+
+    public int CalGold(int _gold)
+    {
+        int min = int.Parse(minuteText.text);
+        int cal_gold = 0;
+
+        if (min >= 10 && min < 20)
+        {
+            cal_gold = (int)((_gold / 5000) * Player_Status.instance.GOLD_GAIN_RATE);
+        }
+        else if (min >= 20)
+        {
+            cal_gold = (int)((_gold / 10000) * Player_Status.instance.GOLD_GAIN_RATE);
+        }
+        else
+        {
+            cal_gold = (int)((_gold / 1000) * Player_Status.instance.GOLD_GAIN_RATE);
+        }
+        return cal_gold;
     }
 }

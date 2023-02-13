@@ -5,7 +5,7 @@ using UnityEngine;
 public class WeaponAura : MonoBehaviour
 {
     [SerializeField]
-    float damage = 1f;
+    float damage = 0.2f;
 
     [SerializeField]
     float level = 1;
@@ -26,6 +26,10 @@ public class WeaponAura : MonoBehaviour
 
     float cooltime = 0f;
 
+    [SerializeField]
+    protected float criticalChance = 1.0f;
+    [SerializeField]
+    protected float criticalDamage = 1.0f;
 
 
     void Start()
@@ -33,12 +37,22 @@ public class WeaponAura : MonoBehaviour
         damage *= Player_Status.instance.DMG;
         ScaleUpdate();
         this.gameObject.transform.SetParent(player.transform);
+        criticalChance += Player_Status.instance.CRITICAL;
+        criticalDamage *= Player_Status.instance.CRITICAL_DMG;
     }
 
     public void LevelUp()
     {
         ++level;
         ScaleUpdate();
+        damage = 0.3f;
+        criticalChance = 1.0f;
+        criticalDamage = 1.0f;
+
+
+        damage *= Player_Status.instance.DMG;
+        criticalChance += Player_Status.instance.CRITICAL;
+        criticalDamage *= Player_Status.instance.CRITICAL_DMG;
 
         // 전직 or 업그레이드 가능 여부 확인
         if (level >= 5)
@@ -58,6 +72,17 @@ public class WeaponAura : MonoBehaviour
     public void ScaleUpdate()
     {
         transform.localScale = new Vector2((level * 2f) * Player_Status.instance.SIZE, (level * 2f) * Player_Status.instance.SIZE);
+    }
+
+    public void DamageUpdate()
+    {
+        damage = 0.2f;
+        damage *= Player_Status.instance.DMG * 0.5f;
+    }
+
+    public void CriticalUpdate()
+    {
+
     }
 
     // 오라 업그레이드. 조건은 월계관과 오라 모두 5레벨 이상. 범위가 더 넓은 오라로 업그레이드
@@ -107,7 +132,7 @@ public class WeaponAura : MonoBehaviour
     {
         if (collision.gameObject.tag == "Monster")
         {
-            collision.GetComponent<Monster>().GetDamage((int)damage);
+            Attack(collision);
         }
     }
 
@@ -115,7 +140,23 @@ public class WeaponAura : MonoBehaviour
     {
         if (collision.gameObject.tag == "Monster")
         {
-            collision.GetComponent<Monster>().GetDamage((int)damage);
+            Attack(collision);
         }
+    }
+
+    private void Attack(Collider2D coll)
+    {
+        if (CriticalHit())
+            coll.GetComponent<Monster>().GetDamage(damage * criticalDamage);
+
+        coll.GetComponent<Monster>().GetDamage(damage);
+    }
+
+    private bool CriticalHit()
+    {
+        int n = 0;
+        n = Random.Range(0, 1000);
+        criticalChance *= 1000;
+        return n <= criticalChance;
     }
 }

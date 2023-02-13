@@ -46,7 +46,7 @@ public class Projectile : MonoBehaviour
     }
     public void SetDuration(float _duration)
     {
-        duration = _duration;
+        duration = _duration + Player_Status.instance.RANGE;
     }
     public void SetSize(float _size)
     {

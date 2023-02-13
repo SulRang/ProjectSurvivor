@@ -5,7 +5,7 @@ using UnityEngine;
 public class BombProjectile : Projectile
 {
     [SerializeField]
-    public float _setDuration = 2.0f;
+    public float _setDuration = 1.8f;
 
     [SerializeField]
     public GameObject explosionObj;
@@ -13,8 +13,8 @@ public class BombProjectile : Projectile
     protected override void Start()
     {
         base.Start();
-        SetDuration(_setDuration);
-        Invoke("explosion", _setDuration - 0.4f);
+        SetDuration(_setDuration - Player_Status.instance.RANGE);
+        Invoke("explosion", _setDuration - 0.2f);
     }
 
     void explosion()

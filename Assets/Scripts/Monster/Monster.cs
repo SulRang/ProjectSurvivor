@@ -17,31 +17,28 @@ public class Monster : MonoBehaviour
 
     IObjectPool<Monster> objectPool;
 
+    [SerializeField]
+    Vector3 towardVector = new Vector3();
+
     float curHp;
     float iTime = 0.5f;
     bool isHit = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         playerPos = GameObject.Find("Player").transform;
+        Positioning();
         curHp = monsterData.hp;
     }
 
-    // Update is called once per frame
     void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, playerPos.position, monsterData.moveSpeed*Time.deltaTime);
-    }
-
-    public void ReadyDestroy()
-    {
-        Invoke("DestroyMonster", 10f);
+        ForwardCheck();
     }
 
     public void GetDamage(float damage)
     {
-        //Debug.Log(curHp);
         if (isHit)
             return;
         curHp -= damage;
@@ -59,6 +56,7 @@ public class Monster : MonoBehaviour
             ScoreSystem.score += monsterData.score;
         }
     }
+
     void OffHit()
     {
         isHit = false;
@@ -110,7 +108,7 @@ public class Monster : MonoBehaviour
         }
     }
 
-    public void Positioning()
+    public Vector3 Positioning()
     {
         int _index = Random.Range(0, 4);
         switch (_index)
@@ -138,6 +136,23 @@ public class Monster : MonoBehaviour
             default:
                 break;
         }
+
+        return this.gameObject.transform.position;
     }
 
+    void ForwardCheck()
+    {
+        towardVector = playerPos.position - transform.position;
+
+        if (towardVector.x <= 0)
+        {
+            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, -1);
+            transform.localEulerAngles = new Vector3(0, 0, 0);
+        }
+        else
+        {
+            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, 1);
+            transform.localEulerAngles = new Vector3(0, 180, 0);
+        }
+    }
 }
