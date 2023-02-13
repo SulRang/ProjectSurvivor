@@ -98,7 +98,7 @@ public class WeaponAura : MonoBehaviour
     {
         if (collision.gameObject.tag == "Monster")
         {
-            collision.GetComponent<Monster>().GetDamage((int)damage);
+            collision.GetComponent<Monster>().GetDamage(damage, 0f);
         }
     }
 
@@ -106,7 +106,7 @@ public class WeaponAura : MonoBehaviour
     {
         if (collision.gameObject.tag == "Monster")
         {
-            collision.GetComponent<Monster>().GetDamage((int)damage);
+            collision.GetComponent<Monster>().GetDamage(damage, 0f);
         }
     }
 }
