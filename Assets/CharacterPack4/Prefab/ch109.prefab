@@ -95,7 +95,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 3
   m_LinearDrag: 3
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad530c614bf05745925d8f5bf35deae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EXP: {fileID: 2263970235502346487, guid: e391ae388945f0745a70405fa93fcf66, type: 3}
+  EXP: {fileID: 2263970235502346487, guid: 73ea2e8a85b911542954f4497a1c1ad5, type: 3}
   monsterData: {fileID: 0}
   playerPos: {fileID: 0}
 --- !u!1 &193574

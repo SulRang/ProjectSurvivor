@@ -20,8 +20,7 @@ public class ChainLightningProjectile : Projectile
 
     private void OnHitMonster(Collider2D collision)
     {
-        collision.GetComponent<Rigidbody2D>().AddForce((collision.transform.position - transform.position).normalized * power, ForceMode2D.Impulse);
-        collision.GetComponent<Monster>().GetDamage(damage);
+        Attack(collision);
         GameObject ProjectileObject = Instantiate(projectile, collision.transform);
         //투사체 부모 오브젝트 제거
         ProjectileObject.transform.parent = null;

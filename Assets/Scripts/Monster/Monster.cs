@@ -37,11 +37,12 @@ public class Monster : MonoBehaviour
         ForwardCheck();
     }
 
-    public void GetDamage(float damage)
+    public void GetDamage(float damage, float power)
     {
         if (isHit)
             return;
         curHp -= damage;
+        gameObject.GetComponent<Rigidbody2D>().AddForce((transform.position - playerPos.position).normalized * power, ForceMode2D.Impulse); ;
         isHit = true;
         Invoke("OffHit", iTime);
         if (curHp <= 0)
