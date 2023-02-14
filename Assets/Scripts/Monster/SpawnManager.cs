@@ -41,19 +41,14 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     List<bool> flagBoss = new List<bool>();
 
+    // 몬스터 체력 배열.
+    int[] monsterHp = { 20, 20, 60, 60, 60, 60, 80, 150, 120 };
+
     private void Awake()
     {
         InitSpawner();
-
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        spawnerList[0].SetActive(true);
-    }
-
-    // Update is called once per frame
     void Update()
     {
         TimeCheker();
@@ -66,9 +61,8 @@ public class SpawnManager : MonoBehaviour
             GameObject spawner = Instantiate(spawnerPrefab);
             spawner.transform.SetParent(this.gameObject.transform);
             spawner.SetActive(false);
-            spawner.GetComponent<SampleSpawner>().SetPlayer(player);
-            spawner.GetComponent<SampleSpawner>().SetPlayerCamera(player_Camera);
             spawner.GetComponent<SampleSpawner>().SetMonsterData(enemyList[i]);
+            spawner.GetComponent<SampleSpawner>().SetMonsterHp(monsterHp[i]);
             spawner.name = enemyList[i].monsterName + " Spawner";
 
             spawnerList.Add(spawner);
@@ -82,50 +76,75 @@ public class SpawnManager : MonoBehaviour
         int sec = int.Parse(timeTexts[1].text);
         if (min % 4 == 0 && sec == 0)
         {
+            //시작
             if (min / 4 == 0)
             {
+                spawnerList[0].GetComponent<SampleSpawner>().SetCooltime(1.0f);
+                spawnerList[1].GetComponent<SampleSpawner>().SetCooltime(1.5f);
+                spawnerList[1].GetComponent<SampleSpawner>().SetMaximum(30);
+                ChangeMob(0);
                 ChangeMob(1);
             }
+            // 4분 경과
             else if (min / 4 == 1)
             {
+                // 고블린 제거. 골렘 추가
+                spawnerList[0].SetActive(false);
                 spawnerList[1].SetActive(false);
+                spawnerList[4].GetComponent<SampleSpawner>().SetCooltime(2f);
+                spawnerList[5].GetComponent<SampleSpawner>().SetCooltime(2f);
                 ChangeMob(2);
                 ChangeMob(3);
                 ChangeMob(4);
                 ChangeMob(5);
             }
+            // 8분 경과
             else if (min / 4 == 2)
             {
+                // kerberos 추가
                 ChangeMob(6);
-                spawnerList[2].SetActive(false);
-                spawnerList[3].SetActive(false);
-                spawnerList[4].SetActive(false);
-                spawnerList[5].SetActive(false);
+
+                // 골렘 생성시간 단축, 수 감소, hp 증가
+                for (int i = 2; i < 6; i++)
+                {
+                    spawnerList[i].GetComponent<SampleSpawner>().SetCooltime(1f);
+                    spawnerList[i].GetComponent<SampleSpawner>().SetMaximum(30);
+                    spawnerList[i].GetComponent<SampleSpawner>().SetMonsterHp(80);
+                }
             }
+            // 12분 경과
             else if (min / 4 == 3)
             {
+                // kerberos, 골렘 2종류 제거. mino 추가
                 ChangeMob(7);
+
+                spawnerList[4].GetComponent<SampleSpawner>().SetMaximum(50);
+                spawnerList[5].GetComponent<SampleSpawner>().SetMaximum(50);
+
+                spawnerList[2].SetActive(false);
+                spawnerList[3].SetActive(false);
                 spawnerList[6].SetActive(false);
+
             }
+            // 16분 경과
             else if (min / 4 == 4)
             {
+                // mino제거. troll 추가
                 ChangeMob(8);
                 spawnerList[7].SetActive(false);
+                spawnerList[4].GetComponent<SampleSpawner>().SetMaximum(40);
+                spawnerList[5].GetComponent<SampleSpawner>().SetMaximum(40);
+                spawnerList[4].GetComponent<SampleSpawner>().SetMonsterHp(120);
+                spawnerList[5].GetComponent<SampleSpawner>().SetMonsterHp(120);
             }
-
         }
-        /*
-        if (timeTexts[0].text == "10")
-        {
-            spawnerList[1].GetComponent<SampleSpawner>().SetMaximum(20);
-            spawnerList[1].SetActive(true);
-        }*/
+
         SpawnBoss();
     }
 
     void ChangeMob(int idx)
     {
-        spawnerList[idx].GetComponent<SampleSpawner>().SetMaximum(20);
+        //spawnerList[idx].GetComponent<SampleSpawner>().SetMaximum(20);
         spawnerList[idx].SetActive(true);
     }
 

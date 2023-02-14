@@ -85,13 +85,11 @@ public class Player_Move : MonoBehaviour
         public void _Stop()
         {
             playerState = new PlayerIdle();
-            Debug.Log("움직임 정지");
         }
 
         public void _Move()
         {
             playerState = new PlayerMoving();
-            Debug.Log("움직임 시작");
         }
 
         public PlayerState State
@@ -140,10 +138,8 @@ public class Player_Move : MonoBehaviour
         }
         cameraObject.transform.position = new Vector3(Position.x, Position.y, Position.z - 10);
         transform.position = Vector3.Lerp(transform.position, Position, 0.5f);
-       // triggers.GetComponent<ObjectInitializer>().RotationInit(); // 재성 추가 부분
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         player = new Player(new PlayerIdle());
@@ -151,12 +147,10 @@ public class Player_Move : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         Horizontal = Input.GetAxis("Horizontal");       // x축
         Vertical = Input.GetAxis("Vertical");           // y축
-        //Debug.Log(Vertical + "," + Horizontal);
 
         Position = transform.position;                  // 플레이어 현재 좌표값을 받는다.
         lastState = player.State.GetType().Name;        // 플레이어 현재 상태
