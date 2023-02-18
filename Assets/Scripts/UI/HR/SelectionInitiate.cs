@@ -184,6 +184,10 @@ public class SelectionInitiate : MonoBehaviour
                         showItem.Data[i][2] = (int.Parse(showItem.Data[i][2]) + 1).ToString();
                     }
                 }
+                if(Arrow.level == 5)
+                {
+                    showItem.Data.Remove(showItem.Data[0]);
+                }
                 break;
             case "Bat":
                 if (Bat.level == 1 && !Bat.gameObject.activeSelf)
@@ -198,6 +202,10 @@ public class SelectionInitiate : MonoBehaviour
                     {
                         showItem.Data[i][2] = (int.Parse(showItem.Data[i][2]) + 1).ToString();
                     }
+                }
+                if (Bat.level == 5)
+                {
+                    showItem.Data.Remove(showItem.Data[1]);
                 }
                 break;
             case "Bomb":
@@ -215,6 +223,10 @@ public class SelectionInitiate : MonoBehaviour
                         showItem.Data[i][2] = (int.Parse(showItem.Data[i][2]) + 1).ToString();
                     }
                 }
+                if (Bomb.level == 5)
+                {
+                    showItem.Data.Remove(showItem.Data[2]);
+                }
                 break;
             case "Aura":
                 if (Aura.level == 1 && !Aura.gameObject.activeSelf)
@@ -231,6 +243,10 @@ public class SelectionInitiate : MonoBehaviour
                         showItem.Data[i][2] = (int.Parse(showItem.Data[i][2]) + 1).ToString();
                     }
                 }
+                if (Aura.level == 5)
+                {
+                    showItem.Data.Remove(showItem.Data[3]);
+                }
                 break;
             case "Dart":
                 if (Dart.level == 1 && !Dart.gameObject.activeSelf)
@@ -246,6 +262,10 @@ public class SelectionInitiate : MonoBehaviour
                     {
                         showItem.Data[i][2] = (int.Parse(showItem.Data[i][2]) + 1).ToString();
                     }
+                }
+                if (Dart.level == 5)
+                {
+                    showItem.Data.Remove(showItem.Data[4]);
                 }
                 break;
 
@@ -264,6 +284,10 @@ public class SelectionInitiate : MonoBehaviour
                         showItem.Data[i][2] = (int.Parse(showItem.Data[i][2]) + 1).ToString();
                     }
                 }
+                if (Hammer.level == 5)
+                {
+                    showItem.Data.Remove(showItem.Data[5]);
+                }
                 break;
             case "Mace":
                 if (Mace.level == 1 && !Mace.gameObject.activeSelf)
@@ -279,6 +303,10 @@ public class SelectionInitiate : MonoBehaviour
                     {
                         showItem.Data[i][2] = (int.Parse(showItem.Data[i][2]) + 1).ToString();
                     }
+                }
+                if (Mace.level == 5)
+                {
+                    showItem.Data.Remove(showItem.Data[6]);
                 }
                 break;
             case "Cannon":
@@ -296,6 +324,10 @@ public class SelectionInitiate : MonoBehaviour
                         showItem.Data[i][2] = (int.Parse(showItem.Data[i][2]) + 1).ToString();
                     }
                 }
+                if (Cannon.level == 5)
+                {
+                    showItem.Data.Remove(showItem.Data[7]);
+                }
                 break;
             case "Lazer":
                 if (Lazer.level == 1 && !Lazer.gameObject.activeSelf)
@@ -312,6 +344,10 @@ public class SelectionInitiate : MonoBehaviour
                         showItem.Data[i][2] = (int.Parse(showItem.Data[i][2]) + 1).ToString();
                     }
                 }
+                if (Lazer.level == 5)
+                {
+                    showItem.Data.Remove(showItem.Data[8]);
+                }
                 break;
             case "Dagger":
                 if (Dagger.level == 1 && !Dagger.gameObject.activeSelf)
@@ -327,6 +363,10 @@ public class SelectionInitiate : MonoBehaviour
                     {
                         showItem.Data[i][2] = (int.Parse(showItem.Data[i][2]) + 1).ToString();
                     }
+                }
+                if (Dagger.level == 5)
+                {
+                    showItem.Data.Remove(showItem.Data[9]);
                 }
                 break;
 
@@ -345,6 +385,10 @@ public class SelectionInitiate : MonoBehaviour
                         showItem.Data[i][2] = (int.Parse(showItem.Data[i][2]) + 1).ToString();
                     }
                 }
+                if (CrossBow.level == 5)
+                {
+                    showItem.Data.Remove(showItem.Data[10]);
+                }
                 break;
             case "FireBall":
                 if (FireBall.level == 1 && !FireBall.gameObject.activeSelf)
@@ -360,6 +404,10 @@ public class SelectionInitiate : MonoBehaviour
                     {
                         showItem.Data[i][2] = (int.Parse(showItem.Data[i][2]) + 1).ToString();
                     }
+                }
+                if (FireBall.level == 5)
+                {
+                    showItem.Data.Remove(showItem.Data[11]);
                 }
                 break;
             case "Sword":
@@ -377,6 +425,10 @@ public class SelectionInitiate : MonoBehaviour
                         showItem.Data[i][2] = (int.Parse(showItem.Data[i][2]) + 1).ToString();
                     }
                 }
+                if (Sword.level == 5)
+                {
+                    showItem.Data.Remove(showItem.Data[12]);
+                }
                 break;
             case "Tornado":
                 if (Tornado.level == 1 && !Tornado.gameObject.activeSelf)
@@ -392,6 +444,10 @@ public class SelectionInitiate : MonoBehaviour
                     {
                         showItem.Data[i][2] = (int.Parse(showItem.Data[i][2]) + 1).ToString();
                     }
+                }
+                if (Tornado.level == 5)
+                {
+                    showItem.Data.Remove(showItem.Data[13]);
                 }
                 break;
             case "Lightning":
@@ -409,6 +465,10 @@ public class SelectionInitiate : MonoBehaviour
                         showItem.Data[i][2] = (int.Parse(showItem.Data[i][2]) + 1).ToString();
                     }
                 }
+                if (Lightning.level == 5)
+                {
+                    showItem.Data.Remove(showItem.Data[14]);
+                }
                 break;
             case "Shield":
                 if (Shield.level == 1 && !Shield.gameObject.activeSelf)
@@ -424,6 +484,10 @@ public class SelectionInitiate : MonoBehaviour
                     {
                         showItem.Data[i][2] = (int.Parse(showItem.Data[i][2]) + 1).ToString();
                     }
+                }
+                if (Shield.level == 5)
+                {
+                    showItem.Data.Remove(showItem.Data[15]);
                 }
                 break;
 
@@ -441,6 +505,10 @@ public class SelectionInitiate : MonoBehaviour
                         showItem.Data[i][2] = (int.Parse(showItem.Data[i][2]) + 1).ToString();
                     }
                 }
+                if (OldBook.GetLevel() == 5)
+                {
+                    showItem.Data.Remove(showItem.Data[16]);
+                }
                 break;
             case "Shoes":
                 if (Shoes.GetLevel() == 1 && !Shoes.gameObject.activeSelf)
@@ -455,6 +523,10 @@ public class SelectionInitiate : MonoBehaviour
                     {
                         showItem.Data[i][2] = (int.Parse(showItem.Data[i][2]) + 1).ToString();
                     }
+                }
+                if (Shoes.GetLevel() == 5)
+                {
+                    showItem.Data.Remove(showItem.Data[17]);
                 }
                 break;
             case "Scroll":
@@ -471,6 +543,10 @@ public class SelectionInitiate : MonoBehaviour
                         showItem.Data[i][2] = (int.Parse(showItem.Data[i][2]) + 1).ToString();
                     }
                 }
+                if (Scroll.GetLevel() == 5)
+                {
+                    showItem.Data.Remove(showItem.Data[18]);
+                }
                 break;
             case "Laurel":
                 if (Laurel.GetLevel() == 1 && !Laurel.gameObject.activeSelf)
@@ -485,6 +561,10 @@ public class SelectionInitiate : MonoBehaviour
                     {
                         showItem.Data[i][2] = (int.Parse(showItem.Data[i][2]) + 1).ToString();
                     }
+                }
+                if (Laurel.GetLevel() == 5)
+                {
+                    showItem.Data.Remove(showItem.Data[19]);
                 }
                 break;
             case "Chalice":
@@ -501,6 +581,10 @@ public class SelectionInitiate : MonoBehaviour
                         showItem.Data[i][2] = (int.Parse(showItem.Data[i][2]) + 1).ToString();
                     }
                 }
+                if (Chalice.GetLevel() == 5)
+                {
+                    showItem.Data.Remove(showItem.Data[20]);
+                }
                 break;
             case "Ring":
                 if (Ring.GetLevel() == 1 && !Ring.gameObject.activeSelf)
@@ -515,6 +599,10 @@ public class SelectionInitiate : MonoBehaviour
                     {
                         showItem.Data[i][2] = (int.Parse(showItem.Data[i][2]) + 1).ToString();
                     }
+                }
+                if (Ring.GetLevel() == 5)
+                {
+                    showItem.Data.Remove(showItem.Data[21]);
                 }
                 break;
             case "MoneyPocket":
@@ -531,6 +619,10 @@ public class SelectionInitiate : MonoBehaviour
                         showItem.Data[i][2] = (int.Parse(showItem.Data[i][2]) + 1).ToString();
                     }
                 }
+                if (MoneyPocket.GetLevel() == 5)
+                {
+                    showItem.Data.Remove(showItem.Data[22]);
+                }
                 break;
             case "Book":
                 if (Book.GetLevel() == 1 && !Book.gameObject.activeSelf)
@@ -545,6 +637,10 @@ public class SelectionInitiate : MonoBehaviour
                     {
                         showItem.Data[i][2] = (int.Parse(showItem.Data[i][2]) + 1).ToString();
                     }
+                }
+                if (Book.GetLevel() == 5)
+                {
+                    showItem.Data.Remove(showItem.Data[23]);
                 }
                 break;
             case "Armor":
@@ -561,6 +657,10 @@ public class SelectionInitiate : MonoBehaviour
                         showItem.Data[i][2] = (int.Parse(showItem.Data[i][2]) + 1).ToString();
                     }
                 }
+                if (Armor.GetLevel() == 5)
+                {
+                    showItem.Data.Remove(showItem.Data[24]);
+                }
                 break;
             case "Prism":
                 if (Prism.GetLevel() == 1 && !Prism.gameObject.activeSelf)
@@ -575,6 +675,10 @@ public class SelectionInitiate : MonoBehaviour
                     {
                         showItem.Data[i][2] = (int.Parse(showItem.Data[i][2]) + 1).ToString();
                     }
+                }
+                if (Prism.GetLevel() == 5)
+                {
+                    showItem.Data.Remove(showItem.Data[25]);
                 }
                 break;
             case "TeleScope":
@@ -591,6 +695,10 @@ public class SelectionInitiate : MonoBehaviour
                         showItem.Data[i][2] = (int.Parse(showItem.Data[i][2]) + 1).ToString();
                     }
                 }
+                if (TeleScope.GetLevel() == 5)
+                {
+                    showItem.Data.Remove(showItem.Data[26]);
+                }
                 break;
             case "Bipod":
                 if (Bipod.GetLevel() == 1 && !Bipod.gameObject.activeSelf)
@@ -605,6 +713,10 @@ public class SelectionInitiate : MonoBehaviour
                     {
                         showItem.Data[i][2] = (int.Parse(showItem.Data[i][2]) + 1).ToString();
                     }
+                }
+                if (Bipod.GetLevel() == 5)
+                {
+                    showItem.Data.Remove(showItem.Data[27]);
                 }
                 break;
         }
