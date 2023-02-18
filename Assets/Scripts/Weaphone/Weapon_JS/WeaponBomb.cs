@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class WeaponBomb : Weaphone
 {
-    [SerializeField]
-    float level = 1f;
-
     GameObject projectileObject;
 
     [SerializeField]

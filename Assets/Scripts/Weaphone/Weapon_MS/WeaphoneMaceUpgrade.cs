@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WeaphoneMaceUpgrade : Weaphone
 {
-    int level = 0;
     /// <summary>
     /// 일정 시간마다 주변에 데미지를 줌
     /// </summary>

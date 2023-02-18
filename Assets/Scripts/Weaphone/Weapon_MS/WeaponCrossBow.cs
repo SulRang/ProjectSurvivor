@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WeaponCrossBow : Weaphone
 {
-    int level = 1;
     [SerializeField]
     bool isUpgrade = false;
     [SerializeField]

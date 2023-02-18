@@ -8,7 +8,7 @@ public class WeaponLightning : Weaphone
     bool isUpgrade = false;
     [SerializeField]
     GameObject accessory;
-    int level = 1;
+
 
     [SerializeField]
     GameObject upgradeProjectile;

@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class WeaponSword : Weaphone
 {
-    [SerializeField]
-    int level = 1;
+
     [SerializeField]
     bool isClass = false;
     [SerializeField]

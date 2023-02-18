@@ -11,7 +11,6 @@ public class WeaphoneCannon : Weaphone
     GameObject accessory;
     [SerializeField]
     bool isUpgrade = false;
-    float level = 1;
     // Start is called before the first frame update
     protected override void Start()
     {

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WeaponCannonUpgrade : Weaphone
 {
-    int level = 1;
     /// <summary>
     /// 랜덤한 타겟으로 투사체를 소환하는 무기
     /// </summary>

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class WeaponArrow : Weaphone
 {
-    [SerializeField]
-    int level = 1;
 
     protected override void Start()
     {

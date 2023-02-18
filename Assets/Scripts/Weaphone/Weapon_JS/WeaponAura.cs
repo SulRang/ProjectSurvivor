@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class WeaponAura : MonoBehaviour
 {
-    [SerializeField]
-    float damage = 1f;
+    public float level = 0;
 
     [SerializeField]
-    float level = 1;
+    float damage = 1f;
 
     [SerializeField]
     Player_Move player;
@@ -25,8 +24,6 @@ public class WeaponAura : MonoBehaviour
     bool isUpgrade = false;
 
     float cooltime = 0f;
-
-
 
     void Start()
     {
