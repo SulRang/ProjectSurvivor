@@ -47,6 +47,10 @@ public class UpgradeShopManager : MonoBehaviour
         {
             return;
         }
+        else if(gold < (statusLevel+1) * 10)
+        {
+            return;
+        }
         statusLevel++;
         GoldSystem.instance_gold.SetGold(-10 * (int)statusLevel);
         useGold += 10 * (int)statusLevel;

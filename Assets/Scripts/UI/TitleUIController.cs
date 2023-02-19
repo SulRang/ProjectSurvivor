@@ -20,7 +20,7 @@ public class TitleUIController : MonoBehaviour
     public void OnClickStartBtn()
     {
         SceneManager.LoadScene("MainGameScene");
-        gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        //gameObject.transform.GetChild(0).gameObject.SetActive(false);
     }
     public void OnClickExitBtn()
     {

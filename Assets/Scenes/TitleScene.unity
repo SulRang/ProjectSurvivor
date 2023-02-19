@@ -3693,7 +3693,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &641405673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5135,7 +5135,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 899778748}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1063504569}
+        m_TargetAssemblyTypeName: TitleUIController, Assembly-CSharp
+        m_MethodName: OnClickExitBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &899778748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5509,6 +5521,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TitleUIController, Assembly-CSharp
         m_MethodName: OnClickStartBtn
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 741799892}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6399,6 +6423,7 @@ GameObject:
   - component: {fileID: 1063504566}
   - component: {fileID: 1063504565}
   - component: {fileID: 1063504569}
+  - component: {fileID: 1063504570}
   m_Layer: 5
   m_Name: Canvas (Title)
   m_TagString: Untagged
@@ -6502,6 +6527,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdf6757569bf0ee438ece0d938ac6407, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1063504570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063504564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c48c61aa689c5c4980c381c81fa0d5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minuteText: {fileID: 0}
 --- !u!1 &1101704170
 GameObject:
   m_ObjectHideFlags: 0

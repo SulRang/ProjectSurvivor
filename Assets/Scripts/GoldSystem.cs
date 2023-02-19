@@ -49,6 +49,7 @@ public class GoldSystem : MonoBehaviour
 
     public int CalGold(int _gold)
     {
+        minuteText = GameObject.Find("Minute").GetComponent<Text>();
         int min = int.Parse(minuteText.text);
         int cal_gold = 0;
 
