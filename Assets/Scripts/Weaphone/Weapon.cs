@@ -11,6 +11,7 @@ public class Weaphone : MonoBehaviour
     protected float cooldown = 5.0f;
     protected float cooltime = 0;
     protected float projectileNum = 1;
+    protected float prevProjectileCount = 0;
     protected float range = 2.0f;
 
     IEnumerator AttackCoroutine = null;
@@ -25,6 +26,15 @@ public class Weaphone : MonoBehaviour
         //°ø°Ý Äð´Ù¿î
         SetCoolDown(cooldown * (1.0f - Player_Status.instance.COOLDOWN));
         SetProjectileNum(projectileNum);
+    }
+
+    protected void FixedUpdate()
+    {
+        if (prevProjectileCount != Player_Status.instance.PROJECTILE_COUNT)
+        {
+            projectileNum += Player_Status.instance.PROJECTILE_COUNT - prevProjectileCount;
+            prevProjectileCount = Player_Status.instance.PROJECTILE_COUNT;
+        }
     }
 
     IEnumerator AttackCoolDown()

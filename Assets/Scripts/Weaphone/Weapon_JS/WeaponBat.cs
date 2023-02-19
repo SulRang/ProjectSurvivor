@@ -19,7 +19,7 @@ public class WeaponBat : Weaphone
     protected override void Start()
     {
         base.Start();
-        SetProjectileNum(level);
+        SetProjectileNum(1);
         SetSpeed(50.0f);
         SetCoolDown(2.5f);
         this.gameObject.transform.SetParent(player.transform);
@@ -28,7 +28,7 @@ public class WeaponBat : Weaphone
     public void LevelUp()
     {
         ++level;
-        SetProjectileNum(++projectileNum);
+        SetProjectileNum(level);
         if (level >= 5)
         {
             UpgradeWithACC();

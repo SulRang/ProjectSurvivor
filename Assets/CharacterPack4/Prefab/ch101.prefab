@@ -1202,6 +1202,7 @@ MonoBehaviour:
   EXP: {fileID: 2263970235502346487, guid: 0fb56241b73216e46a081fa561970a39, type: 3}
   monsterData: {fileID: 0}
   playerPos: {fileID: 0}
+  towardVector: {x: 0, y: 0, z: 0}
 --- !u!61 &-873260553892269561
 BoxCollider2D:
   m_ObjectHideFlags: 0

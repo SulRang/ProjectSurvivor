@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad530c614bf05745925d8f5bf35deae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EXP: {fileID: 2263970235502346487, guid: e391ae388945f0745a70405fa93fcf66, type: 3}
+  EXP: {fileID: 2263970235502346487, guid: 8be965ff70cd788408ec2b8708c8e040, type: 3}
   monsterData: {fileID: 11400000, guid: baf6bf3a924e437478cfb3e8bb6034b6, type: 2}
   playerPos: {fileID: 0}
   towardVector: {x: 0, y: 0, z: 0}

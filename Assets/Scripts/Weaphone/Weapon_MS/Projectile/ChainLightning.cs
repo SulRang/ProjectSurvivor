@@ -8,8 +8,6 @@ public class ChainLightning : Projectile
     GameObject ChainLightningObj;
     [SerializeField]
     Collider2D[] colls;
-    [SerializeField]
-    bool isUpgrade = true;
     float radius = 5.0f;
     int count = 0;
 

@@ -145,16 +145,15 @@ public class WeaponAura : MonoBehaviour
     private void Attack(Collider2D coll)
     {
         if (CriticalHit())
-            coll.GetComponent<Monster>().GetDamage(damage * criticalDamage);
+            coll.GetComponent<Monster>().GetDamage(damage * criticalDamage, 0f);
 
-        coll.GetComponent<Monster>().GetDamage(damage);
+        coll.GetComponent<Monster>().GetDamage(damage, 0f);
     }
 
     private bool CriticalHit()
     {
         int n = 0;
         n = Random.Range(0, 1000);
-        criticalChance *= 1000;
-        return n <= criticalChance;
+        return n <= (criticalChance * 1000);
     }
 }

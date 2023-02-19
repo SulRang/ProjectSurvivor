@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class DaggerUpgradeProjectile : Projectile
 {
-    bool isUpgrade = false;
-    float count = 0;
     float curT = 0;
     bool isBack = false;
     float speed = 4;
@@ -30,10 +28,5 @@ public class DaggerUpgradeProjectile : Projectile
         else
         {
         }
-    }
-
-    public void Upgrade()
-    {
-        isUpgrade = true;
     }
 }

@@ -173,7 +173,7 @@ public class Player_Status : MonoBehaviour
         REGENERATION = _Regeneration[0] + (_Regeneration[1] * 0.05f);
         COOLDOWN = _Cooldown[0] + (_Cooldown[1] * 0.05f);
         SIZE = _Size[0] + (_Size[1] * 0.1f);
-        RANGE = _range[0] + (_range[1] * 0.01f);
+        RANGE = _range[0] + (_range[1] * 0.1f);
         PROJECTILE_COUNT = _Projectile_Count[0] + _Projectile_Count[1];
         MAGNET = _Magnet[0] + (_Magnet[1] * 0.5f);
         CRITICAL = _Critical[0] + (_Critical[1] * 0.05f);

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WeaponTargetingProjectile : Weaphone
 {
-    int level = 0;
     /// <summary>
     /// 가까운 타겟으로 투사체를 날리는 무기
     /// </summary>

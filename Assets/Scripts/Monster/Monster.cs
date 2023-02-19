@@ -42,6 +42,7 @@ public class Monster : MonoBehaviour
         if (isHit)
             return;
         curHp -= damage;
+        gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         gameObject.GetComponent<Rigidbody2D>().AddForce((transform.position - playerPos.position).normalized * power, ForceMode2D.Impulse); ;
         isHit = true;
         Invoke("OffHit", iTime);
@@ -74,6 +75,7 @@ public class Monster : MonoBehaviour
     {
         Positioning();
         objectPool.Release(this);
+        curHp = monsterData.hp;
     }
 
     public void ExpDrop()

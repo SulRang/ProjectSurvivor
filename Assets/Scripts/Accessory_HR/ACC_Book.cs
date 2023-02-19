@@ -13,7 +13,7 @@ public class ACC_Book : MonoBehaviour
     static float acc_Book_level = 1f;
 
     [SerializeField]
-    float inc_Cooldown = 0.2f;
+    float inc_Cooldown = 1f;
 
     // Start is called before the first frame update
     void Start()
