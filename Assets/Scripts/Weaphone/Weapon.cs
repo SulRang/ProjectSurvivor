@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Weaphone : MonoBehaviour
 {
+    public float level = 0f;
     [SerializeField]
     protected GameObject projectile;
     protected float speed = 10.0f;

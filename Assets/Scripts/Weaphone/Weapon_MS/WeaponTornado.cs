@@ -5,7 +5,7 @@ using UnityEngine;
 public class WeaponTornado : Weaphone
 {
     int count = 0;
-    int level = 0;
+
     [SerializeField]
     bool isUpgrade = false;
     [SerializeField]

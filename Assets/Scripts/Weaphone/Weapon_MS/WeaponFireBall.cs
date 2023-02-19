@@ -14,8 +14,6 @@ public class WeaponFireBall : Weaphone
     GameObject accessory;
     [SerializeField]
     int classIdx = 7;
-    [SerializeField]
-    int level = 1;
     /// <summary>
     /// 가까운 타겟으로 투사체를 날리는 무기
     /// </summary>

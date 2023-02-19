@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WeaphoneHammer : Weaphone
 {
-    int level = 0;
 
     public static Vector3 Direction;
     public Transform player;

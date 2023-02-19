@@ -21,7 +21,6 @@ public class WeaphoneMace : Weaphone
 
     GameObject MaceObject;
     bool isTurn = false;
-    int level = 1;
 
     //현재 이동방향 확인 함수
     void Direction_Check()

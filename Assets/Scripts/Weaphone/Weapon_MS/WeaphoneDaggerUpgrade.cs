@@ -21,7 +21,6 @@ public class WeaphoneDaggerUpgrade : Weaphone
 
     public Collider2D[] Cols;
     int stackCount = 0;
-    int level = 1;
 
     [SerializeField]
     int classIdx = 5;
@@ -78,7 +77,7 @@ public class WeaphoneDaggerUpgrade : Weaphone
                 LazerObject.SetActive(true);
 
                 LazerObject.GetComponentInChildren<Projectile>().SetDuration(2.0f);
-                LazerObject.GetComponent<DaggerTurning>().SetMax(level);
+                LazerObject.GetComponent<DaggerTurning>().SetMax((int)level);
                 LazerObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, degree));
                 LazerObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(interV.normalized.x, interV.normalized.y) * 500);
                 break;
@@ -102,7 +101,7 @@ public class WeaphoneDaggerUpgrade : Weaphone
                 LazerObject.transform.parent = null;
                 //투사체 지속시간 설정
                 LazerObject.GetComponent<Projectile>().SetDuration(2.0f);
-                LazerObject.GetComponent<DaggerTurning>().SetMax(level);
+                LazerObject.GetComponent<DaggerTurning>().SetMax((int)level);
                 //투사체 각도 및 이동 설정
                 LazerObject.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 90 - degree));
                 Vector3 dirVec3 = new Vector3(range * Mathf.Sin(radian), range * Mathf.Cos(radian));

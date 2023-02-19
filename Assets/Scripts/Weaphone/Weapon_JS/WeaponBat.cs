@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class WeaponBat : Weaphone
 {
-    [SerializeField]
-    float level = 1f;
 
     [SerializeField]
     Player_Move player;
@@ -18,7 +16,6 @@ public class WeaponBat : Weaphone
 
     [SerializeField]
     GameObject upgradeObj;
-
     protected override void Start()
     {
         base.Start();

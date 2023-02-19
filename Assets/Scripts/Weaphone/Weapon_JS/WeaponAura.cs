@@ -6,9 +6,7 @@ public class WeaponAura : MonoBehaviour
 {
     [SerializeField]
     float damage = 0.2f;
-
-    [SerializeField]
-    float level = 1;
+    public float level = 0;
 
     [SerializeField]
     Player_Move player;

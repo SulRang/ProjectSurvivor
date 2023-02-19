@@ -7,8 +7,6 @@ public class WeaponShield : Weaphone
     [SerializeField]
     bool isUpgrade = false;
     [SerializeField]
-    int level = 1;
-    [SerializeField]
     GameObject accessory;
     /// <summary>
     /// 투사체 개수에 따라 일정한 각도로 360도를 공전하는 무기

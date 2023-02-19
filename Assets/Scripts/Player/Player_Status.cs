@@ -5,6 +5,9 @@ using System.Reflection;
 
 public class Player_Status : MonoBehaviour
 {
+    public List<string> weaponSet = new List<string>();
+    public List<string> accSet = new List<string>();
+
     //임시 싱글톤
     public static Player_Status instance;
     bool hasClass = false;
@@ -56,7 +59,7 @@ public class Player_Status : MonoBehaviour
         //3초마다 한 번씩 체력회복
         if (Time.time - pTime > 3 && HP >= Current_Hp)
         {
-            Debug.Log(Current_Hp);
+            //Debug.Log(Current_Hp);
             Current_Hp *= (100 + REGENERATION) / 100;
             pTime = Time.time;
 

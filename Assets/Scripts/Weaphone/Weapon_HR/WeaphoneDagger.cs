@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WeaphoneDagger : Weaphone
 {
-    float level = 0;
     public static Vector3 Direction; //대거 방향
     static int Radius = 8;
 

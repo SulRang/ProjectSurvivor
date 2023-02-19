@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class WeaponDart : Weaphone
 {
-    [SerializeField]
-    int level = 1;
-
     bool isUpgrade = false;
 
     float upCooltime = 0f;
