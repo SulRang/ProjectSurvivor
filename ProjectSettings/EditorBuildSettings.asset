@@ -9,18 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/TitleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/GameScene.unity
-    guid: 62630f721b0b3ae45af21f1184b9d44f
-  - enabled: 1
-    path: Assets/Scenes/MinsuInGameTestScene.unity
-    guid: d0f6bed1282361a4b94fdbce2fcd3142
-  - enabled: 1
-    path: Assets/Scenes/InGameTestScene_JS.unity
-    guid: ee0aa343529235242a42f199b914e8f8
-  - enabled: 1
-    path: Assets/Scenes/TitleScene_JS.unity
-    guid: 7fa4627d6afabdf498ffdebb023514b2
-  - enabled: 1
     path: Assets/Scenes/MainGameScene.unity
     guid: a8d73a96505bc4242827b85b818c80ce
+  - enabled: 1
+    path: Assets/Scenes/TitleSceneDummy.unity
+    guid: b14f6a8a8e661634a9676c5003c8cdc2
   m_configObjects: {}

@@ -87,7 +87,7 @@ public class GameManager_JS : MonoBehaviour
         scoreSystem.InitScore();
         timer.InitTrigger();
         Time.timeScale = 1f;
-        SceneManager.LoadScene("TitleScene");
+        SceneManager.LoadScene("TitleSceneDummy");
         GameObject.Find("Canvas (Title)").transform.GetChild(0).gameObject.SetActive(true);
     }
 }
