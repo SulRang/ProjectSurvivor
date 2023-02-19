@@ -1291,7 +1291,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 2
+  m_Mass: 1.25
   m_LinearDrag: 3
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -1315,3 +1315,4 @@ MonoBehaviour:
   EXP: {fileID: 2263970235502346487, guid: dcf46bd672418db46a1a14bbd345f109, type: 3}
   monsterData: {fileID: 0}
   playerPos: {fileID: 0}
+  towardVector: {x: 0, y: 0, z: 0}

@@ -1977,9 +1977,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad530c614bf05745925d8f5bf35deae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EXP: {fileID: 2263970235502346487, guid: e391ae388945f0745a70405fa93fcf66, type: 3}
+  EXP: {fileID: 2263970235502346487, guid: 73ea2e8a85b911542954f4497a1c1ad5, type: 3}
   monsterData: {fileID: 11400000, guid: f33c9ba33ca3a314dbff0d243a217cb0, type: 2}
   playerPos: {fileID: 0}
+  towardVector: {x: 0, y: 0, z: 0}
 --- !u!50 &3940940655961325269
 Rigidbody2D:
   serializedVersion: 4
