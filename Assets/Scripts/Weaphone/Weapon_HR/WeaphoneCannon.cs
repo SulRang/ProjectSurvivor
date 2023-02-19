@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WeaphoneCannon : Weaphone
 {
-    float radius = 10f;
+    float radius = 3f;
     [SerializeField]
     GameObject upgradeProjectile;
     [SerializeField]
@@ -37,7 +37,7 @@ public class WeaphoneCannon : Weaphone
             return;
 
         Collider2D[] Cols;
-        Cols = Physics2D.OverlapCircleAll(transform.position, radius);
+        Cols = Physics2D.OverlapCircleAll(transform.position, radius * Player_Status.instance.RANGE);
 
         for (int i = 0; i < Cols.Length; i++)
         {

@@ -15,7 +15,7 @@ public class WeaponDart : Weaphone
     protected override void Start()
     {
         base.Start();
-        SetProjectileNum(level);
+        SetProjectileNum(1);
         SetCoolDown(2.0f);
         SetSpeed(300.0f);
     }
@@ -23,7 +23,7 @@ public class WeaponDart : Weaphone
     public void LevelUp()
     {
         ++level;
-        SetProjectileNum(++level);
+        SetProjectileNum(level);
         if (level >= 5)
         {
             Upgrade();

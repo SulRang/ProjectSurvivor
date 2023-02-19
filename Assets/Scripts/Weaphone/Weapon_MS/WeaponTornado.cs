@@ -25,7 +25,7 @@ public class WeaponTornado : Weaphone
         //투사체 속도
         SetSpeed(100.0f);
         //공격 쿨다운
-        SetCoolDown(1.0f);
+        SetCoolDown(2.0f);
     }
     public void LevelUp()
     {
@@ -49,7 +49,7 @@ public class WeaponTornado : Weaphone
         Vector3 targetPos = target.position + new Vector3(0, 0.5f, 0);
 
         //투사체 생성
-        GameObject ProjectileObject = Instantiate(projectile, target);
+        GameObject ProjectileObject = Instantiate(projectile, targetPos, Quaternion.Euler(-75, 0 ,0));
         //투사체 부모 오브젝트 제거
         ProjectileObject.transform.parent = null;
         ProjectileObject.SetActive(true);

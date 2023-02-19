@@ -45,7 +45,7 @@ public class WeaphoneHammer : Weaphone
         MaceObject.transform.parent = null;
         MaceObject.SetActive(true);
         //투사체 지속시간 설정. range 반영이 불필요하여 수식 추가.
-        MaceObject.GetComponent<Projectile>().SetDuration(0.5f - Player_Status.instance.RANGE);
+        MaceObject.GetComponent<Projectile>().SetDuration(0.5f);
         //투사체 방향 및 이동 설정
         //MaceObject.GetComponent<Rigidbody>().AddTorque(new Vector3(0, 0, 1) * 300 * (-1));
         isTurn = true;

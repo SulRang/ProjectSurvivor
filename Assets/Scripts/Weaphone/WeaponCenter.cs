@@ -23,6 +23,7 @@ public class WeaponCenter : MonoBehaviour
     void FixedUpdate()
     {
         transform.position = player.transform.position + new Vector3(0, height, 0);
+        GetComponent<CircleCollider2D>().radius = 3 * Player_Status.instance.RANGE;
     }
 
     /// <summary>

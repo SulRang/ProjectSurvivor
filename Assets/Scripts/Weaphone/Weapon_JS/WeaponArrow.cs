@@ -8,7 +8,7 @@ public class WeaponArrow : Weaphone
     protected override void Start()
     {
         base.Start();
-        SetProjectileNum(level);
+        SetProjectileNum(1);
         SetCoolDown(2.0f);
         SetSpeed(300.0f);
     }

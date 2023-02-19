@@ -46,7 +46,7 @@ public class Projectile : MonoBehaviour
     }
     public void SetDuration(float _duration)
     {
-        duration = _duration + Player_Status.instance.RANGE;
+        duration = _duration;
     }
     public void SetSize(float _size)
     {
@@ -66,7 +66,6 @@ public class Projectile : MonoBehaviour
     {
         int n = 0;
         n = Random.Range(0, 1000);
-        criticalChance *= 1000;
-        return n <= criticalChance;
+        return n <= (criticalChance * 1000);
     }
 }

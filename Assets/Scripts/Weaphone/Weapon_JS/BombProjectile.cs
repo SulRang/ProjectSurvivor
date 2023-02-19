@@ -13,7 +13,7 @@ public class BombProjectile : Projectile
     protected override void Start()
     {
         base.Start();
-        SetDuration(_setDuration - Player_Status.instance.RANGE);
+        SetDuration(_setDuration);
         Invoke("explosion", _setDuration - 0.2f);
     }
 

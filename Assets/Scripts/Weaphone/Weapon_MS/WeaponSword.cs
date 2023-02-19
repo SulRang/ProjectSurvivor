@@ -21,7 +21,7 @@ public class WeaponSword : Weaphone
         //투사체 속도
         SetSpeed(speed);
         //공격 쿨다운
-        SetCoolDown(8.0f / (level));
+        SetCoolDown(6.0f);
     }
 
     public void LevelUp()
