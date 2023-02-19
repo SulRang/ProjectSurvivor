@@ -33,8 +33,8 @@ public class Projectile_JS : MonoBehaviour
     {
         if(collision.gameObject.tag == "Monster")
         {
-            collision.GetComponent<Monster>().GetDamage((int)damage);
-            collision.GetComponent<Rigidbody2D>().AddForce((collision.transform.position - transform.position).normalized * power, ForceMode2D.Impulse);
+            collision.GetComponent<Monster>().GetDamage((int)damage, power);
+            //collision.GetComponent<Rigidbody2D>().AddForce((collision.transform.position - transform.position).normalized * power, ForceMode2D.Impulse);
         }
     }
     public void SetDuration(float _duration)

@@ -25,7 +25,7 @@ public class WeaponBomb : Weaphone
     {
         base.Start();
         SetSpeed(0f);
-        SetCoolDown((7f - level) * (1.0f - Player_Status.instance.COOLDOWN));
+        SetCoolDown((7f - level));
     }
 
     public void LevelUp()
@@ -47,7 +47,7 @@ public class WeaponBomb : Weaphone
 
     public override void Attack()
     {
-        SetCoolDown(7f - level);
+        SetCoolDown((7f - level));
 
         projectileObject = Instantiate(projectile, transform);
 
@@ -56,7 +56,6 @@ public class WeaponBomb : Weaphone
         {
             projectileObject.GetComponent<BombProjectile>().SetSize(1.0f);
         }
-
         projectileObject.transform.parent = null;
         projectileObject.SetActive(true);
         projectileObject.GetComponent<BoxCollider2D>().enabled = false;

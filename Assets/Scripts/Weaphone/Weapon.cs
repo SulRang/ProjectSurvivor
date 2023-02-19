@@ -29,7 +29,6 @@ public class Weaphone : MonoBehaviour
 
     IEnumerator AttackCoolDown()
     {
-        Debug.Log("Start Attack Coroutine");
         while (true)
         {
             cooltime += Time.deltaTime;

@@ -21,7 +21,7 @@ public class WeaponBat : Weaphone
         base.Start();
         SetProjectileNum(level);
         SetSpeed(50.0f);
-        SetCoolDown(2.5f * (1.0f - Player_Status.instance.COOLDOWN));
+        SetCoolDown(2.5f);
         this.gameObject.transform.SetParent(player.transform);
     }
 
@@ -37,6 +37,8 @@ public class WeaponBat : Weaphone
 
     public override void Attack()
     {
+        SetCoolDown(2.5f);
+
         for (int i = 0; i < projectileNum; i++)
         {
             Transform target = weaponCenter.GetRandomTarget();

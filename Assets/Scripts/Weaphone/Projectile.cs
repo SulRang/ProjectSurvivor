@@ -46,20 +46,20 @@ public class Projectile : MonoBehaviour
     }
     public void SetDuration(float _duration)
     {
-        duration = _duration;
+        duration = _duration + Player_Status.instance.RANGE;
     }
     public void SetSize(float _size)
     {
         size *= _size;
     }
 
-    private void Attack(Collider2D coll)
+    protected void Attack(Collider2D coll)
     {
-        coll.GetComponent<Rigidbody2D>().AddForce((coll.transform.position - transform.position).normalized * power, ForceMode2D.Impulse);
+        //coll.GetComponent<Rigidbody2D>().AddForce((coll.transform.position - transform.position).normalized * power, ForceMode2D.Impulse);
         if(CriticalHit())
-            coll.GetComponent<Monster>().GetDamage(damage * criticalDamage);
+            coll.GetComponent<Monster>().GetDamage(damage * criticalDamage, power);
 
-        coll.GetComponent<Monster>().GetDamage(damage);
+        coll.GetComponent<Monster>().GetDamage(damage, power);
     }
     
     private bool CriticalHit()

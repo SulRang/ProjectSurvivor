@@ -15,7 +15,7 @@ MonoBehaviour:
   monsterName: Troll
   hp: 120
   moveSpeed: 3
-  damage: 8
+  damage: 20
   size: 1
   prefab: {fileID: 165392, guid: dc7c832284155cf44b3aa4a9bcc5bb6d, type: 3}
-  score: 70
+  score: 150

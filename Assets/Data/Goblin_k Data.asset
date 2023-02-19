@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Goblin_k Data
   m_EditorClassIdentifier: 
   monsterName: Goblin_k
-  hp: 20
+  hp: 25
   moveSpeed: 1
-  damage: 2
+  damage: 3
   size: 1
   prefab: {fileID: 142092, guid: 12349d0ffafba3d46b55375ab08f88c0, type: 3}
   score: 15
