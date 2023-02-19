@@ -14,7 +14,8 @@ public class MaceProjectile : Projectile
         {
             if(isUpgrade)
                 OnHitMonster(collision.transform);
-            Attack(collision);
+            collision.GetComponent<Rigidbody2D>().AddForce((collision.transform.position - transform.position).normalized * power, ForceMode2D.Impulse);
+            collision.GetComponent<Monster>().GetDamage(damage);
         }
     }
 

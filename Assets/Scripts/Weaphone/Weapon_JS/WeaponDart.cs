@@ -15,15 +15,15 @@ public class WeaponDart : Weaphone
     protected override void Start()
     {
         base.Start();
-        SetProjectileNum(level);
-        SetCoolDown(2.0f);
+        SetProjectileNum(level + Player_Status.instance.PROJECTILE_COUNT);
+        SetCoolDown(2.0f * (1.0f - Player_Status.instance.COOLDOWN));
         SetSpeed(300.0f);
     }
 
     public void LevelUp()
     {
         ++level;
-        SetProjectileNum(++level);
+        SetProjectileNum(++projectileNum);
         if (level >= 5)
         {
             Upgrade();
@@ -32,8 +32,6 @@ public class WeaponDart : Weaphone
 
     public override void Attack()
     {
-        SetCoolDown(2.0f);
-
         GameObject[] darts = new GameObject[(int)projectileNum];
         GameObject dartParent = new GameObject("dartParent");
         dartParent.transform.position = transform.position;
@@ -52,7 +50,7 @@ public class WeaponDart : Weaphone
             darts[i].transform.SetParent(dartParent.transform);
             darts[i].SetActive(true);
 
-            darts[i].GetComponent<Projectile>().SetDuration(1.5f);
+            darts[i].GetComponent<Projectile>().SetDuration(2.0f);
         }
 
         Destroy(dartParent, 2.0f);

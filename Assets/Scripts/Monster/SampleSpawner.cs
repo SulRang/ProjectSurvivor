@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
+public enum MonsterType
+{
+    Goblin, Golem, Kerberos, Minotauros, Troll
+}
+
 public class SampleSpawner : MonoBehaviour
 {
     [SerializeField]
@@ -15,26 +20,27 @@ public class SampleSpawner : MonoBehaviour
     GameObject monsterPrefab;
 
     [SerializeField]
-    IObjectPool<Monster> pool;
+    GameObject player;
 
     [SerializeField]
-    float cooltime = 1.5f;
+    Camera player_Camera;
+
+    [SerializeField]
+    IObjectPool<Monster> pool;
 
     [SerializeField]
     public GameObject[] triggers;
 
-    [SerializeField]
-    int monster_Num = 0;
+    public int monster_Num = 0;
 
-    // 최대 몬스터 스폰 수. 기본 40마리
-    [SerializeField]
-    int maximum = 40;
+    public int maximum = 0;
 
     private void Awake()
     {
         pool = new ObjectPool<Monster>(CreateMonster, GetMonster, ReleaseMonster, DestroyMonster, maxSize:maximum);
     }
 
+    // Start is called before the first frame update
     void Start()
     {
         monsterPrefab = curMonster.prefab;
@@ -51,7 +57,7 @@ public class SampleSpawner : MonoBehaviour
     // 몹 생성 코루틴
     IEnumerator SpawnCoroutine()
     {
-        yield return new WaitForSeconds(cooltime); // 쿨타임 기본 1.5초
+        yield return new WaitForSeconds(0.5f);
 
 
         if (monster_Num < maximum)
@@ -66,7 +72,8 @@ public class SampleSpawner : MonoBehaviour
     Monster CreateMonster()
     {        
         Monster monster;
-        monster = Instantiate(monsterPrefab, transform.position, Quaternion.identity).GetComponent<Monster>();
+        Vector3 position = Positioning();
+        monster = Instantiate(monsterPrefab, position, Quaternion.identity).GetComponent<Monster>();
         monster.SetManagedPool(pool);
         return monster;
     }
@@ -90,6 +97,49 @@ public class SampleSpawner : MonoBehaviour
         Destroy(monster.gameObject);
     }
 
+    // 카메라 화면 높이 좌표를 계산
+    float ScreenPosition()
+    {
+        float distance = Vector3.Distance(player.transform.position, Camera.main.transform.position); // 카메라에서 플레이어까지의 거리
+        float frustumHeight = distance * Mathf.Tan(Camera.main.fieldOfView * 0.5f * Mathf.Deg2Rad) * 1.2f + 
+            (player.transform.position.y > 0 ? player.transform.position.y : player.transform.position.y * -1f); // 카메라 화면 높이의 절반
+
+        return frustumHeight;
+        
+    }
+
+    Vector3 Positioning()
+    {
+        // 위, 왼쪽 : 0, 아래, 오른쪽 : 1
+        int posIndex = Random.Range(0, 2);
+
+        int insIndex = Random.Range(0, 2);
+
+        Vector3 calPos;
+        float screenPoint = ScreenPosition();
+
+        if (posIndex == 0) // 위, 왼쪽
+        {
+            calPos = (insIndex == 0) ? new Vector3(Random.Range(-15f, 15f), screenPoint, 0f) : new Vector3(-screenPoint * 2f, Random.Range(-10f, 10f), 0f);
+
+        }
+        else // 아래, 오른쪽
+        {
+            calPos = (insIndex == 0) ? new Vector3(Random.Range(-15f, 15f), -screenPoint, 0f) : new Vector3(screenPoint * 2f, Random.Range(-10f, 10f), 0f);
+        }
+        return calPos;
+    }
+
+    public void SetPlayer(GameObject _player)
+    {
+        player = _player;
+    }
+
+    public void SetPlayerCamera(Camera _playercamera)
+    {
+        player_Camera = _playercamera;
+    }
+
     public void SetMonsterData(MonsterData _monsterData)
     {
         curMonster = _monsterData;
@@ -100,13 +150,8 @@ public class SampleSpawner : MonoBehaviour
         maximum = _maximum;
     }
 
-    public void SetCooltime(float _cooltime)
+    public void SetTrigger(int index, GameObject _trigger)
     {
-        cooltime = _cooltime;
-    }
-
-    public void SetMonsterHp(int _hp)
-    {
-        curMonster.hp = _hp;
+        triggers[index] = _trigger;
     }
 }

@@ -52,7 +52,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 44b85574369eb204e8fa636ebcc40226, type: 2}
   curMonster: {fileID: 11400000, guid: 44b85574369eb204e8fa636ebcc40226, type: 2}
   monsterPrefab: {fileID: 0}
-  cooltime: 1.5
-  triggers: []
+  player: {fileID: 0}
+  player_Camera: {fileID: 0}
+  index: 0
   monster_Num: 0
-  maximum: 40
+  maximum: 15

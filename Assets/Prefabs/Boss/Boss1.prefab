@@ -98,7 +98,6 @@ MonoBehaviour:
   EXP: {fileID: 2263970235502346487, guid: e391ae388945f0745a70405fa93fcf66, type: 3}
   monsterData: {fileID: 11400000, guid: baf6bf3a924e437478cfb3e8bb6034b6, type: 2}
   playerPos: {fileID: 0}
-  towardVector: {x: 0, y: 0, z: 0}
 --- !u!50 &7748343832544988092
 Rigidbody2D:
   serializedVersion: 4

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterName: Golem_m
   hp: 60
-  moveSpeed: 1
-  damage: 8
+  moveSpeed: 0.5
+  damage: 6
   size: 1
   prefab: {fileID: 136324, guid: e7cad298b9950ad4ba8b15bda0d6a5dc, type: 3}
   score: 30

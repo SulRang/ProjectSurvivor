@@ -1977,7 +1977,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad530c614bf05745925d8f5bf35deae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EXP: {fileID: 2263970235502346487, guid: 7d7cff8d76ed3214f81b4ef63ac26e78, type: 3}
+  EXP: {fileID: 2263970235502346487, guid: e391ae388945f0745a70405fa93fcf66, type: 3}
   monsterData: {fileID: 0}
   playerPos: {fileID: 0}
 --- !u!50 &3940940655961325269
@@ -1992,7 +1992,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1.5
+  m_Mass: 1
   m_LinearDrag: 1.5
   m_AngularDrag: 0.05
   m_GravityScale: 0

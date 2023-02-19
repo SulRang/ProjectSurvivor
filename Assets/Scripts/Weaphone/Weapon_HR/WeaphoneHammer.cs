@@ -15,7 +15,7 @@ public class WeaphoneHammer : Weaphone
     protected override void Start()
     {
         base.Start();
-        
+        //투사체 개수
         SetSpeed(200.0f);
         //공격 쿨다운
         SetCoolDown(4.0f);
@@ -44,8 +44,8 @@ public class WeaphoneHammer : Weaphone
         //투사체 부모 오브젝트 제거
         MaceObject.transform.parent = null;
         MaceObject.SetActive(true);
-        //투사체 지속시간 설정. range 반영이 불필요하여 수식 추가.
-        MaceObject.GetComponent<Projectile>().SetDuration(0.5f - Player_Status.instance.RANGE);
+        //투사체 지속시간 설정
+        MaceObject.GetComponent<Projectile>().SetDuration(0.5f);
         //투사체 방향 및 이동 설정
         //MaceObject.GetComponent<Rigidbody>().AddTorque(new Vector3(0, 0, 1) * 300 * (-1));
         isTurn = true;

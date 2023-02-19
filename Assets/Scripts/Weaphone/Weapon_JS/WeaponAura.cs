@@ -5,8 +5,9 @@ using UnityEngine;
 public class WeaponAura : MonoBehaviour
 {
     public float level = 0;
+
     [SerializeField]
-    float damage = 0.2f;
+    float damage = 1f;
 
     [SerializeField]
     Player_Move player;
@@ -24,35 +25,19 @@ public class WeaponAura : MonoBehaviour
 
     float cooltime = 0f;
 
-    [SerializeField]
-    protected float criticalChance = 1.0f;
-    [SerializeField]
-    protected float criticalDamage = 1.0f;
-
-
     void Start()
     {
         damage *= Player_Status.instance.DMG;
         ScaleUpdate();
         this.gameObject.transform.SetParent(player.transform);
-        criticalChance += Player_Status.instance.CRITICAL;
-        criticalDamage *= Player_Status.instance.CRITICAL_DMG;
     }
 
     public void LevelUp()
     {
         ++level;
         ScaleUpdate();
-        damage = 0.3f;
-        criticalChance = 1.0f;
-        criticalDamage = 1.0f;
 
-
-        damage *= Player_Status.instance.DMG;
-        criticalChance += Player_Status.instance.CRITICAL;
-        criticalDamage *= Player_Status.instance.CRITICAL_DMG;
-
-        // ì „ì§ or ì—…ê·¸ë ˆì´ë“œ ê°€ëŠ¥ ì—¬ë¶€ í™•ì¸
+        // ÀüÁ÷ or ¾÷±×·¹ÀÌµå °¡´É ¿©ºÎ È®ÀÎ
         if (level >= 5)
         {
             if (laurel.GetComponent<ACC_Laurel>().GetLevel() >= 5)
@@ -66,29 +51,18 @@ public class WeaponAura : MonoBehaviour
         }
     }
 
-    // Scroll í™œì„±í™” ë° ì—…ê·¸ë ˆì´ë“œ, í¬ê¸° ê´€ë ¨ ì¥ì‹ êµ¬ í™œì„±í™” ë° ì—…ê·¸ë ˆì´ë“œ ì‹œ ì‹¤í–‰í•´ì¤˜ì•¼í•¨
+    // Scroll È°¼ºÈ­ ¹× ¾÷±×·¹ÀÌµå, Å©±â °ü·Ã Àå½Å±¸ È°¼ºÈ­ ¹× ¾÷±×·¹ÀÌµå ½Ã ½ÇÇàÇØÁà¾ßÇÔ
     public void ScaleUpdate()
     {
         transform.localScale = new Vector2((level * 2f) * Player_Status.instance.SIZE, (level * 2f) * Player_Status.instance.SIZE);
     }
 
-    public void DamageUpdate()
-    {
-        damage = 0.2f;
-        damage *= Player_Status.instance.DMG * 0.5f;
-    }
-
-    public void CriticalUpdate()
-    {
-
-    }
-
-    // ì˜¤ë¼ ì—…ê·¸ë ˆì´ë“œ. ì¡°ê±´ì€ ì›”ê³„ê´€ê³¼ ì˜¤ë¼ ëª¨ë‘ 5ë ˆë²¨ ì´ìƒ. ë²”ìœ„ê°€ ë” ë„“ì€ ì˜¤ë¼ë¡œ ì—…ê·¸ë ˆì´ë“œ
+    // ¿À¶ó ¾÷±×·¹ÀÌµå. Á¶°ÇÀº ¿ù°è°ü°ú ¿À¶ó ¸ğµÎ 5·¹º§ ÀÌ»ó. ¹üÀ§°¡ ´õ ³ĞÀº ¿À¶ó·Î ¾÷±×·¹ÀÌµå
     public void UpgradeWithACC()
     {
         if (laurel.GetComponent<ACC_Laurel>().GetLevel() >= 5 && level >= 5 && !Player_Status.instance.HasClass(classIdx))
         {
-            // ì‚¬ì „ì— ì „ì§ì´ ë˜ì–´ìˆìœ¼ë©´ í•´ë‹¹ ê¸°ëŠ¥ ì·¨ì†Œ.
+            // »çÀü¿¡ ÀüÁ÷ÀÌ µÇ¾îÀÖÀ¸¸é ÇØ´ç ±â´É Ãë¼Ò.
             if (isUpgrade)
             {
                 StopCoroutine(UpgradeAttackCoroutine());
@@ -99,7 +73,7 @@ public class WeaponAura : MonoBehaviour
         }
     }
 
-    // ì˜¤ë¼ ì „ì§. ì¡°ê±´ì€ ì˜¤ë¼ 5ë ˆë²¨ ì´ìƒ. ë²”ìœ„ê°€ ë” ë„“ì€ ì˜¤ë¼ ì¼ì • ì‹œê°„ ê°„ê²©ë§ˆë‹¤ ì¶”ê°€ í™œì„±í™”
+    // ¿À¶ó ÀüÁ÷. Á¶°ÇÀº ¿À¶ó 5·¹º§ ÀÌ»ó. ¹üÀ§°¡ ´õ ³ĞÀº ¿À¶ó ÀÏÁ¤ ½Ã°£ °£°İ¸¶´Ù Ãß°¡ È°¼ºÈ­
     public void Upgrade()
     {
         if (level >= 5 && !Player_Status.instance.HasClass(classIdx))
@@ -109,7 +83,7 @@ public class WeaponAura : MonoBehaviour
         }
     }
 
-    // ì˜¤ë¼ ì „ì§ ì‹œ ì‚¬ìš© ì½”ë£¨í‹´. 3ì´ˆ ê°„ê²©ìœ¼ë¡œ 3ì´ˆë™ì•ˆ ì˜¤ë¼ í™œì„±í™”
+    // ¿À¶ó ÀüÁ÷ ½Ã »ç¿ë ÄÚ·çÆ¾. 3ÃÊ °£°İÀ¸·Î 3ÃÊµ¿¾È ¿À¶ó È°¼ºÈ­
     IEnumerator UpgradeAttackCoroutine()
     {
         while (isUpgrade)
@@ -130,7 +104,7 @@ public class WeaponAura : MonoBehaviour
     {
         if (collision.gameObject.tag == "Monster")
         {
-            Attack(collision);
+            collision.GetComponent<Monster>().GetDamage((int)damage);
         }
     }
 
@@ -138,23 +112,7 @@ public class WeaponAura : MonoBehaviour
     {
         if (collision.gameObject.tag == "Monster")
         {
-            Attack(collision);
+            collision.GetComponent<Monster>().GetDamage((int)damage);
         }
-    }
-
-    private void Attack(Collider2D coll)
-    {
-        if (CriticalHit())
-            coll.GetComponent<Monster>().GetDamage(damage * criticalDamage);
-
-        coll.GetComponent<Monster>().GetDamage(damage);
-    }
-
-    private bool CriticalHit()
-    {
-        int n = 0;
-        n = Random.Range(0, 1000);
-        criticalChance *= 1000;
-        return n <= criticalChance;
     }
 }

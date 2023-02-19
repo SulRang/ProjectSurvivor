@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponAuraUpgrade : Projectile
+public class WeaponAuraUpgrade : MonoBehaviour
 {
-    protected override void Start()
+    [SerializeField]
+    float damage = 1f;
+
+    private void Start()
     {
         damage *= Player_Status.instance.DMG;
     }
@@ -13,7 +16,7 @@ public class WeaponAuraUpgrade : Projectile
     {
         if (collision.gameObject.tag == "Monster")
         {
-            Attack(collision);
+            collision.GetComponent<Monster>().GetDamage((int)damage);
         }
     }
 
@@ -21,7 +24,7 @@ public class WeaponAuraUpgrade : Projectile
     {
         if (collision.gameObject.tag == "Monster")
         {
-            Attack(collision);
+            collision.GetComponent<Monster>().GetDamage((int)damage);
         }
     }
 }

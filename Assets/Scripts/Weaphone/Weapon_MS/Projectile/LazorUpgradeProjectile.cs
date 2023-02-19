@@ -14,7 +14,7 @@ public class LazorUpgradeProjectile : Projectile
             curTime += Time.deltaTime;
             if (curTime > 1.0f)
             {
-                transform.parent.GetComponent<Monster>().GetDamage((int)damage, power);
+                transform.parent.GetComponent<Monster>().GetDamage((int)damage);
                 curTime -= 1.0f;
             }
         }
@@ -25,7 +25,8 @@ public class LazorUpgradeProjectile : Projectile
         if (collision.gameObject.tag == "Monster")
         {
             target = collision.gameObject;
-            Attack(collision);
+            collision.GetComponent<Rigidbody2D>().AddForce((collision.transform.position - transform.position).normalized * power, ForceMode2D.Impulse);
+            collision.GetComponent<Monster>().GetDamage(damage);
         }
     }
 }

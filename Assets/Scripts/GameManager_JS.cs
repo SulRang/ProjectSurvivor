@@ -19,24 +19,12 @@ public class GameManager_JS : MonoBehaviour
     TMP_Text goldText;
 
     [SerializeField]
-    TMP_Text gameOverText;
-
-    [SerializeField]
     ScoreSystem scoreSystem;
-
-    [SerializeField]
-    GameObject timerObj;
-
-    Timer timer;
-
-    bool isClear = false;
-    int cal_gold = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         Time.timeScale = 1f;
-        timer = timerObj.GetComponent<Timer>();
     }
 
     // Update is called once per frame
@@ -44,30 +32,17 @@ public class GameManager_JS : MonoBehaviour
     {
         if (Player_Status.instance.Current_Hp <= 0)
         {
-            scoreSystem.isEnd = true;
-            GameOver();
-        }
-        else if (timer.ClearCheck())
-        {
-            scoreSystem.isEnd = true;
-            isClear = true;
             GameOver();
         }
     }
 
     void GameOver()
     {
-        if (isClear)
-        {
-            isClear = false;
-            gameOverText.text = "Game Clear!";
-        }
         Player_Status.instance.Current_Hp = 1;
         Time.timeScale = 0f;
         gameoverUI.SetActive(true);
-        int finalScore = scoreSystem.FinalScore();
-        scoreText.text = finalScore.ToString();
-        cal_gold = GoldSystem.instance_gold.CalGold(finalScore);
+        scoreText.text = scoreSystem.FinalScore().ToString();
+        int cal_gold = (int)((scoreSystem.FinalScore() / 1000) * Player_Status.instance.GOLD_GAIN_RATE);
         goldText.text = cal_gold.ToString();
         GoldSystem.instance_gold.SetGold(cal_gold);
     }
@@ -77,7 +52,6 @@ public class GameManager_JS : MonoBehaviour
         gameoverUI.SetActive(false);
         Time.timeScale = 1f;
         scoreSystem.InitScore();
-        timer.InitTrigger();
         SceneManager.LoadScene("MainGameScene");
     }
 
@@ -85,7 +59,6 @@ public class GameManager_JS : MonoBehaviour
     {
         gameoverUI.SetActive(false);
         scoreSystem.InitScore();
-        timer.InitTrigger();
         Time.timeScale = 1f;
         SceneManager.LoadScene("TitleScene");
         GameObject.Find("Canvas (Title)").transform.GetChild(0).gameObject.SetActive(true);

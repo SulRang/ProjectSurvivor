@@ -16,9 +16,9 @@ public class ACC_Shoes : MonoBehaviour
     [SerializeField]
     static float acc_Shoes_level = 1f;
 
-    // 증가되는 이동속도. 0.6씩 증가하도록 변수 지정
+    // 증가되는 이동속도. 0.5씩 증가하도록 변수 지정
     [SerializeField]
-    float inc_Speed = 1.2f;
+    float inc_Speed = 1f;
 
     [SerializeField]
     float duration = 3f;
@@ -33,7 +33,7 @@ public class ACC_Shoes : MonoBehaviour
     {
         if (BeforeSpeedincrease == null)
         {
-            BeforeSpeedincrease = SpeedIncreaseCoroutine();
+            BeforeSpeedincrease = HpDecreaseCoroutine();
             StartCoroutine(BeforeSpeedincrease);
         }
     }
@@ -46,7 +46,7 @@ public class ACC_Shoes : MonoBehaviour
     }
 
     // 체력 감소 코루틴. 쿨타임 (5초) 마다 지속시간 (3 * (level / 2. level 2부터) 초) 동안 이동속도 증가
-    IEnumerator SpeedIncreaseCoroutine()
+    IEnumerator HpDecreaseCoroutine()
     {
         while (true)
         {

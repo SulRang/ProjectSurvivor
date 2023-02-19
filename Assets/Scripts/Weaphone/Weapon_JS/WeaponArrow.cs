@@ -9,7 +9,7 @@ public class WeaponArrow : Weaphone
     {
         base.Start();
         SetProjectileNum(level);
-        SetCoolDown(2.0f);
+        SetCoolDown(2.0f * (1.0f - Player_Status.instance.COOLDOWN));
         SetSpeed(300.0f);
     }
 
@@ -21,12 +21,12 @@ public class WeaponArrow : Weaphone
 
     public override void Attack()
     {
-        SetCoolDown(2.0f);
         GameObject[] arrows = new GameObject[(int)projectileNum];
         GameObject arrowParent = new GameObject("arrowParent");
         arrowParent.transform.position = transform.position;
         arrowParent.transform.parent = null;
         arrowParent.SetActive(true);
+        //GameObject arrow = Instantiate(projectile, transform.position + new Vector3(0.3f, 0.2f, 0f), Quaternion.identity);
 
         for (int i = 0; i < projectileNum; i++)
         {

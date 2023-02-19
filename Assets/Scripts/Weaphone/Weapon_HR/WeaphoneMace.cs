@@ -147,8 +147,8 @@ public class WeaphoneMace : Weaphone
             //투사체 생성
             GameObject projectileObject = Instantiate(classProjectile, transform);
             projectileObject.SetActive(true);
-            //투사체 지속시간 설정. range 반영이 불필요하여 수식 추가.
-            projectileObject.GetComponent<Projectile>().SetDuration(1.0f - Player_Status.instance.RANGE);
+            //투사체 지속시간 설정
+            projectileObject.GetComponent<Projectile>().SetDuration(1.0f);
             //투사체 각도 및 이동 설정
             projectileObject.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, -degree));
             projectileObject.transform.localPosition = new Vector3(range * Mathf.Sin(radian), range * Mathf.Cos(radian));

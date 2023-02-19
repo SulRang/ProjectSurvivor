@@ -22,7 +22,8 @@ public class FireBallUpradeProjectile : Projectile
         {
             if(rigidBody.velocity.y < 2.0f)
             {
-                Attack(collision);
+                collision.GetComponent<Rigidbody2D>().AddForce((collision.transform.position - transform.position).normalized * power, ForceMode2D.Impulse);
+                collision.GetComponent<Monster>().GetDamage(damage);
                 GameObject explosionObj = Instantiate(explosion, collision.transform);
                 explosionObj.transform.parent = null;
                 Destroy(gameObject, 0.1f);

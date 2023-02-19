@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Kerberos Data
   m_EditorClassIdentifier: 
   monsterName: Kerberos
-  hp: 80
+  hp: 60
   moveSpeed: 2
-  damage: 7
+  damage: 5
   size: 1
   prefab: {fileID: 174926, guid: 2661a5d4ec3486540b19d0b7587212b5, type: 3}
-  score: 70
+  score: 50
