@@ -8,7 +8,7 @@ public class GoldSystem : MonoBehaviour
     [SerializeField]
     Text minuteText;
 
-    private static int gold = 100;
+    private static int gold = 50;
 
     //ΩÃ±€≈Ê
     public static GoldSystem instance_gold;

@@ -83,6 +83,8 @@ public class UpgradeShopManager : MonoBehaviour
 
     public void UpdateUpgrade()
     {
+        if (statusDict.Count == 0)
+            return;
         foreach(KeyValuePair<string, float> statusData in statusDict)
         {
             Player_Status.instance.UpgradeStatus(statusData.Key, statusData.Value);
