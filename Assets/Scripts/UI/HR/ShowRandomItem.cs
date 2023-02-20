@@ -8,6 +8,7 @@ public class ShowRandomItem : MonoBehaviour
 {
     [SerializeField]
     public List<string[]> Data = new List<string[]>();
+    public List<string[]> originData;
     public bool StartLevel = false;
 
     public string FirstItem;
@@ -80,6 +81,8 @@ public class ShowRandomItem : MonoBehaviour
                 }
             }
             firstFlag = false;
+
+            originData = Data;
         }
     }
     public void ItemListSet()

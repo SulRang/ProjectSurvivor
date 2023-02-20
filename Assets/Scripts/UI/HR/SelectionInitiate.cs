@@ -163,6 +163,7 @@ public class SelectionInitiate : MonoBehaviour
 
     bool weaponFlag = true;
     bool accFlag = true;
+    int minNum = 16;
 
     //csv 파일 : 숫자, 이름, 레벨, 설명
     public void Selected()
@@ -186,7 +187,7 @@ public class SelectionInitiate : MonoBehaviour
                 }
                 if(Arrow.level == 5)
                 {
-                    showItem.Data.Remove(showItem.Data[0]);
+                    showItem.Data.Remove(showItem.originData[0]);
                 }
                 break;
             case "Bat":
@@ -205,7 +206,7 @@ public class SelectionInitiate : MonoBehaviour
                 }
                 if (Bat.level == 5)
                 {
-                    showItem.Data.Remove(showItem.Data[1]);
+                    showItem.Data.Remove(showItem.originData[1]);
                 }
                 break;
             case "Bomb":
@@ -225,7 +226,7 @@ public class SelectionInitiate : MonoBehaviour
                 }
                 if (Bomb.level == 5)
                 {
-                    showItem.Data.Remove(showItem.Data[2]);
+                    showItem.Data.Remove(showItem.originData[2]);
                 }
                 break;
             case "Aura":
@@ -245,7 +246,7 @@ public class SelectionInitiate : MonoBehaviour
                 }
                 if (Aura.level == 5)
                 {
-                    showItem.Data.Remove(showItem.Data[3]);
+                    showItem.Data.Remove(showItem.originData[3]);
                 }
                 break;
             case "Dart":
@@ -265,7 +266,7 @@ public class SelectionInitiate : MonoBehaviour
                 }
                 if (Dart.level == 5)
                 {
-                    showItem.Data.Remove(showItem.Data[4]);
+                    showItem.Data.Remove(showItem.originData[4]);
                 }
                 break;
 
@@ -286,7 +287,7 @@ public class SelectionInitiate : MonoBehaviour
                 }
                 if (Hammer.level == 5)
                 {
-                    showItem.Data.Remove(showItem.Data[5]);
+                    showItem.Data.Remove(showItem.originData[5]);
                 }
                 break;
             case "Mace":
@@ -306,7 +307,7 @@ public class SelectionInitiate : MonoBehaviour
                 }
                 if (Mace.level == 5)
                 {
-                    showItem.Data.Remove(showItem.Data[6]);
+                    showItem.Data.Remove(showItem.originData[6]);
                 }
                 break;
             case "Cannon":
@@ -326,7 +327,7 @@ public class SelectionInitiate : MonoBehaviour
                 }
                 if (Cannon.level == 5)
                 {
-                    showItem.Data.Remove(showItem.Data[7]);
+                    showItem.Data.Remove(showItem.originData[7]);
                 }
                 break;
             case "Lazer":
@@ -346,7 +347,7 @@ public class SelectionInitiate : MonoBehaviour
                 }
                 if (Lazer.level == 5)
                 {
-                    showItem.Data.Remove(showItem.Data[8]);
+                    showItem.Data.Remove(showItem.originData[8]);
                 }
                 break;
             case "Dagger":
@@ -366,7 +367,7 @@ public class SelectionInitiate : MonoBehaviour
                 }
                 if (Dagger.level == 5)
                 {
-                    showItem.Data.Remove(showItem.Data[9]);
+                    showItem.Data.Remove(showItem.originData[9]);
                 }
                 break;
 
@@ -387,7 +388,7 @@ public class SelectionInitiate : MonoBehaviour
                 }
                 if (CrossBow.level == 5)
                 {
-                    showItem.Data.Remove(showItem.Data[10]);
+                    showItem.Data.Remove(showItem.originData[10]);
                 }
                 break;
             case "FireBall":
@@ -407,7 +408,7 @@ public class SelectionInitiate : MonoBehaviour
                 }
                 if (FireBall.level == 5)
                 {
-                    showItem.Data.Remove(showItem.Data[11]);
+                    showItem.Data.Remove(showItem.originData[11]);
                 }
                 break;
             case "Sword":
@@ -427,7 +428,7 @@ public class SelectionInitiate : MonoBehaviour
                 }
                 if (Sword.level == 5)
                 {
-                    showItem.Data.Remove(showItem.Data[12]);
+                    showItem.Data.Remove(showItem.originData[12]);
                 }
                 break;
             case "Tornado":
@@ -447,7 +448,7 @@ public class SelectionInitiate : MonoBehaviour
                 }
                 if (Tornado.level == 5)
                 {
-                    showItem.Data.Remove(showItem.Data[13]);
+                    showItem.Data.Remove(showItem.originData[13]);
                 }
                 break;
             case "Lightning":
@@ -467,7 +468,7 @@ public class SelectionInitiate : MonoBehaviour
                 }
                 if (Lightning.level == 5)
                 {
-                    showItem.Data.Remove(showItem.Data[14]);
+                    showItem.Data.Remove(showItem.originData[14]);
                 }
                 break;
             case "Shield":
@@ -487,7 +488,7 @@ public class SelectionInitiate : MonoBehaviour
                 }
                 if (Shield.level == 5)
                 {
-                    showItem.Data.Remove(showItem.Data[15]);
+                    showItem.Data.Remove(showItem.originData[15]);
                 }
                 break;
 
@@ -507,7 +508,7 @@ public class SelectionInitiate : MonoBehaviour
                 }
                 if (OldBook.GetLevel() == 5)
                 {
-                    showItem.Data.Remove(showItem.Data[16]);
+                    showItem.Data.Remove(showItem.originData[16]);
                 }
                 break;
             case "Shoes":
@@ -526,7 +527,7 @@ public class SelectionInitiate : MonoBehaviour
                 }
                 if (Shoes.GetLevel() == 5)
                 {
-                    showItem.Data.Remove(showItem.Data[17]);
+                    showItem.Data.Remove(showItem.originData[17]);
                 }
                 break;
             case "Scroll":
@@ -545,7 +546,7 @@ public class SelectionInitiate : MonoBehaviour
                 }
                 if (Scroll.GetLevel() == 5)
                 {
-                    showItem.Data.Remove(showItem.Data[18]);
+                    showItem.Data.Remove(showItem.originData[18]);
                 }
                 break;
             case "Laurel":
@@ -564,7 +565,7 @@ public class SelectionInitiate : MonoBehaviour
                 }
                 if (Laurel.GetLevel() == 5)
                 {
-                    showItem.Data.Remove(showItem.Data[19]);
+                    showItem.Data.Remove(showItem.originData[19]);
                 }
                 break;
             case "Chalice":
@@ -583,7 +584,7 @@ public class SelectionInitiate : MonoBehaviour
                 }
                 if (Chalice.GetLevel() == 5)
                 {
-                    showItem.Data.Remove(showItem.Data[20]);
+                    showItem.Data.Remove(showItem.originData[20]);
                 }
                 break;
             case "Ring":
@@ -602,7 +603,7 @@ public class SelectionInitiate : MonoBehaviour
                 }
                 if (Ring.GetLevel() == 5)
                 {
-                    showItem.Data.Remove(showItem.Data[21]);
+                    showItem.Data.Remove(showItem.originData[21]);
                 }
                 break;
             case "MoneyPocket":
@@ -621,7 +622,7 @@ public class SelectionInitiate : MonoBehaviour
                 }
                 if (MoneyPocket.GetLevel() == 5)
                 {
-                    showItem.Data.Remove(showItem.Data[22]);
+                    showItem.Data.Remove(showItem.originData[22]);
                 }
                 break;
             case "Book":
@@ -640,7 +641,7 @@ public class SelectionInitiate : MonoBehaviour
                 }
                 if (Book.GetLevel() == 5)
                 {
-                    showItem.Data.Remove(showItem.Data[23]);
+                    showItem.Data.Remove(showItem.originData[23]);
                 }
                 break;
             case "Armor":
@@ -659,7 +660,7 @@ public class SelectionInitiate : MonoBehaviour
                 }
                 if (Armor.GetLevel() == 5)
                 {
-                    showItem.Data.Remove(showItem.Data[24]);
+                    showItem.Data.Remove(showItem.originData[24]);
                 }
                 break;
             case "Prism":
@@ -678,7 +679,7 @@ public class SelectionInitiate : MonoBehaviour
                 }
                 if (Prism.GetLevel() == 5)
                 {
-                    showItem.Data.Remove(showItem.Data[25]);
+                    showItem.Data.Remove(showItem.originData[25]);
                 }
                 break;
             case "TeleScope":
@@ -697,7 +698,7 @@ public class SelectionInitiate : MonoBehaviour
                 }
                 if (TeleScope.GetLevel() == 5)
                 {
-                    showItem.Data.Remove(showItem.Data[26]);
+                    showItem.Data.Remove(showItem.originData[26]);
                 }
                 break;
             case "Bipod":
@@ -716,7 +717,7 @@ public class SelectionInitiate : MonoBehaviour
                 }
                 if (Bipod.GetLevel() == 5)
                 {
-                    showItem.Data.Remove(showItem.Data[27]);
+                    showItem.Data.Remove(showItem.originData[27]);
                 }
                 break;
         }
@@ -725,19 +726,20 @@ public class SelectionInitiate : MonoBehaviour
         Fflag = true;
         Sflag = true;
 
-        for(var item = 0; item < showItem.Data.Count; item ++)
+        Debug.Log(minNum);
+        for(var item = 0; item < showItem.originData.Count; item ++)
         {
             //만약 선택된 아이템의 인덱스가 16 미만이면 무기로 세팅
-            if (showItem.Data[item][1] == gameObject.GetComponentsInChildren<TextMeshProUGUI>()[0].text && 
+            if (showItem.originData[item][1] == gameObject.GetComponentsInChildren<TextMeshProUGUI>()[0].text && 
                 !playerStatus.weaponSet.Contains(gameObject.GetComponentsInChildren<TextMeshProUGUI>()[0].text) &&
-                item < 16)
+                int.Parse(showItem.originData[item][4]) == 1)
             {
                 playerStatus.weaponSet.Add(gameObject.GetComponentsInChildren<TextMeshProUGUI>()[0].text);
             }
 
-            if (showItem.Data[item][1] == gameObject.GetComponentsInChildren<TextMeshProUGUI>()[0].text &&
+            if (showItem.originData[item][1] == gameObject.GetComponentsInChildren<TextMeshProUGUI>()[0].text &&
                 !playerStatus.accSet.Contains(gameObject.GetComponentsInChildren<TextMeshProUGUI>()[0].text) &&
-                item >= 16)
+                int.Parse(showItem.originData[item][4]) == 0)
             {
                 Debug.Log("악세서리 추가");
                 playerStatus.accSet.Add(gameObject.GetComponentsInChildren<TextMeshProUGUI>()[0].text);
@@ -769,6 +771,8 @@ public class SelectionInitiate : MonoBehaviour
                 {
                     //Debug.Log(showItem.Data[i][1]+"를 삭제합니다." );
                     showItem.Data.Remove(showItem.Data[i]);
+                    if (i > minNum)
+                        minNum--;
                 }
             }
             /*
@@ -797,7 +801,9 @@ public class SelectionInitiate : MonoBehaviour
 
                 if (!flag)
                 {
-                    showItem.Data.RemoveAt(i);
+                    showItem.Data.Remove(showItem.Data[i]);
+                    if (i > minNum)
+                        minNum--;
                 }
             }
             accFlag = false;
